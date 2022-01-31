@@ -7,33 +7,47 @@
 
 import Foundation
 
-//// Lets divide in seconds
-//// So, for me to move 2 seconds in 300 seconds
-//// And start it faster than slow down
-//// I guess 10 is a cool number
-//// Every second I'll be upping the number a little bit
-//// I have 3000 parts to up a percentage every second
-//
-//// sn = n(a1 + an) / 2
-//// 2 = 300(0 + x) /2
-//// 2 = 150x
-//// x = 1/75
-//var result:Double = 0
-//var total:Double = 0
-//for _ in 1..<300 {
-//    result += ((1/75)/300)
-//    total += result
-//}
-//print(total)
 class Balancer {
+    let start:Double
     let range:Double
     let time:Double
     let step: Double
-    var currentStep:Double
+    let ascending:Bool
+    let startFast:Bool
+    var currentTime:Int
+    var total:Double
     
-    init(range: Int, time: Int){
+    init(start:Int, range: Int, time: Int, ascending: Bool, startFast:Bool){
+        self.start = Double(start)
+        self.total = Double(start)
         self.range = Double(range)
         self.time = Double(time)
         self.step = ((2 * Double(range))/self.time)/self.time
+        self.ascending = ascending
+        self.startFast = startFast
+        
+        if startFast {
+            currentTime = time
+        }
+        else {
+            currentTime = 0
+        }
+    }
+    
+//        bal = Balancer(start: 3, range: 2, time: 300, ascending: false, startFast: true)
+    func nextStep() -> Double{
+        if startFast {
+            currentTime -= 1
+        }
+        else {
+            currentTime += 1
+        }
+        if ascending{
+            total += step * Double(currentTime)
+        }
+        else {
+            total -= step * Double(currentTime)
+        }
+        return total
     }
 }

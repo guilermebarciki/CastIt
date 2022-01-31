@@ -17,11 +17,29 @@ class EnemySpawner {
     private var parent: SKNode
     
     var nextEnemy:TimeInterval     = 0
-    let spawnRate:TimeInterval     = 3
     
-    var dificulty:Double           = 1
-    let dificultySum:Double        = 0.1
-    let dificultyRate:TimeInterval = 15
+    var nextDificulty:TimeInterval = 1
+    let dificultyRate:TimeInterval = 1
+    
+    var spawnRate:TimeInterval     = 3
+    var spawnBalancer  = Balancer(start: 3, range: 2, time: 300, ascending: false, startFast: true)
+    
+    var normalPercentage:Double = 90
+    var elitePercentage:Double = 8
+    var bossPercentage:Double = 2
+    var normalBalancer = Balancer(start: 90, range: 70, time: 1200, ascending: false, startFast: true)
+    var eliteBalancer  = Balancer(start: 8, range: 22, time: 1200, ascending: true, startFast: true)
+    var bossBalancer   = Balancer(start: 2, range: 48, time: 1200, ascending: true, startFast: true)
+
+    
+    var twoPercentage:Double = 90
+    var threePercentage:Double = 5
+    var fourPercentage:Double = 3
+    var fivePercentage:Double = 2
+    var twoBalancer    = Balancer(start: 90, range: 85, time: 600, ascending: false, startFast: true)
+    var threeBalancer  = Balancer(start: 5, range: 10, time: 600, ascending: true, startFast: true)
+    var fourBalancer   = Balancer(start: 3, range: 27, time: 600, ascending: true, startFast: true)
+    var fiveBalancer   = Balancer(start: 2, range: 48, time: 600, ascending: true, startFast: true)
     
     let lanes = 4
     var lanePos:[CGPoint] = []
@@ -37,16 +55,35 @@ class EnemySpawner {
         for i in 0..<lanes{
             let yPos = (parent.frame.height/CGFloat(lanes+3) * CGFloat(i)) + 150
             
-            lanePos.append(CGPoint(x: 100, y: yPos))// x=-33
+            lanePos.append(CGPoint(x: -33, y: yPos))// x=-33
         }
     }
     
     func update(dTime: TimeInterval){
         nextEnemy -= dTime
+        nextDificulty -= dTime
+        if nextDificulty <= 0 {
+            raiseDificulty()
+            nextDificulty = dificultyRate
+        }
         if nextEnemy <= 0{
             nextEnemy = spawnRate
-            let randomEnemy = Int.random(in: 0..<enemiesSprites.count)
-            let new = enemiesSprites[randomEnemy].copy() as! SKNode
+            let randomEnemy = Double.random(in: 0...100)
+            var new:SKNode
+            var level:Int
+            if randomEnemy < normalPercentage {
+                new = enemiesSprites[0].copy() as! SKNode
+                level = 0
+            }
+            else if randomEnemy < elitePercentage+normalPercentage {
+                new = enemiesSprites[1].copy() as! SKNode
+                level = 1
+            }
+            else {
+                print(randomEnemy)
+                new = enemiesSprites[2].copy() as! SKNode
+                level = 2
+            }
             var randomLane = Int.random(in: 0..<lanes)
             while cLane[randomLane] {
                 randomLane = Int.random(in: 0..<lanes)
@@ -61,7 +98,7 @@ class EnemySpawner {
             }
             new.position = lanePos[randomLane]
             new.zPosition = zPos
-            enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: randomEnemy, speed: 50))
+            enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: level, speed: 50, controller: self))
             zPos += 1
             parent.addChild(new)
         }
@@ -70,6 +107,17 @@ class EnemySpawner {
                 enemy.sprite.position.x += dTime * enemy.speed
             }
         }
+    }
+    
+    func raiseDificulty(){
+        spawnRate        = spawnBalancer.nextStep()
+        normalPercentage = normalBalancer.nextStep()
+        elitePercentage  = eliteBalancer.nextStep()
+        bossPercentage   = bossBalancer.nextStep()
+        twoPercentage    = twoBalancer.nextStep()
+        threePercentage  = threeBalancer.nextStep()
+        fourPercentage   = fourBalancer.nextStep()
+        fivePercentage   = fiveBalancer.nextStep()
     }
     
     func castMagic(magic: [Int]) -> Enemy?{
@@ -118,20 +166,34 @@ class Enemy {
     let lane:Int
     let level:Int
     let speed:Double
+    let controller:EnemySpawner
     
-    init(sprite: SKNode, lane: Int, level: Int, speed:Double){
+    init(sprite: SKNode, lane: Int, level: Int, speed:Double, controller:EnemySpawner){
         self.sprite = sprite
         self.lane = lane
         self.level = level
         self.speed = speed
+        self.controller = controller
         setupDeathArray()
         drawPentagon()
         sprite.addChild(pentagonNode)
     }
     
     private func setupDeathArray(){
-        let points = Int.random(in: 2...5)
-        
+        var points:Int
+        let randomPoint = Double.random(in: 0...100)
+        if randomPoint < controller.twoPercentage {
+            points = 2
+        }
+        else if randomPoint < controller.twoPercentage + controller.threePercentage {
+            points = 3
+        }
+        else if randomPoint < controller.twoPercentage + controller.threePercentage + controller.fourPercentage{
+            points = 4
+        }
+        else {
+            points = 5
+        }
         while deathArray.count < points {
             let point = Int.random(in: 0...4)
             if !deathArray.contains(point) {
