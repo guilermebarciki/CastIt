@@ -29,6 +29,8 @@ class Balancer {
     let range:Double
     let time:Double
     let step: Double
+    var currentStep:Double
+    
     init(range: Int, time: Int){
         self.range = Double(range)
         self.time = Double(time)
