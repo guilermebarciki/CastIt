@@ -16,6 +16,7 @@ class Balancer {
     let startFast:Bool
     var currentTime:Int
     var total:Double
+    var end:Bool = false
     
     init(start:Int, range: Int, time: Int, ascending: Bool, startFast:Bool){
         self.start = Double(start)
@@ -36,6 +37,7 @@ class Balancer {
     
 //        bal = Balancer(start: 3, range: 2, time: 300, ascending: false, startFast: true)
     func nextStep() -> Double{
+        
         if startFast {
             currentTime -= 1
         }
@@ -43,11 +45,32 @@ class Balancer {
             currentTime += 1
         }
         if ascending{
+            if startFast {
+                if currentTime < 0{
+                    return start + range
+                }
+            }
+            else {
+                if Double(currentTime) > time{
+                    return start + range
+                }
+            }
             total += step * Double(currentTime)
         }
         else {
+            if startFast {
+                if currentTime < 0{
+                    return start - range
+                }
+            }
+            else {
+                if Double(currentTime) > time{
+                    return start - range
+                }
+            }
             total -= step * Double(currentTime)
         }
+        
         return total
     }
 }

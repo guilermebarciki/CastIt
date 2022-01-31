@@ -80,7 +80,6 @@ class EnemySpawner {
                 level = 1
             }
             else {
-                print(randomEnemy)
                 new = enemiesSprites[2].copy() as! SKNode
                 level = 2
             }
