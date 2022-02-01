@@ -205,16 +205,26 @@ class Enemy {
     }
     
     private func drawPentagon(){
-        pentagonArray = Pentagon.draw(size: 50, center: CGPoint(x: 0, y: 120))
+        let size:Double = 20
+        pentagonArray = Pentagon.draw(size: size, center: CGPoint(x: 0, y: 100))
         
         for point in pentagonArray{
-            let child = SKShapeNode(circleOfRadius: 10)
+            let child = SKShapeNode(circleOfRadius: size/5)
             child.position = point
             child.fillColor = .red
+            child.strokeColor = .red
             child.zPosition = sprite.zPosition + 1
             pentagonNode.addChild(child)
         }
-        
+        let bg = SKShapeNode(circleOfRadius: size * 1.5)
+        bg.position = pentagonNode.position
+        bg.position.y += 100
+    
+        bg.fillColor = .black
+        bg.strokeColor = .black
+        bg.alpha = 0.5
+        bg.zPosition = sprite.zPosition - 1
+        pentagonNode.addChild(bg)
         
         let path = UIBezierPath()
         path.move(to: pentagonArray[deathArray[0]])
@@ -223,7 +233,7 @@ class Enemy {
         }
         let line = SKShapeNode(path: path.cgPath)
         line.strokeColor = .white
-        line.lineWidth = 10
+        line.lineWidth = size/5
         line.lineJoin = .round
         line.lineCap = .round
         
