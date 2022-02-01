@@ -11,9 +11,11 @@ import GameplayKit
 class GameScene: SKScene {
 
     var lastUpdate = TimeInterval(0)
-    var enemy:EnemySpawner!
+    var enemy: EnemySpawner!
     var magicGems: MagicGems?
     var spellManager: SpellManager?
+    var scoreControler: ScoreController!
+    
     private var sparkTouch: SKEmitterNode = SKEmitterNode(fileNamed: "sparkTouch")!
     private var currentEmiter: SKEmitterNode?
     
@@ -23,6 +25,7 @@ class GameScene: SKScene {
         sparkTouch.particleBirthRate = 500
         self.view?.isMultipleTouchEnabled = false
         spellManager = SpellManager(parent: self)
+        scoreControler = ScoreController(parent: self)
         
         magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 100, center: CGPoint(x: (frame.width * 3)/4, y: frame.height/2)) )
         enemy = EnemySpawner(parent: self)
@@ -54,7 +57,7 @@ class GameScene: SKScene {
                                                      SKAction.removeFromParent()]))
 
 
-                print("remove")
+                //print("remove")
 
         }
     }
@@ -79,8 +82,13 @@ class GameScene: SKScene {
             return
         }
         
-        enemy.castMagic(magic: spellManager.checkSpell(touches: touches, magicGems: magicGems))
-        print(spellManager.checkSpell(touches: touches, magicGems: magicGems))
+        let deadGuy = enemy.castMagic(magic: spellManager.checkSpell(touches: touches, magicGems: magicGems))
+        
+        if let deadGuy = deadGuy {
+            scoreControler.score(enemy: deadGuy)
+        }
+        
+        //print(spellManager.checkSpell(touches: touches, magicGems: magicGems))
         spellManager.clearSpell()
         
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
@@ -93,6 +101,7 @@ class GameScene: SKScene {
         }
         let deltaTime = currentTime - lastUpdate
         enemy.update(dTime: deltaTime)
+        scoreControler.update(dTime: deltaTime)
         lastUpdate = currentTime
     }
 }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		323CEFF827A95B7F0081793A /* ScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CEFF727A95B7F0081793A /* ScoreController.swift */; };
 		32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE827A88AA500ECF64A /* Pentagon.swift */; };
 		32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE927A88AA500ECF64A /* EnemyController.swift */; };
 		32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FEA27A88AA500ECF64A /* Balancer.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		323CEFF727A95B7F0081793A /* ScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreController.swift; sourceTree = "<group>"; };
 		32FD9FE827A88AA500ECF64A /* Pentagon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pentagon.swift; sourceTree = "<group>"; };
 		32FD9FE927A88AA500ECF64A /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				B2F8DF1627A8AB720014E52C /* SpellManager.swift */,
 				B27981C027A888B500E21C5B /* AppDelegate.swift */,
 				B27981C227A888B500E21C5B /* GameScene.sks */,
+				323CEFF727A95B7F0081793A /* ScoreController.swift */,
 				B27981C627A888B500E21C5B /* GameScene.swift */,
 				B2F8DF1827A8B2280014E52C /* sparkTouch.sks */,
 				B27981C827A888B500E21C5B /* GameViewController.swift */,
@@ -161,6 +164,7 @@
 			files = (
 				B2F8DF1727A8AB720014E52C /* SpellManager.swift in Sources */,
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
+				323CEFF827A95B7F0081793A /* ScoreController.swift in Sources */,
 				32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */,
 				32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */,
 				B2F8DF1527A8AB530014E52C /* MagicGems.swift in Sources */,

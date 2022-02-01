@@ -21,8 +21,8 @@ class EnemySpawner {
     var nextDificulty:TimeInterval = 1
     let dificultyRate:TimeInterval = 1
     
-    var spawnRate:TimeInterval     = 3
-    var spawnBalancer  = Balancer(start: 3, range: 2, time: 300, ascending: false, startFast: true)
+    var spawnRate:TimeInterval     = 2
+    var spawnBalancer  = Balancer(start: 2, range: 1, time: 1200, ascending: false, startFast: true)
     
     var normalPercentage:Double = 90
     var elitePercentage:Double = 8
