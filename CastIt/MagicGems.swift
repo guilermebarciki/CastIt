@@ -24,11 +24,16 @@ class MagicGems {
         
         if gemPosition.count == gemsSprites.count {
             for i in 0..<gemPosition.count {
+                
                 gemsSprites[i].position = gemPosition[i]
                 configureSprites(sprite: gemsSprites[i])
                 parent.addChild(gemsSprites[i])
             }
         }
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: 70, height: 700))
+        gemsSprites[1].physicsBody = body
+        gemsSprites[1].physicsBody?.affectedByGravity = false
+        gemsSprites[1].physicsBody?.contactTestBitMask = 3
         
     }
     

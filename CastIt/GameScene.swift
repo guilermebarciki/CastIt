@@ -8,55 +8,62 @@
 import SpriteKit
 import GameplayKit
 
-class GameScene: SKScene {
-
+class GameScene: SKScene, SKPhysicsContactDelegate {
+    
     var lastUpdate = TimeInterval(0)
     var enemy: EnemySpawner!
     var magicGems: MagicGems?
     var spellManager: SpellManager?
     var scoreControler: ScoreController!
-    
+    var score: Double = 0.0
     private var sparkTouch: SKEmitterNode = SKEmitterNode(fileNamed: "sparkTouch")!
     private var currentEmiter: SKEmitterNode?
-    var status: GameStatus = .gameOver
+    var status: GameStatus = .intro
     var introNode: Intro?
     var gameOverNode: GameOver?
     
     override func didMove(to view: SKView) {
+        physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = false
         setGame()
         
         
     }
     
+    func didBegin(_ contact: SKPhysicsContact) {
+        print("contact")
+        reset()
+        gameOver()
+        
+    }
     
     func touchDown(atPoint pos : CGPoint) {
         currentEmiter = sparkTouch.copy() as? SKEmitterNode
         guard let currentEmiter = currentEmiter else {
             return
         }
-
+        
         currentEmiter.position = pos
         currentEmiter.targetNode = scene
-
+        
         addChild(currentEmiter)
     }
     
     func touchMoved(toPoint pos : CGPoint) {
         currentEmiter?.position = pos
-
+        
     }
     
     func touchUp(atPoint pos : CGPoint) {
         if let currentEmiter = currentEmiter {
-
+            
             currentEmiter.targetNode = nil
             currentEmiter.run(SKAction.sequence([ SKAction.fadeOut(withDuration: 0.5),
-                                                     SKAction.removeFromParent()]))
-
-
-                //print("remove")
-
+                                                  SKAction.removeFromParent()]))
+            
+            
+            //print("remove")
+            
         }
     }
     
@@ -74,14 +81,14 @@ class GameScene: SKScene {
         }
         
         
-       
+        
         for t in touches { self.touchDown(atPoint: t.location(in: self)) }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         var touch = touches.first
         spellManager?.checkSpell(touches: touches, magicGems: magicGems)
-
+        
         
         for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
     }
@@ -103,7 +110,7 @@ class GameScene: SKScene {
         
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
     }
-
+    
     override func update(_ currentTime: TimeInterval) {
         if lastUpdate == 0 {
             lastUpdate = currentTime
@@ -117,18 +124,20 @@ class GameScene: SKScene {
             scoreControler.update(dTime: deltaTime)
             enemy.update(dTime: deltaTime)
         }
-        
+        score = scoreControler.showScore()
         lastUpdate = currentTime
     }
     
     func reset() {
         scene?.removeAllChildren()
-        status = .intro
-        setGame()
-        guard let introNode = introNode as? SKNode else {
-            return
+        if status == .playing {
+            print("de playing para game over")
+            status = .gameOver
+        } else if status == .gameOver {
+            print("de gameover para intro")
+            status = .intro
         }
-        addChild(introNode)
+        setGame()
     }
     
     func start() {
@@ -149,9 +158,10 @@ class GameScene: SKScene {
         guard let gameOverNode = gameOverNode as? SKNode else {
             return
         }
-
+        
         addChild(gameOverNode)
         status = .gameOver
+        setGame()
     }
     
     func setGame() {
@@ -169,7 +179,7 @@ class GameScene: SKScene {
             enemy = EnemySpawner(parent: self)
             magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 130, center: CGPoint(x: (frame.width * 4)/5, y: frame.height * 3/5 )) )
         case .gameOver:
-            gameOverNode = GameOver(parent: self)
+            gameOverNode = GameOver(parent: self, score: score )
         }
     }
 }

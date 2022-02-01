@@ -182,6 +182,9 @@ class Enemy {
         self.level = level
         self.speed = speed
         self.controller = controller
+        sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
+        sprite.physicsBody?.contactTestBitMask = 3
+        sprite.physicsBody?.affectedByGravity = false
         setupDeathArray()
         drawPentagon()
         newDeathArray()
