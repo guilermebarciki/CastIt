@@ -139,8 +139,15 @@ class EnemySpawner {
         }
         if deadGuy != nil {
             if let dGuyIndex = deadGuyIndex {
-                kill(enemyInxex: dGuyIndex)
-                return deadGuy
+                if enemySpawned[dGuyIndex].level>0{
+                    enemySpawned[dGuyIndex].newDeathArray()
+                    enemySpawned[dGuyIndex].level -= 1
+                    return nil
+                }
+                else{
+                    kill(enemyInxex: dGuyIndex)
+                    return deadGuy
+                }
             }
             else{
                 fatalError()
@@ -164,9 +171,10 @@ class Enemy {
     var pentagonArray:[CGPoint] = []
     var deathArray:[Int] = []
     let lane:Int
-    let level:Int
+    var level:Int
     let speed:Double
     let controller:EnemySpawner
+    let size:Double = 20
     
     init(sprite: SKNode, lane: Int, level: Int, speed:Double, controller:EnemySpawner){
         self.sprite = sprite
@@ -176,7 +184,17 @@ class Enemy {
         self.controller = controller
         setupDeathArray()
         drawPentagon()
+        newDeathArray()
         sprite.addChild(pentagonNode)
+    }
+    
+    func newDeathArray(){
+        deathArray.removeAll()
+        setupDeathArray()
+        if let child = pentagonNode.childNode(withName: "trace"){
+            child.removeFromParent()
+        }
+        drawArray()
     }
     
     private func setupDeathArray(){
@@ -200,12 +218,26 @@ class Enemy {
                 deathArray.append(point)
             }
         }
-        
-
     }
     
+    private func drawArray(){
+        let path = UIBezierPath()
+        path.move(to: pentagonArray[deathArray[0]])
+        for i in 1..<deathArray.count{
+            path.addLine(to: pentagonArray[deathArray[i]])
+        }
+        let line = SKShapeNode(path: path.cgPath)
+        line.strokeColor = .white
+        line.lineWidth = size/5
+        line.lineJoin = .round
+        line.lineCap = .round
+        line.name = "trace"
+        line.zPosition = sprite.zPosition + 2
+        pentagonNode.addChild(line)
+    }
+    
+    
     private func drawPentagon(){
-        let size:Double = 20
         pentagonArray = Pentagon.draw(size: size, center: CGPoint(x: 0, y: 100))
         
         for point in pentagonArray{
@@ -226,19 +258,6 @@ class Enemy {
         bg.zPosition = sprite.zPosition - 1
         pentagonNode.addChild(bg)
         
-        let path = UIBezierPath()
-        path.move(to: pentagonArray[deathArray[0]])
-        for i in 1..<deathArray.count{
-            path.addLine(to: pentagonArray[deathArray[i]])
-        }
-        let line = SKShapeNode(path: path.cgPath)
-        line.strokeColor = .white
-        line.lineWidth = size/5
-        line.lineJoin = .round
-        line.lineCap = .round
-        
-        line.zPosition = sprite.zPosition + 2
-        pentagonNode.addChild(line)
     }
     
 }

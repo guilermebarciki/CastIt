@@ -54,15 +54,12 @@ class ScoreController {
         var score:Double = 0
         
         if enemy.deathArray.count == 2{
-            print("2 traces")
             score = 2 * base
         }
         else if enemy.deathArray.count == 3{
-            print("3 traces")
             score = 3 * base
         }
         else if enemy.deathArray.count == 4{
-            print("4 traces")
             score = 4 * base
         }
         else {
@@ -70,15 +67,12 @@ class ScoreController {
         }
         
         if enemy.level == 0 {
-            print("level 0")
             score += 1 * base
         }
         else if enemy.level == 1 {
-            print("level 1")
             score += 5 * base
         }
         else {
-            print("level 2")
             score += 10 * base
         }
         
