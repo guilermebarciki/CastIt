@@ -123,7 +123,8 @@ class EnemySpawner {
         var deadGuy: Enemy?
         var deadGuyIndex:Int?
         for (index, enemy) in enemySpawned.enumerated() {
-            if enemy.deathArray == magic {
+            if enemy.deathArray == magic || enemy.deathArray == magic.reversed()
+            {
                 if let dGuy = deadGuy {
                     if dGuy.sprite.position.x < enemy.sprite.position.x{
                         deadGuy = enemy
