@@ -11,10 +11,10 @@ import SpriteKit
 class MagicGems {
     let gemsSprites: [SKSpriteNode] = [
         SKSpriteNode(imageNamed: "gem0"),
-        SKSpriteNode(imageNamed: "gem0"),
-        SKSpriteNode(imageNamed: "gem0"),
-        SKSpriteNode(imageNamed: "gem0"),
-        SKSpriteNode(imageNamed: "gem0")]
+        SKSpriteNode(imageNamed: "gem1"),
+        SKSpriteNode(imageNamed: "gem2"),
+        SKSpriteNode(imageNamed: "gem3"),
+        SKSpriteNode(imageNamed: "gem4")]
     private var parent: SKNode
     var gemPositions: [CGPoint]
     
@@ -33,7 +33,7 @@ class MagicGems {
     }
     
     func configureSprites(sprite: SKSpriteNode) {
-        sprite.size = CGSize(width: 50, height: 50)
+        sprite.size = CGSize(width: 70, height: 70)
     }
     
 }

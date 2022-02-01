@@ -20,6 +20,8 @@
 		B2F8DF1527A8AB530014E52C /* MagicGems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8DF1427A8AB530014E52C /* MagicGems.swift */; };
 		B2F8DF1727A8AB720014E52C /* SpellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8DF1627A8AB720014E52C /* SpellManager.swift */; };
 		B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */ = {isa = PBXBuildFile; fileRef = B2F8DF1827A8B2280014E52C /* sparkTouch.sks */; };
+		B2F8DF1D27A960E30014E52C /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8DF1C27A960E30014E52C /* Intro.swift */; };
+		B2F8DF1F27A963270014E52C /* GameOver.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F8DF1E27A963270014E52C /* GameOver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,8 @@
 		B2F8DF1427A8AB530014E52C /* MagicGems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MagicGems.swift; sourceTree = "<group>"; };
 		B2F8DF1627A8AB720014E52C /* SpellManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellManager.swift; sourceTree = "<group>"; };
 		B2F8DF1827A8B2280014E52C /* sparkTouch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparkTouch.sks; sourceTree = "<group>"; };
+		B2F8DF1C27A960E30014E52C /* Intro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
+		B2F8DF1E27A963270014E52C /* GameOver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +74,8 @@
 			isa = PBXGroup;
 			children = (
 				B2F8DF1427A8AB530014E52C /* MagicGems.swift */,
+				B2F8DF1C27A960E30014E52C /* Intro.swift */,
+				B2F8DF1E27A963270014E52C /* GameOver.swift */,
 				B2F8DF1627A8AB720014E52C /* SpellManager.swift */,
 				B27981C027A888B500E21C5B /* AppDelegate.swift */,
 				B27981C227A888B500E21C5B /* GameScene.sks */,
@@ -161,6 +167,8 @@
 			files = (
 				B2F8DF1727A8AB720014E52C /* SpellManager.swift in Sources */,
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
+				B2F8DF1D27A960E30014E52C /* Intro.swift in Sources */,
+				B2F8DF1F27A963270014E52C /* GameOver.swift in Sources */,
 				32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */,
 				32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */,
 				B2F8DF1527A8AB530014E52C /* MagicGems.swift in Sources */,
