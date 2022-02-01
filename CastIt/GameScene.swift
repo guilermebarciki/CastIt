@@ -11,9 +11,11 @@ import GameplayKit
 class GameScene: SKScene {
 
     var lastUpdate = TimeInterval(0)
-    var enemy:EnemySpawner!
+    var enemy: EnemySpawner!
     var magicGems: MagicGems?
     var spellManager: SpellManager?
+    var scoreControler: ScoreController!
+    
     private var sparkTouch: SKEmitterNode = SKEmitterNode(fileNamed: "sparkTouch")!
     private var currentEmiter: SKEmitterNode?
     var status: GameStatus = .gameOver
@@ -53,7 +55,7 @@ class GameScene: SKScene {
                                                      SKAction.removeFromParent()]))
 
 
-                print("remove")
+                //print("remove")
 
         }
     }
@@ -89,10 +91,14 @@ class GameScene: SKScene {
             return
         }
         if status == .playing {
-            enemy.castMagic(magic: spellManager.checkSpell(touches: touches, magicGems: magicGems))
+            let deadGuy = enemy.castMagic(magic: spellManager.checkSpell(touches: touches, magicGems: magicGems))
+            
+            if let deadGuy = deadGuy {
+                scoreControler.score(enemy: deadGuy)
+            }
         }
         
-        print(spellManager.checkSpell(touches: touches, magicGems: magicGems))
+        
         spellManager.clearSpell()
         
         for t in touches { self.touchUp(atPoint: t.location(in: self)) }
@@ -108,6 +114,7 @@ class GameScene: SKScene {
         if status == .playing {
             
             guard let enemy = enemy else { return }
+            scoreControler.update(dTime: deltaTime)
             enemy.update(dTime: deltaTime)
         }
         
@@ -151,6 +158,7 @@ class GameScene: SKScene {
         sparkTouch.particleLifetime = 0.5
         sparkTouch.particleBirthRate = 500
         spellManager = SpellManager(parent: self)
+        scoreControler = ScoreController(parent: self)
         
         
         switch status {
