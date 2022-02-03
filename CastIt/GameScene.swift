@@ -16,55 +16,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var spellManager: SpellManager?
     var scoreControler: ScoreController!
     var score: Double = 0.0
-    private var sparkTouch: SKEmitterNode = SKEmitterNode(fileNamed: "sparkTouch")!
-    private var currentEmiter: SKEmitterNode?
     var status: GameStatus = .intro
     var introNode: Intro?
     var gameOverNode: GameOver?
+    var magicTouch: SparkTouch?
     
     override func didMove(to view: SKView) {
+        magicTouch = SparkTouch(parent: self)
         physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = false
         setGame()
-        
-        
     }
     
     func didBegin(_ contact: SKPhysicsContact) {
-        print("contact")
         reset()
         gameOver()
-        
-    }
-    
-    func touchDown(atPoint pos : CGPoint) {
-        currentEmiter = sparkTouch.copy() as? SKEmitterNode
-        guard let currentEmiter = currentEmiter else {
-            return
-        }
-        
-        currentEmiter.position = pos
-        currentEmiter.targetNode = scene
-        
-        addChild(currentEmiter)
-    }
-    
-    func touchMoved(toPoint pos : CGPoint) {
-        currentEmiter?.position = pos
-        
-    }
-    
-    func touchUp(atPoint pos : CGPoint) {
-        if let currentEmiter = currentEmiter {
-            
-            currentEmiter.targetNode = nil
-            currentEmiter.run(SKAction.sequence([ SKAction.fadeOut(withDuration: 0.5),
-                                                  SKAction.removeFromParent()]))
-            
-            
-            //print("remove")
-            
-        }
     }
     
     
@@ -77,23 +43,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             spellManager?.checkSpell(touches: touches, magicGems: magicGems)
         case .gameOver:
             reset()
-            
         }
         
-        
-        
-        for t in touches { self.touchDown(atPoint: t.location(in: self)) }
+        guard let magicTouch = magicTouch else {
+            return
+        }
+        magicTouch.touchesBegan(touches: touches)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var touch = touches.first
         spellManager?.checkSpell(touches: touches, magicGems: magicGems)
-        
-        
-        for t in touches { self.touchMoved(toPoint: t.location(in: self)) }
+        guard let magicTouch = magicTouch else {
+            return
+        }
+
+        magicTouch.touchesMoved(touches: touches)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         guard let spellManager = spellManager else {
             return
         }
@@ -104,11 +72,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 scoreControler.score(enemy: deadGuy)
             }
         }
-        
-        
         spellManager.clearSpell()
         
-        for t in touches { self.touchUp(atPoint: t.location(in: self)) }
+        guard let magicTouch = magicTouch else {
+            return
+        }
+        magicTouch.touchesEnded(touches: touches)
     }
     
     override func update(_ currentTime: TimeInterval) {
@@ -117,17 +86,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         let deltaTime = currentTime - lastUpdate
-        
         if status == .playing {
-            
             guard let enemy = enemy else { return }
             scoreControler.update(dTime: deltaTime)
             enemy.update(dTime: deltaTime)
         }
-        score = scoreControler.showScore()
+        score = scoreControler.showScore() //TODO
         lastUpdate = currentTime
     }
     
+    
+}
+
+enum GameStatus {
+    case intro
+    case playing
+    case gameOver
+}
+
+extension GameScene {
     func reset() {
         scene?.removeAllChildren()
         if status == .playing {
@@ -142,7 +119,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func start() {
         status = .playing
-        
         setGame()
         guard let introNode = introNode as? SKNode else {
             return
@@ -165,8 +141,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func setGame() {
-        sparkTouch.particleLifetime = 0.5
-        sparkTouch.particleBirthRate = 500
+        
         spellManager = SpellManager(parent: self)
         scoreControler = ScoreController(parent: self)
         
@@ -184,10 +159,3 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
 }
 
-
-
-enum GameStatus {
-    case intro
-    case playing
-    case gameOver
-}

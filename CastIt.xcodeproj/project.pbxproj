@@ -11,6 +11,7 @@
 		32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE827A88AA500ECF64A /* Pentagon.swift */; };
 		32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE927A88AA500ECF64A /* EnemyController.swift */; };
 		32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FEA27A88AA500ECF64A /* Balancer.swift */; };
+		B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6FD027AC109000CD9F26 /* SparkTouch.swift */; };
 		B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C027A888B500E21C5B /* AppDelegate.swift */; };
 		B27981C327A888B500E21C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B27981C227A888B500E21C5B /* GameScene.sks */; };
 		B27981C727A888B500E21C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C627A888B500E21C5B /* GameScene.swift */; };
@@ -30,6 +31,7 @@
 		32FD9FE827A88AA500ECF64A /* Pentagon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pentagon.swift; sourceTree = "<group>"; };
 		32FD9FE927A88AA500ECF64A /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
+		B23A6FD027AC109000CD9F26 /* SparkTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTouch.swift; sourceTree = "<group>"; };
 		B27981BD27A888B500E21C5B /* CastIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CastIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27981C027A888B500E21C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27981C227A888B500E21C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 				B27981C227A888B500E21C5B /* GameScene.sks */,
 				323CEFF727A95B7F0081793A /* ScoreController.swift */,
 				B27981C627A888B500E21C5B /* GameScene.swift */,
+				B23A6FD027AC109000CD9F26 /* SparkTouch.swift */,
 				B2F8DF1827A8B2280014E52C /* sparkTouch.sks */,
 				B27981C827A888B500E21C5B /* GameViewController.swift */,
 				B27981CA27A888B500E21C5B /* Main.storyboard */,
@@ -175,6 +178,7 @@
 				323CEFF827A95B7F0081793A /* ScoreController.swift in Sources */,
 				32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */,
 				32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */,
+				B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */,
 				B2F8DF1527A8AB530014E52C /* MagicGems.swift in Sources */,
 				32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */,
 				B27981C927A888B500E21C5B /* GameViewController.swift in Sources */,
