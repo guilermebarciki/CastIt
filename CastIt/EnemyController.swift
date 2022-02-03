@@ -10,7 +10,7 @@ import SpriteKit
 
 class EnemySpawner {
     let enemiesSprites:[SKSpriteNode] = [
-        SKSpriteNode(imageNamed: "normal.png"),
+        SKSpriteNode(imageNamed: "monster-lvl1"),
         SKSpriteNode(imageNamed: "elite.png"),
         SKSpriteNode(imageNamed: "boss.png")
     ]
@@ -72,15 +72,16 @@ class EnemySpawner {
             var new:SKNode
             var level:Int
             if randomEnemy < normalPercentage {
-                new = enemiesSprites[0].copy() as! SKNode
+                new = enemiesSprites[0].copy() as! SKSpriteNode
                 level = 0
+                
             }
             else if randomEnemy < elitePercentage+normalPercentage {
-                new = enemiesSprites[1].copy() as! SKNode
+                new = enemiesSprites[1].copy() as! SKSpriteNode
                 level = 1
             }
             else {
-                new = enemiesSprites[2].copy() as! SKNode
+                new = enemiesSprites[2].copy() as! SKSpriteNode
                 level = 2
             }
             var randomLane = Int.random(in: 0..<lanes)

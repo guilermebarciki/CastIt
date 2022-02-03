@@ -177,7 +177,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .playing:
             introNode?.removeFromParent()
             enemy = EnemySpawner(parent: self)
-            magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 130, center: CGPoint(x: (frame.width * 4)/5, y: frame.height * 3/5 )) )
+            magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2 )) )
         case .gameOver:
             gameOverNode = GameOver(parent: self, score: score )
         }
