@@ -10,6 +10,7 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var background = SKSpriteNode(imageNamed: "background1")
     var lastUpdate = TimeInterval(0)
     var enemy: EnemySpawner!
     var magicGems: MagicGems?
@@ -20,8 +21,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var introNode: Intro?
     var gameOverNode: GameOver?
     var magicTouch: SparkTouch?
+    var line: SKShapeNode!//
+    var startPoint: CGPoint?
+    
+    var arrayCGPoint: [CGPoint] = []
     
     override func didMove(to view: SKView) {
+        
+        
+        
         magicTouch = SparkTouch(parent: self)
         physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = false
@@ -34,7 +42,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        line = SKShapeNode() //
+        line.lineWidth = 10 //
+        line.strokeColor = .white//
+        line.alpha = 0.4
+        
+        addChild(line)
+       print(arrayCGPoint)
         switch status {
         case .intro:
             reset()
@@ -56,24 +72,42 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         guard let magicTouch = magicTouch else {
             return
         }
-
         magicTouch.touchesMoved(touches: touches)
+        
+        var endPoint = (touches.first!.location(in: self))
+        var path = CGMutablePath()
+        if let spellManager = spellManager {
+            if spellManager.arrayCGPoint.isEmpty {
+                return
+            } else {
+                path.move(to: spellManager.getLinePoints().first!)
+                arrayCGPoint = spellManager.getLinePoints()
+            for point in arrayCGPoint {
+                path.addLine(to: point)
+            }
+            path.addLine(to: endPoint)
+            line.path = path
+            }
+        }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        
         
         guard let spellManager = spellManager else {
             return
         }
         if status == .playing {
-            let deadGuy = enemy.castMagic(magic: spellManager.checkSpell(touches: touches, magicGems: magicGems))
+            let deadGuy = enemy.castMagic(magic: spellManager.getGemArray())
             
             if let deadGuy = deadGuy {
                 scoreControler.score(enemy: deadGuy)
             }
         }
         spellManager.clearSpell()
-        
+        arrayCGPoint = []
+        line.removeFromParent()
         guard let magicTouch = magicTouch else {
             return
         }
@@ -94,8 +128,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         score = scoreControler.showScore() //TODO
         lastUpdate = currentTime
     }
-    
-    
 }
 
 enum GameStatus {
@@ -144,16 +176,20 @@ extension GameScene {
         
         spellManager = SpellManager(parent: self)
         scoreControler = ScoreController(parent: self)
-        
-        
         switch status {
         case .intro:
             introNode = Intro(parent: self)
         case .playing:
+            background.position = CGPoint(x: frame.size.width / 2, y: frame.size.height / 2)
+            background.zPosition = -3
+            let sizeCoef = background.size.height / background.size.width
+            background.size = CGSize(width: self.size.width, height: self.size.width * sizeCoef)
+            addChild(background)
             introNode?.removeFromParent()
             enemy = EnemySpawner(parent: self)
             magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2 )) )
         case .gameOver:
+            background.removeFromParent()
             gameOverNode = GameOver(parent: self, score: score )
         }
     }

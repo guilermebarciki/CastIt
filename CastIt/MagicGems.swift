@@ -30,15 +30,17 @@ class MagicGems {
                 parent.addChild(gemsSprites[i])
             }
         }
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: 70, height: 700))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 700))
         gemsSprites[1].physicsBody = body
         gemsSprites[1].physicsBody?.affectedByGravity = false
         gemsSprites[1].physicsBody?.contactTestBitMask = 3
+
         
     }
     
     func configureSprites(sprite: SKSpriteNode) {
-        sprite.size = CGSize(width: 70, height: 70)
+        sprite.alpha = 0.4
+        sprite.size = CGSize(width: 90, height: 90)
     }
     
 }
