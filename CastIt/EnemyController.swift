@@ -9,11 +9,14 @@ import Foundation
 import SpriteKit
 
 class EnemySpawner {
+    var projetile = SKSpriteNode(imageNamed: "gem1")
     let enemiesSprites:[SKSpriteNode] = [
         SKSpriteNode(imageNamed: "monster-lvl1"),
         SKSpriteNode(imageNamed: "elite.png"),
-        SKSpriteNode(imageNamed: "boss.png")
+        SKSpriteNode(imageNamed: "4boss1.png")
     ]
+    var bossTextures: [SKTexture] = []
+   
     private var parent: SKNode
     
     var nextEnemy:TimeInterval     = 0
@@ -51,6 +54,11 @@ class EnemySpawner {
     var enemySpawned:[Enemy] = []
     
     init (parent: SKNode) {
+        // setting boss textures
+        for i in 1...8 {
+            bossTextures.append(SKTexture(imageNamed: "4boss\(i).png"))
+        }
+        
         self.parent = parent
         for i in 0..<lanes{
             let yPos = (parent.frame.height/CGFloat(lanes+3) * CGFloat(i)) + 150
@@ -69,7 +77,7 @@ class EnemySpawner {
         if nextEnemy <= 0{
             nextEnemy = spawnRate
             let randomEnemy = Double.random(in: 0...100)
-            var new:SKNode
+            var new:SKSpriteNode
             var level:Int
             if randomEnemy < normalPercentage {
                 new = enemiesSprites[0].copy() as! SKSpriteNode
@@ -101,6 +109,9 @@ class EnemySpawner {
             enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: level, speed: 50, controller: self))
             zPos += 1
             parent.addChild(new)
+//            if new == enemiesSprites[2] {
+            setBoosAnimation(sprite:new, level: level)
+//            }
         }
         if !enemySpawned.isEmpty {
             for enemy in enemySpawned {
@@ -127,12 +138,20 @@ class EnemySpawner {
             if enemy.deathArray == magic || enemy.deathArray == magic.reversed()
             {
                 if let dGuy = deadGuy {
-                    if dGuy.sprite.position.x < enemy.sprite.position.x{
+                    if dGuy.sprite.position.x < enemy.sprite.position.x {
                         deadGuy = enemy
                         deadGuyIndex = index
                     }
                 }
                 else {
+                    projetile.size = CGSize(width: 50, height: 50)
+                    var tempProjetile = projetile.copy() as? SKSpriteNode
+                    tempProjetile?.zPosition = 0
+                    tempProjetile?.position = CGPoint(x: (parent.scene?.view?.bounds.maxX)!, y: (parent.scene?.view?.bounds.midY)!)
+                    parent.addChild(tempProjetile as! SKNode)
+                    let moveAction = SKAction.move(to: CGPoint(x: enemy.sprite.position.x, y: enemy.sprite.position.y), duration: 0.1)
+                    tempProjetile?.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
+                    
                     deadGuy = enemy
                     deadGuyIndex = index
                 }
@@ -161,8 +180,22 @@ class EnemySpawner {
     }
     
     func kill(enemyInxex: Int){
-        let e = enemySpawned.remove(at: enemyInxex)
-        e.sprite.removeFromParent()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            let e = self.enemySpawned.remove(at: enemyInxex)
+            e.sprite.run(SKAction.sequence([SKAction.wait(forDuration: 0), SKAction.removeFromParent()]))
+        }
+    }
+    
+    func setBoosAnimation(sprite: SKSpriteNode, level: Int) {
+        var animation = SKAction()
+       
+        if level == 2{
+            print("setting action")
+            animation = SKAction.animate(with: bossTextures, timePerFrame: 0.3)
+            
+            sprite.run(SKAction.repeatForever(animation))
+        }
     }
 }
 

@@ -23,7 +23,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var magicTouch: SparkTouch?
     var line: SKShapeNode!//
     var startPoint: CGPoint?
-    
     var arrayCGPoint: [CGPoint] = []
     
     override func didMove(to view: SKView) {
@@ -92,9 +91,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-        
-        
         guard let spellManager = spellManager else {
             return
         }
@@ -173,7 +169,6 @@ extension GameScene {
     }
     
     func setGame() {
-        
         spellManager = SpellManager(parent: self)
         scoreControler = ScoreController(parent: self)
         switch status {
