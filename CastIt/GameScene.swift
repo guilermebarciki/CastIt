@@ -27,8 +27,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        
-        
         magicTouch = SparkTouch(parent: self)
         physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = false
