@@ -13,6 +13,8 @@
 		32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FEA27A88AA500ECF64A /* Balancer.swift */; };
 		5E84F27D0FD784038CE586C7 /* Pods_CastIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */; };
 		B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6FD027AC109000CD9F26 /* SparkTouch.swift */; };
+		B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */; };
+		B23A701D27B351EC00CD9F26 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B23A701C27B351EC00CD9F26 /* GameKit.framework */; };
 		B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C027A888B500E21C5B /* AppDelegate.swift */; };
 		B27981C327A888B500E21C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B27981C227A888B500E21C5B /* GameScene.sks */; };
 		B27981C727A888B500E21C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C627A888B500E21C5B /* GameScene.swift */; };
@@ -34,6 +36,9 @@
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
 		86ED7E76FFA4DD19C6B4C755 /* Pods-CastIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CastIt.release.xcconfig"; path = "Target Support Files/Pods-CastIt/Pods-CastIt.release.xcconfig"; sourceTree = "<group>"; };
 		B23A6FD027AC109000CD9F26 /* SparkTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTouch.swift; sourceTree = "<group>"; };
+		B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneViewController.swift; sourceTree = "<group>"; };
+		B23A701C27B351EC00CD9F26 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		B23A701E27B3521700CD9F26 /* CastIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CastIt.entitlements; sourceTree = "<group>"; };
 		B27981BD27A888B500E21C5B /* CastIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CastIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27981C027A888B500E21C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27981C227A888B500E21C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -57,6 +62,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E84F27D0FD784038CE586C7 /* Pods_CastIt.framework in Frameworks */,
+				B23A701D27B351EC00CD9F26 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,9 +72,26 @@
 		621B947E2DC0A93F7F16CA2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B23A701C27B351EC00CD9F26 /* GameKit.framework */,
 				F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B23A700427B29CFD00CD9F26 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B23A700527B29D0400CD9F26 /* MenuScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		B23A700527B29D0400CD9F26 /* MenuScene */ = {
+			isa = PBXGroup;
+			children = (
+				B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */,
+			);
+			path = MenuScene;
 			sourceTree = "<group>";
 		};
 		B27981B427A888B500E21C5B = {
@@ -92,6 +115,8 @@
 		B27981BF27A888B500E21C5B /* CastIt */ = {
 			isa = PBXGroup;
 			children = (
+				B23A701E27B3521700CD9F26 /* CastIt.entitlements */,
+				B23A700427B29CFD00CD9F26 /* Scenes */,
 				B2F8DF1427A8AB530014E52C /* MagicGems.swift */,
 				B2F8DF1C27A960E30014E52C /* Intro.swift */,
 				B2F8DF1E27A963270014E52C /* GameOver.swift */,
@@ -119,7 +144,6 @@
 				F5BD59CE718C20FEE9EF0078 /* Pods-CastIt.debug.xcconfig */,
 				86ED7E76FFA4DD19C6B4C755 /* Pods-CastIt.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -240,6 +264,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */,
 				B2F8DF1727A8AB720014E52C /* SpellManager.swift in Sources */,
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
 				B2F8DF1D27A960E30014E52C /* Intro.swift in Sources */,
@@ -399,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
@@ -406,6 +432,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -430,6 +457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
@@ -437,6 +465,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
