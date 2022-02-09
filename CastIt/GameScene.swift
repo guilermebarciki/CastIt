@@ -16,6 +16,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var lastUpdate = TimeInterval(0)
     var dTime = TimeInterval(0)
     weak var gameVC: GameViewController!
+    var playTimeForAD = TimeInterval(0)
+    let timeForAD = TimeInterval(120)
     
     var score: Double = 0.0
     
@@ -85,7 +87,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
             reset()
             gameOverNode.show(score: score)
-            gameVC.showInterstitialAD()
+            if playTimeForAD >= timeForAD {
+                gameVC.showInterstitialAD()
+                playTimeForAD = 0
+            }
         }
     }
     
@@ -158,6 +163,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             currentPlayTime += dTime
             scoreControler.update(dTime: dTime)
             enemy.update(dTime: dTime)
+            playTimeForAD += dTime
+            print(playTimeForAD)
         }
         score = scoreControler.showScore() //TODO
         lastUpdate = currentTime
