@@ -23,5 +23,4 @@ class CustomScene {
     func hide() {
         node.removeFromParent()
     }
-    
 }

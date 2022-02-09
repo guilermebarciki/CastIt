@@ -42,13 +42,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         spellManager = SpellManager(parent: self)
         scoreControler = ScoreController(parent: self)
         enemy = EnemySpawner(parent: self)
+        
         //As classes visuais
         gameOverNode = GameOver(parent: self)
         introNode = Intro(parent: self)
         introNode.show()
         backgroundNode = Background(parent: self)
         lineNode = Line(parent: self)
-        magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2 )) )
+        magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2)))
     }
     
     func changeStatus() {
@@ -66,6 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             clearScreen()
             gameOverNode.show(score: score)
             scoreControler.resetScore()
+            //reseta inimigos
         }
     }
     
@@ -74,14 +76,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     @objc func appMovedToBackground() {
-        if let magicTouch = magicTouch {
-            magicTouch.clear()
-        }
+        magicTouch.clear()
     }
     
     @objc func appBackFromBackground() {
     }
-    
     
     // Colisão com inimigo com final do jogo
     func didBegin(_ contact: SKPhysicsContact) {
@@ -124,7 +123,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastUpdate = currentTime
             return
         }
-        
         let deltaTime = currentTime - lastUpdate
         
         if status == .playing {
