@@ -33,7 +33,7 @@ enum AnalyticsEvent {
     
     case levelScorePerSecond(Double)
     
-    case castTime(TimeInterval)
+    case castTimePerEnemy(TimeInterval)
     
     // O nome que queremos que o evento tenha no Firebase Analytics
     var name: String {
@@ -50,8 +50,8 @@ enum AnalyticsEvent {
             return "level_time"
         case .levelScorePerSecond:
             return "level_score_per_second"
-        case .castTime:
-            return "cast_time"
+        case .castTimePerEnemy:
+            return "cast_time_per_enemy"
         }
     }
     
@@ -70,7 +70,7 @@ enum AnalyticsEvent {
             return ["duration": time as NSObject]
         case .levelScorePerSecond(let scorePerSecond):
             return ["scorePerSecond": scorePerSecond as NSObject]
-        case .castTime(let time):
+        case .castTimePerEnemy(let time):
             return ["cast_time": time as NSObject]
         }
     }

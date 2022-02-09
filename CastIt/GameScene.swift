@@ -10,23 +10,32 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    var currentPlayTime = TimeInterval(0)
+    var castMisses = 0
+    
     var lastUpdate = TimeInterval(0)
-    var enemy: EnemySpawner!
-    var magicGems: MagicGems!
-    var spellManager: SpellManager!
-    var scoreControler: ScoreController!
-    var backgroundNode: Background!
+    
     var score: Double = 0.0
+    
     var status: GameStatus = .intro {
         didSet {
             changeStatus()
         }
     }
+    //Controller Nodes
+    var enemy: EnemySpawner!
+    var spellManager: SpellManager!
+    var scoreControler: ScoreController!
+    
+    
+    //Drawing Nodes
+    var backgroundNode: Background!
+    var magicGems: MagicGems!
     var introNode: Intro!
     var gameOverNode: GameOver!
     var magicTouch: SparkTouch!
     var lineNode: Line!
-    var startPoint: CGPoint?
+//    var startPoint: CGPoint?
 
 
     override func didMove(to view: SKView) {
@@ -59,18 +68,31 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             introNode.show()
         case .playing:
             clearScreen()
+            AnalyticsManager.shared.log(event: .levelStart)
             lineNode.show()
             scoreControler.show()
             backgroundNode.show()
             magicGems.show()
         case .gameOver:
             clearScreen()
+            AnalyticsManager.shared.log(event: .levelEnd)
+            AnalyticsManager.shared.log(event: .levelScore(score))
+            AnalyticsManager.shared.log(event: .levelCastMisses(castMisses))
+            AnalyticsManager.shared.log(event: .levelScorePerSecond(score/currentPlayTime))
+            AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
+            
+            reset()
             gameOverNode.show(score: score)
-            scoreControler.resetScore()
-            //reseta inimigos
         }
     }
     
+    func reset(){
+        scoreControler.resetScore()
+        currentPlayTime = 0
+        castMisses = 0
+        //reseta inimigos
+    }
+        
     func clearScreen(){
         self.removeAllChildren()
     }
@@ -92,7 +114,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .intro:
             status = .playing
         case .playing:
-            spellManager.checkSpell(touches: touches, magicGems: magicGems)
+            spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: deltaTime)
         case .gameOver:
             status = .intro
         }
@@ -100,7 +122,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        spellManager.checkSpell(touches: touches, magicGems: magicGems)
+        spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: deltaTime)
         magicTouch.touchesMoved(touches: touches)
         lineNode.update(touches, spellManager: spellManager)
     }
@@ -111,6 +133,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let deadGuy = deadGuy {
                 scoreControler.score(enemy: deadGuy)
+                AnalyticsManager.shared.log(event: .castTimePerEnemy(SpellManager.castingTime))
+            }
+            else {
+                castMisses += 1
             }
         }
         spellManager.clearSpell()
@@ -126,6 +152,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let deltaTime = currentTime - lastUpdate
         
         if status == .playing {
+            currentTime += deltaTime
             guard let enemy = enemy else { return }
             scoreControler.update(dTime: deltaTime)
             enemy.update(dTime: deltaTime)

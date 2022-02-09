@@ -14,13 +14,14 @@ class SpellManager {
     var magicLine = SKShapeNode()
     var startPoint: CGPoint?
     var arrayCGPoint: [CGPoint] = []
+    var castingTime = TimeInterval(0)
     
     
     init(parent: SKNode){
         self.parent = parent
     }
     
-    func checkSpell(touches: Set<UITouch>, magicGems: MagicGems?){
+    func checkSpell(touches: Set<UITouch>, magicGems: MagicGems?, dTime: TimeInterval){
         
         guard let touch = touches.first else {
             return
@@ -28,29 +29,23 @@ class SpellManager {
         
         guard let magicGems = magicGems else {
             return
-            
         }
-        
-        
         
         for i in 0..<magicGems.gemsSprites.count {
             let gem = magicGems.gemsSprites[i]
             
-            
             if gem.contains(touch.location(in: parent)) {
-                
-               
+                castingTime += dTime
                 if !(gemArray.contains(i) ) {
                     arrayCGPoint.append(gem.position)
                     gemArray.append(i)
                 }
             }
         }
-        
-        
     }
     
     func clearSpell() {
+        castingTime = 0
         gemArray = []
         arrayCGPoint = []
     }
