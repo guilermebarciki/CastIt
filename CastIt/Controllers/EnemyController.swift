@@ -73,6 +73,7 @@ class EnemySpawner {
         if nextDificulty <= 0 {
             raiseDificulty()
             nextDificulty = dificultyRate
+            print(nextDificulty)
         }
         if nextEnemy <= 0{
             nextEnemy = spawnRate
@@ -109,15 +110,43 @@ class EnemySpawner {
             enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: level, speed: 50, controller: self))
             zPos += 1
             parent.addChild(new)
-//            if new == enemiesSprites[2] {
             setBoosAnimation(sprite:new, level: level)
-//            }
         }
         if !enemySpawned.isEmpty {
             for enemy in enemySpawned {
                 enemy.sprite.position.x += dTime * enemy.speed
             }
         }
+    }
+    
+    func reset(){
+        spawnBalancer.reset()
+        normalBalancer.reset()
+        eliteBalancer.reset()
+        bossBalancer.reset()
+        twoBalancer.reset()
+        threeBalancer.reset()
+        fourBalancer.reset()
+        fiveBalancer.reset()
+        
+        normalPercentage = 90
+        elitePercentage = 8
+        bossPercentage = 2
+        twoPercentage = 90
+        threePercentage = 5
+        fourPercentage = 3
+        fivePercentage = 2
+        
+        nextEnemy = 0
+        
+        nextDificulty = 1
+        
+        spawnRate = 2
+        zPos = 0
+        for spawn in enemySpawned {
+            spawn.sprite.removeFromParent()
+        }
+        enemySpawned.removeAll()
     }
     
     func raiseDificulty(){

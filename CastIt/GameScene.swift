@@ -81,7 +81,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AnalyticsManager.shared.log(event: .levelCastMisses(castMisses))
             AnalyticsManager.shared.log(event: .levelScorePerSecond(score/currentPlayTime))
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
-            
             reset()
             gameOverNode.show(score: score)
         }
@@ -89,9 +88,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func reset(){
         scoreControler.resetScore()
+        enemy.reset()
         currentPlayTime = 0
         castMisses = 0
-        //reseta inimigos
     }
         
     func clearScreen(){
@@ -154,7 +153,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         if status == .playing {
             currentPlayTime += dTime
-            guard let enemy = enemy else { return }
             scoreControler.update(dTime: dTime)
             enemy.update(dTime: dTime)
         }

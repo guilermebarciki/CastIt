@@ -86,7 +86,6 @@ class ScoreController: CustomScene {
         updateScore()
     }
     func updateScore(){
-        
         scoreLabel.text = formatter.string(from: scoreNumber as NSNumber)
     }
     func showScore() -> Double {
