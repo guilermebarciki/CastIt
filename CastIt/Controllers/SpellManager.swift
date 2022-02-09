@@ -51,7 +51,7 @@ class SpellManager {
     }
     
     func getGemArray() -> [Int] {
-        print(gemArray)
+//        print(gemArray)   
         return gemArray
     }
     

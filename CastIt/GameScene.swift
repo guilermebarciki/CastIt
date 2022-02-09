@@ -14,6 +14,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var castMisses = 0
     
     var lastUpdate = TimeInterval(0)
+    var dTime = TimeInterval(0)
     
     var score: Double = 0.0
     
@@ -114,7 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .intro:
             status = .playing
         case .playing:
-            spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: deltaTime)
+            spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: dTime)
         case .gameOver:
             status = .intro
         }
@@ -122,7 +123,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: deltaTime)
+        spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: dTime)
         magicTouch.touchesMoved(touches: touches)
         lineNode.update(touches, spellManager: spellManager)
     }
@@ -133,7 +134,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             
             if let deadGuy = deadGuy {
                 scoreControler.score(enemy: deadGuy)
-                AnalyticsManager.shared.log(event: .castTimePerEnemy(SpellManager.castingTime))
+                AnalyticsManager.shared.log(event: .castTimePerEnemy(spellManager.castingTime))
             }
             else {
                 castMisses += 1
@@ -149,13 +150,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             lastUpdate = currentTime
             return
         }
-        let deltaTime = currentTime - lastUpdate
+        dTime = currentTime - lastUpdate
         
         if status == .playing {
-            currentTime += deltaTime
+            currentPlayTime += dTime
             guard let enemy = enemy else { return }
-            scoreControler.update(dTime: deltaTime)
-            enemy.update(dTime: deltaTime)
+            scoreControler.update(dTime: dTime)
+            enemy.update(dTime: dTime)
         }
         score = scoreControler.showScore() //TODO
         lastUpdate = currentTime

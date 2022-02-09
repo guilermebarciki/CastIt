@@ -191,7 +191,6 @@ class EnemySpawner {
         var animation = SKAction()
        
         if level == 2{
-            print("setting action")
             animation = SKAction.animate(with: bossTextures, timePerFrame: 0.3)
             
             sprite.run(SKAction.repeatForever(animation))

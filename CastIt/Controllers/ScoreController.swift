@@ -18,16 +18,14 @@ class ScoreController: CustomScene {
     
     let formatter = NumberFormatter()
     
-//    private var parent: SKNode
-    
     var scoreNumber:Double = 0
     
     var multiplier:Double = 1
     var multiplierBalancer = Balancer(start: 1, range: 5, time: 1200, ascending: true, startFast: true)
     
     func resetScore(){
+        multiplierBalancer.reset()
         nextScore = 0
-        multiplierBalancer = Balancer(start: 1, range: 5, time: 1200, ascending: true, startFast: true)
         multiplier = 1
         scoreNumber = 0
         updateScore()
@@ -47,7 +45,6 @@ class ScoreController: CustomScene {
     func update(dTime: TimeInterval){
         if nextScore <= 0{
             multiplier = multiplierBalancer.nextStep()
-            print(multiplier)
             nextScore = scoreRate
         }
         nextScore -= dTime
