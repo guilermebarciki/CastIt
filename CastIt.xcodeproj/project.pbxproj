@@ -17,6 +17,7 @@
 		32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE927A88AA500ECF64A /* EnemyController.swift */; };
 		32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FEA27A88AA500ECF64A /* Balancer.swift */; };
 		5E84F27D0FD784038CE586C7 /* Pods_CastIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */; };
+		B218212B27B3E93400938B61 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B218212A27B3E93400938B61 /* GameKit.framework */; };
 		B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6FD027AC109000CD9F26 /* SparkTouch.swift */; };
 		B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C027A888B500E21C5B /* AppDelegate.swift */; };
 		B27981C327A888B500E21C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B27981C227A888B500E21C5B /* GameScene.sks */; };
@@ -43,6 +44,8 @@
 		32FD9FE927A88AA500ECF64A /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
 		86ED7E76FFA4DD19C6B4C755 /* Pods-CastIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CastIt.release.xcconfig"; path = "Target Support Files/Pods-CastIt/Pods-CastIt.release.xcconfig"; sourceTree = "<group>"; };
+		B218212A27B3E93400938B61 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
+		B218212C27B3E94E00938B61 /* CastIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CastIt.entitlements; sourceTree = "<group>"; };
 		B23A6FD027AC109000CD9F26 /* SparkTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTouch.swift; sourceTree = "<group>"; };
 		B27981BD27A888B500E21C5B /* CastIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CastIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27981C027A888B500E21C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -67,6 +70,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E84F27D0FD784038CE586C7 /* Pods_CastIt.framework in Frameworks */,
+				B218212B27B3E93400938B61 /* GameKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,6 +106,7 @@
 		621B947E2DC0A93F7F16CA2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B218212A27B3E93400938B61 /* GameKit.framework */,
 				F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */,
 			);
 			name = Frameworks;
@@ -128,6 +133,7 @@
 		B27981BF27A888B500E21C5B /* CastIt */ = {
 			isa = PBXGroup;
 			children = (
+				B218212C27B3E94E00938B61 /* CastIt.entitlements */,
 				3224A56927B2AA7500861243 /* Analytics.swift */,
 				B27981C027A888B500E21C5B /* AppDelegate.swift */,
 				B27981C627A888B500E21C5B /* GameScene.swift */,
@@ -454,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -462,6 +469,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -486,6 +494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
@@ -493,6 +502,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
