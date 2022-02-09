@@ -83,6 +83,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
             reset()
             gameOverNode.show(score: score)
+            LeaderboardManager.shared.updateScore(with: Int(score * 10)) //TODO fix * 10
         }
     }
     
