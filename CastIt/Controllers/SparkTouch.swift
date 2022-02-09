@@ -36,12 +36,14 @@ class SparkTouch {
         currentEmiter?.position = pos
         
     }
-    private func touchUp(atPoint pos : CGPoint) {
+//    private func touchUp(atPoint pos : CGPoint) {
+//    }
+    
+    func clear(){
         if let currentEmiter = currentEmiter {
             currentEmiter.targetNode = nil
             currentEmiter.run(SKAction.sequence([ SKAction.fadeOut(withDuration: 0.5),
                                                   SKAction.removeFromParent()]))
-            
         }
     }
     
@@ -52,7 +54,7 @@ class SparkTouch {
     func touchesBegan( touches: Set<UITouch>) {
         for t in touches { self.touchDown(atPoint: t.location(in: parent)) }
     }
-    func touchesEnded( touches: Set<UITouch>) {
-        for t in touches { self.touchUp(atPoint: t.location(in: parent)) }
-    }
+//    func touchesEnded( touches: Set<UITouch>) {
+//        for t in touches { self.touchUp(atPoint: t.location(in: parent)) }
+//    }
 }

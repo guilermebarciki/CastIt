@@ -8,26 +8,26 @@
 import Foundation
 import SpriteKit
 
-class MagicGems {
+class MagicGems:CustomScene {
     let gemsSprites: [SKSpriteNode] = [
         SKSpriteNode(imageNamed: "gem0"),
         SKSpriteNode(imageNamed: "gem1"),
         SKSpriteNode(imageNamed: "gem2"),
         SKSpriteNode(imageNamed: "gem3"),
         SKSpriteNode(imageNamed: "gem4")]
-    private var parent: SKNode
     var gemPositions: [CGPoint]
     
-    init(parent: SKNode, gemPosition: [CGPoint]) {
+    init(parent: SKScene, gemPosition: [CGPoint]) {
         self.gemPositions = gemPosition
-        self.parent = parent
+        super.init(parent: parent)
+        
         
         if gemPosition.count == gemsSprites.count {
             for i in 0..<gemPosition.count {
                 
                 gemsSprites[i].position = gemPosition[i]
                 configureSprites(sprite: gemsSprites[i])
-                parent.addChild(gemsSprites[i])
+                node.addChild(gemsSprites[i])
             }
         }
         let body = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 700))

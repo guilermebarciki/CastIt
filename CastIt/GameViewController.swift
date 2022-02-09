@@ -30,7 +30,11 @@ class GameViewController: UIViewController {
             view.showsNodeCount = true
         }
     }
-
+    
+    override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {
+        return .all// or .top
+    }
+    
     override var shouldAutorotate: Bool {
         return true
     }

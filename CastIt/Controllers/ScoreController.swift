@@ -10,7 +10,7 @@ import SpriteKit
 
 
 
-class ScoreController {
+class ScoreController: CustomScene {
     var scoreLabel:SKLabelNode
     
     var nextScore:TimeInterval = 0
@@ -18,28 +18,36 @@ class ScoreController {
     
     let formatter = NumberFormatter()
     
-    private var parent: SKNode
+//    private var parent: SKNode
     
     var scoreNumber:Double = 0
     
     var multiplier:Double = 1
     var multiplierBalancer = Balancer(start: 1, range: 5, time: 1200, ascending: true, startFast: true)
     
+    func resetScore(){
+        nextScore = 0
+        multiplierBalancer = Balancer(start: 1, range: 5, time: 1200, ascending: true, startFast: true)
+        multiplier = 1
+        scoreNumber = 0
+        updateScore()
+    }
     
-    init(parent: SKNode){
+    override init(parent: SKScene){
+        scoreLabel = SKLabelNode()
+        super.init(parent: parent)
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 1
         formatter.numberStyle = .decimal
-        self.parent = parent
-        scoreLabel = SKLabelNode()
         scoreLabel.position = CGPoint(x: parent.frame.width * 3 / 4, y: parent.frame.height * 4 / 5)
         scoreLabel.zPosition = CGFloat.infinity
-        parent.addChild(scoreLabel)
+        node.addChild(scoreLabel)
     }
     
     func update(dTime: TimeInterval){
         if nextScore <= 0{
             multiplier = multiplierBalancer.nextStep()
+            print(multiplier)
             nextScore = scoreRate
         }
         nextScore -= dTime

@@ -7,7 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3224A56727B2996500861243 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3224A56627B2996500861243 /* GoogleService-Info.plist */; };
+		3224A56A27B2AA7500861243 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3224A56927B2AA7500861243 /* Analytics.swift */; };
 		323CEFF827A95B7F0081793A /* ScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 323CEFF727A95B7F0081793A /* ScoreController.swift */; };
+		324CF4F227B32762001B38E3 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CF4F127B32762001B38E3 /* Background.swift */; };
+		324CF4F427B32AC1001B38E3 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CF4F327B32AC1001B38E3 /* Line.swift */; };
+		32505B0827B300C9002E92FB /* CustomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32505B0727B300C9002E92FB /* CustomScene.swift */; };
 		32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE827A88AA500ECF64A /* Pentagon.swift */; };
 		32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE927A88AA500ECF64A /* EnemyController.swift */; };
 		32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FEA27A88AA500ECF64A /* Balancer.swift */; };
@@ -28,7 +33,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3224A56627B2996500861243 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		3224A56927B2AA7500861243 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		323CEFF727A95B7F0081793A /* ScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreController.swift; sourceTree = "<group>"; };
+		324CF4F127B32762001B38E3 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		324CF4F327B32AC1001B38E3 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		32505B0727B300C9002E92FB /* CustomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScene.swift; sourceTree = "<group>"; };
 		32FD9FE827A88AA500ECF64A /* Pentagon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pentagon.swift; sourceTree = "<group>"; };
 		32FD9FE927A88AA500ECF64A /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
@@ -63,6 +73,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		32505B0527B2FDED002E92FB /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				32FD9FEA27A88AA500ECF64A /* Balancer.swift */,
+				32FD9FE927A88AA500ECF64A /* EnemyController.swift */,
+				323CEFF727A95B7F0081793A /* ScoreController.swift */,
+				B23A6FD027AC109000CD9F26 /* SparkTouch.swift */,
+				B2F8DF1627A8AB720014E52C /* SpellManager.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		32505B0627B2FE11002E92FB /* Drawing */ = {
+			isa = PBXGroup;
+			children = (
+				324CF4F127B32762001B38E3 /* Background.swift */,
+				32FD9FE827A88AA500ECF64A /* Pentagon.swift */,
+				B2F8DF1C27A960E30014E52C /* Intro.swift */,
+				B2F8DF1427A8AB530014E52C /* MagicGems.swift */,
+				B2F8DF1E27A963270014E52C /* GameOver.swift */,
+				32505B0727B300C9002E92FB /* CustomScene.swift */,
+				324CF4F327B32AC1001B38E3 /* Line.swift */,
+			);
+			path = Drawing;
+			sourceTree = "<group>";
+		};
 		621B947E2DC0A93F7F16CA2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -92,23 +128,18 @@
 		B27981BF27A888B500E21C5B /* CastIt */ = {
 			isa = PBXGroup;
 			children = (
-				B2F8DF1427A8AB530014E52C /* MagicGems.swift */,
-				B2F8DF1C27A960E30014E52C /* Intro.swift */,
-				B2F8DF1E27A963270014E52C /* GameOver.swift */,
-				B2F8DF1627A8AB720014E52C /* SpellManager.swift */,
+				3224A56927B2AA7500861243 /* Analytics.swift */,
 				B27981C027A888B500E21C5B /* AppDelegate.swift */,
-				B27981C227A888B500E21C5B /* GameScene.sks */,
-				323CEFF727A95B7F0081793A /* ScoreController.swift */,
 				B27981C627A888B500E21C5B /* GameScene.swift */,
-				B23A6FD027AC109000CD9F26 /* SparkTouch.swift */,
-				B2F8DF1827A8B2280014E52C /* sparkTouch.sks */,
 				B27981C827A888B500E21C5B /* GameViewController.swift */,
+				32505B0627B2FE11002E92FB /* Drawing */,
+				32505B0527B2FDED002E92FB /* Controllers */,
+				B27981C227A888B500E21C5B /* GameScene.sks */,
+				B2F8DF1827A8B2280014E52C /* sparkTouch.sks */,
 				B27981CA27A888B500E21C5B /* Main.storyboard */,
 				B27981CD27A888B800E21C5B /* Assets.xcassets */,
 				B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */,
-				32FD9FEA27A88AA500ECF64A /* Balancer.swift */,
-				32FD9FE927A88AA500ECF64A /* EnemyController.swift */,
-				32FD9FE827A88AA500ECF64A /* Pentagon.swift */,
+				3224A56627B2996500861243 /* GoogleService-Info.plist */,
 			);
 			path = CastIt;
 			sourceTree = "<group>";
@@ -119,7 +150,6 @@
 				F5BD59CE718C20FEE9EF0078 /* Pods-CastIt.debug.xcconfig */,
 				86ED7E76FFA4DD19C6B4C755 /* Pods-CastIt.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -135,6 +165,7 @@
 				B27981BA27A888B500E21C5B /* Frameworks */,
 				B27981BB27A888B500E21C5B /* Resources */,
 				7D3EA9E468328CA812958AD6 /* [CP] Embed Pods Frameworks */,
+				3224A56827B29CCE00861243 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -188,12 +219,32 @@
 				B27981C327A888B500E21C5B /* GameScene.sks in Resources */,
 				B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */,
 				B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */,
+				3224A56727B2996500861243 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		3224A56827B29CCE00861243 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${DWARF_DSYM_FOLDER_PATH}/${DWARF_DSYM_FILE_NAME}/Contents/Resources/DWARF/${TARGET_NAME}",
+				"$(SRCROOT)/$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/FirebaseCrashlytics/run\"\n";
+		};
 		7B4BB4D516D1A445885479CC /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F8DF1727A8AB720014E52C /* SpellManager.swift in Sources */,
+				3224A56A27B2AA7500861243 /* Analytics.swift in Sources */,
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
 				B2F8DF1D27A960E30014E52C /* Intro.swift in Sources */,
 				B2F8DF1F27A963270014E52C /* GameOver.swift in Sources */,
@@ -250,8 +302,11 @@
 				B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */,
 				B2F8DF1527A8AB530014E52C /* MagicGems.swift in Sources */,
 				32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */,
+				32505B0827B300C9002E92FB /* CustomScene.swift in Sources */,
 				B27981C927A888B500E21C5B /* GameViewController.swift in Sources */,
+				324CF4F427B32AC1001B38E3 /* Line.swift in Sources */,
 				B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */,
+				324CF4F227B32762001B38E3 /* Background.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -401,7 +456,8 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = AZA2LHKU7Z;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = QCP5R7WWX9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -432,7 +488,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = AZA2LHKU7Z;
+				DEVELOPMENT_TEAM = QCP5R7WWX9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
