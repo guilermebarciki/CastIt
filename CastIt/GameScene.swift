@@ -15,6 +15,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lastUpdate = TimeInterval(0)
     var dTime = TimeInterval(0)
+    weak var gameVC: GameViewController!
     
     var score: Double = 0.0
     
@@ -74,6 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             scoreControler.show()
             backgroundNode.show()
             magicGems.show()
+//            gameVC.showRewardedAD()
         case .gameOver:
             clearScreen()
             AnalyticsManager.shared.log(event: .levelEnd)
@@ -83,6 +85,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
             reset()
             gameOverNode.show(score: score)
+            gameVC.showInterstitialAD()
         }
     }
     
@@ -158,6 +161,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         score = scoreControler.showScore() //TODO
         lastUpdate = currentTime
+    }
+    
+    func getReward(){
+        
     }
 }
 

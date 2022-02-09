@@ -6,6 +6,7 @@ target 'CastIt' do
   use_frameworks!
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
+  pod 'Google-Mobile-Ads-SDK'
   # Pods for CastIt
 
 end

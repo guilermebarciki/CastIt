@@ -35,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3200BC4827B4609700BAEFD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		3224A56627B2996500861243 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3224A56927B2AA7500861243 /* Analytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		323CEFF727A95B7F0081793A /* ScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreController.swift; sourceTree = "<group>"; };
@@ -151,6 +152,7 @@
 		B27981BF27A888B500E21C5B /* CastIt */ = {
 			isa = PBXGroup;
 			children = (
+				3200BC4827B4609700BAEFD1 /* Info.plist */,
 				3224A56927B2AA7500861243 /* Analytics.swift */,
 				B23A701E27B3521700CD9F26 /* CastIt.entitlements */,
 				B23A700427B29CFD00CD9F26 /* Scenes */,
@@ -486,6 +488,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CastIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -519,6 +522,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CastIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
