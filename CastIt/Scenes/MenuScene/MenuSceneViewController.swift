@@ -28,7 +28,9 @@ class MenuSceneViewController: UIViewController {
         super.viewDidLoad()
         addButtons()
     }
-    
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
+    }
     func addButtons() {
         view.addSubview(leaderboardsButton)
         view.addSubview(playButton)
