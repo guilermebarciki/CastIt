@@ -19,6 +19,8 @@
 		5E84F27D0FD784038CE586C7 /* Pods_CastIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */; };
 		B218212B27B3E93400938B61 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B218212A27B3E93400938B61 /* GameKit.framework */; };
 		B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6FD027AC109000CD9F26 /* SparkTouch.swift */; };
+		B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */; };
+		
 		B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C027A888B500E21C5B /* AppDelegate.swift */; };
 		B27981C327A888B500E21C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B27981C227A888B500E21C5B /* GameScene.sks */; };
 		B27981C727A888B500E21C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C627A888B500E21C5B /* GameScene.swift */; };
@@ -45,8 +47,11 @@
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
 		86ED7E76FFA4DD19C6B4C755 /* Pods-CastIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CastIt.release.xcconfig"; path = "Target Support Files/Pods-CastIt/Pods-CastIt.release.xcconfig"; sourceTree = "<group>"; };
 		B218212A27B3E93400938B61 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
-		B218212C27B3E94E00938B61 /* CastIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CastIt.entitlements; sourceTree = "<group>"; };
+		
 		B23A6FD027AC109000CD9F26 /* SparkTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTouch.swift; sourceTree = "<group>"; };
+		B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneViewController.swift; sourceTree = "<group>"; };
+		
+		B23A701E27B3521700CD9F26 /* CastIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CastIt.entitlements; sourceTree = "<group>"; };
 		B27981BD27A888B500E21C5B /* CastIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CastIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27981C027A888B500E21C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27981C227A888B500E21C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -112,6 +117,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B23A700427B29CFD00CD9F26 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				B23A700527B29D0400CD9F26 /* MenuScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		B23A700527B29D0400CD9F26 /* MenuScene */ = {
+			isa = PBXGroup;
+			children = (
+				B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */,
+			);
+			path = MenuScene;
+			sourceTree = "<group>";
+		};
 		B27981B427A888B500E21C5B = {
 			isa = PBXGroup;
 			children = (
@@ -133,8 +154,14 @@
 		B27981BF27A888B500E21C5B /* CastIt */ = {
 			isa = PBXGroup;
 			children = (
-				B218212C27B3E94E00938B61 /* CastIt.entitlements */,
+				
 				3224A56927B2AA7500861243 /* Analytics.swift */,
+				B23A701E27B3521700CD9F26 /* CastIt.entitlements */,
+				B23A700427B29CFD00CD9F26 /* Scenes */,
+				B2F8DF1427A8AB530014E52C /* MagicGems.swift */,
+				B2F8DF1C27A960E30014E52C /* Intro.swift */,
+				B2F8DF1E27A963270014E52C /* GameOver.swift */,
+				B2F8DF1627A8AB720014E52C /* SpellManager.swift */,
 				B27981C027A888B500E21C5B /* AppDelegate.swift */,
 				B27981C627A888B500E21C5B /* GameScene.swift */,
 				B27981C827A888B500E21C5B /* GameViewController.swift */,
@@ -297,6 +324,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */,
 				B2F8DF1727A8AB720014E52C /* SpellManager.swift in Sources */,
 				3224A56A27B2AA7500861243 /* Analytics.swift in Sources */,
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
