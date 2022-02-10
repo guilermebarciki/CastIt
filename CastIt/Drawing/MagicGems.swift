@@ -33,7 +33,9 @@ class MagicGems:CustomScene {
         let body = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 700))
         gemsSprites[1].physicsBody = body
         gemsSprites[1].physicsBody?.affectedByGravity = false
-        gemsSprites[1].physicsBody?.contactTestBitMask = 3
+        gemsSprites[1].physicsBody?.contactTestBitMask = 1
+        gemsSprites[1].physicsBody?.categoryBitMask = 1
+        gemsSprites[1].physicsBody?.node?.name = "chicken"
 
         
     }

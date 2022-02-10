@@ -99,7 +99,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     /// Tells the delegate that the ad presented full screen content.
     func adWillPresentFullScreenContent(_ ad: GADFullScreenPresentingAd) {
       print("Ad did present full screen content.")
-        //PAUSAR MUSICA
+        //PAUSAR MUSICA E JOGO
     }
 
     /// Tells the delegate that the ad dismissed full screen content.
@@ -107,6 +107,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         print("Ad did dismiss full screen content.")
         requestRewarded()
         requestInterstitial()
+        //VOLTAR MÚSICA E JOGO
     }
     
     override var preferredScreenEdgesDeferringSystemGestures: UIRectEdge {

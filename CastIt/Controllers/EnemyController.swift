@@ -24,25 +24,26 @@ class EnemySpawner {
     var nextDificulty:TimeInterval = 1
     let dificultyRate:TimeInterval = 1
     
+    
     var spawnRate:TimeInterval     = 2
     var spawnBalancer  = Balancer(start: 2, range: 1, time: 1200, ascending: false, startFast: true)
     
-    var normalPercentage:Double = 90
-    var elitePercentage:Double = 8
-    var bossPercentage:Double = 2
-    var normalBalancer = Balancer(start: 90, range: 70, time: 1200, ascending: false, startFast: true)
-    var eliteBalancer  = Balancer(start: 8, range: 22, time: 1200, ascending: true, startFast: true)
-    var bossBalancer   = Balancer(start: 2, range: 48, time: 1200, ascending: true, startFast: true)
+    var normalPercentage:Double = 70
+    var elitePercentage:Double = 20
+    var bossPercentage:Double = 10
+    var normalBalancer = Balancer(start: 70, range: 30, time: 1200, ascending: false, startFast: true)
+    var eliteBalancer  = Balancer(start: 20, range: 10, time: 1200, ascending: true, startFast: true)
+    var bossBalancer   = Balancer(start: 10, range: 20, time: 1200, ascending: true, startFast: true)
 
     
     var twoPercentage:Double = 90
     var threePercentage:Double = 5
     var fourPercentage:Double = 3
     var fivePercentage:Double = 2
-    var twoBalancer    = Balancer(start: 90, range: 85, time: 600, ascending: false, startFast: true)
-    var threeBalancer  = Balancer(start: 5, range: 10, time: 600, ascending: true, startFast: true)
-    var fourBalancer   = Balancer(start: 3, range: 27, time: 600, ascending: true, startFast: true)
-    var fiveBalancer   = Balancer(start: 2, range: 48, time: 600, ascending: true, startFast: true)
+    var twoBalancer    = Balancer(start: 60, range: 50, time: 1200, ascending: false, startFast: true)
+    var threeBalancer  = Balancer(start: 20, range: 10, time: 1200, ascending: true, startFast: true)
+    var fourBalancer   = Balancer(start: 10, range: 10, time: 1200, ascending: true, startFast: true)
+    var fiveBalancer   = Balancer(start: 10, range: 30, time: 1200, ascending: true, startFast: true)
     
     let lanes = 4
     var lanePos:[CGPoint] = []
@@ -80,18 +81,21 @@ class EnemySpawner {
             let randomEnemy = Double.random(in: 0...100)
             var new:SKSpriteNode
             var level:Int
+            var speed:Double
             if randomEnemy < normalPercentage {
                 new = enemiesSprites[0].copy() as! SKSpriteNode
                 level = 0
-                
+                speed = 100
             }
             else if randomEnemy < elitePercentage+normalPercentage {
                 new = enemiesSprites[1].copy() as! SKSpriteNode
                 level = 1
+                speed = 50
             }
             else {
                 new = enemiesSprites[2].copy() as! SKSpriteNode
                 level = 2
+                speed = 30
             }
             var randomLane = Int.random(in: 0..<lanes)
             while cLane[randomLane] {
@@ -107,7 +111,9 @@ class EnemySpawner {
             }
             new.position = lanePos[randomLane]
             new.zPosition = zPos
-            enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: level, speed: 50, controller: self))
+            speed += Double.random(in: -5...5)
+            print("Speed: \(speed)")
+            enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: level, speed: speed, controller: self))
             zPos += 1
             parent.addChild(new)
             setBoosAnimation(sprite:new, level: level)
@@ -245,7 +251,9 @@ class Enemy {
         self.speed = speed
         self.controller = controller
         sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
-        sprite.physicsBody?.contactTestBitMask = 3
+        sprite.physicsBody?.collisionBitMask = 0
+        sprite.physicsBody?.categoryBitMask = 1
+        sprite.physicsBody?.contactTestBitMask = 2
         sprite.physicsBody?.affectedByGravity = false
         setupDeathArray()
         drawPentagon()
@@ -277,6 +285,23 @@ class Enemy {
         else {
             points = 5
         }
+        
+        if level == 0 {
+            if points > 2 {
+                points -= 1
+            }
+        }
+        else if level == 1 {
+            if points < 5 {
+                points += 1
+            }
+        }
+        else if level == 2 {
+            if points < 4 {
+                points += 2
+            }
+        }
+        
         while deathArray.count < points {
             let point = Int.random(in: 0...4)
             if !deathArray.contains(point) {
