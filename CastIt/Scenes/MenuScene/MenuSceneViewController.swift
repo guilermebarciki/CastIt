@@ -26,6 +26,7 @@ class MenuSceneViewController: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
+        LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
         addButtons()
     }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -36,6 +37,7 @@ class MenuSceneViewController: UIViewController {
         view.addSubview(playButton)
         butonConstraints()
         playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
+        leaderboardsButton.addTarget(self, action: #selector(leaderBoardPressed), for: .touchUpInside)
     }
     
     func butonConstraints() {
@@ -53,6 +55,9 @@ class MenuSceneViewController: UIViewController {
         let myNavigationController = UINavigationController(rootViewController: gameViewController!)
         
         self.present(myNavigationController, animated: true, completion: nil)
+    }
+    @objc func leaderBoardPressed(sender: UIButton!) {
+        LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
     
 

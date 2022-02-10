@@ -91,6 +91,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 gameVC.showInterstitialAD()
                 playTimeForAD = 0
             }
+            LeaderboardManager.shared.updateScore(with: Int(score * 10)) //TODO fix * 10
         }
     }
     

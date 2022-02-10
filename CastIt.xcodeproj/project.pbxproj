@@ -22,6 +22,7 @@
 		B218213127B3F5B800938B61 /* Intro.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218212E27B3F5B800938B61 /* Intro.swift */; };
 		B218213227B3F5B800938B61 /* MagicGems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218212F27B3F5B800938B61 /* MagicGems.swift */; };
 		B218213427B3F5C900938B61 /* SpellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218213327B3F5C900938B61 /* SpellManager.swift */; };
+		B218213627B40CDD00938B61 /* LeaderBoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218213527B40CDD00938B61 /* LeaderBoardManager.swift */; };
 		B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6FD027AC109000CD9F26 /* SparkTouch.swift */; };
 		B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */; };
 		B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C027A888B500E21C5B /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		B218212E27B3F5B800938B61 /* Intro.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Intro.swift; sourceTree = "<group>"; };
 		B218212F27B3F5B800938B61 /* MagicGems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicGems.swift; sourceTree = "<group>"; };
 		B218213327B3F5C900938B61 /* SpellManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellManager.swift; sourceTree = "<group>"; };
+		B218213527B40CDD00938B61 /* LeaderBoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardManager.swift; sourceTree = "<group>"; };
 		B23A6FD027AC109000CD9F26 /* SparkTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTouch.swift; sourceTree = "<group>"; };
 		B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneViewController.swift; sourceTree = "<group>"; };
 		B23A701E27B3521700CD9F26 /* CastIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CastIt.entitlements; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				B27981CD27A888B800E21C5B /* Assets.xcassets */,
 				B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */,
 				3224A56627B2996500861243 /* GoogleService-Info.plist */,
+				B218213527B40CDD00938B61 /* LeaderBoardManager.swift */,
 			);
 			path = CastIt;
 			sourceTree = "<group>";
@@ -319,6 +322,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */,
+				B218213627B40CDD00938B61 /* LeaderBoardManager.swift in Sources */,
 				3224A56A27B2AA7500861243 /* Analytics.swift in Sources */,
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
 				323CEFF827A95B7F0081793A /* ScoreController.swift in Sources */,
