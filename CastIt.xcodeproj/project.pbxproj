@@ -489,9 +489,9 @@
 				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = QCP5R7WWX9;
+				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CastIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -526,8 +526,8 @@
 				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
-				DEVELOPMENT_TEAM = QCP5R7WWX9;
+				CURRENT_PROJECT_VERSION = 3;
+				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CastIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
