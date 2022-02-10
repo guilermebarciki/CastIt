@@ -15,9 +15,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var lastUpdate = TimeInterval(0)
     var dTime = TimeInterval(0)
+    
     weak var gameVC: GameViewController!
+    
     var playTimeForAD = TimeInterval(0)
-    let timeForAD = TimeInterval(120)
+    let timeForAD = TimeInterval(60)
     
     var score: Double = 0.0
     
@@ -115,6 +117,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     // Colisão com inimigo com final do jogo
     func didBegin(_ contact: SKPhysicsContact) {
+        
         status = .gameOver
     }
     
