@@ -12,17 +12,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     var currentPlayTime = TimeInterval(0)
     var castMisses = 0
-    
     var lastUpdate = TimeInterval(0)
     var dTime = TimeInterval(0)
-    
     weak var gameVC: GameViewController!
-    
     var playTimeForAD = TimeInterval(0)
     let timeForAD = TimeInterval(60)
-    
     var score: Double = 0.0
-    
     var status: GameStatus = .intro {
         didSet {
             changeStatus()
@@ -32,7 +27,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var enemy: EnemySpawner!
     var spellManager: SpellManager!
     var scoreControler: ScoreController!
-    
     
     //Drawing Nodes
     var backgroundNode: Background!
@@ -81,13 +75,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             magicGems.show()
 //            gameVC.showRewardedAD()
         case .gameOver:
-            clearScreen()
+            //clearScreen()
             AnalyticsManager.shared.log(event: .levelEnd)
             AnalyticsManager.shared.log(event: .levelScore(score))
             AnalyticsManager.shared.log(event: .levelCastMisses(castMisses))
             AnalyticsManager.shared.log(event: .levelScorePerSecond(score/currentPlayTime))
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
-            reset()
+            //reset()
             gameOverNode.show(score: score)
             if playTimeForAD >= timeForAD {
                 gameVC.showInterstitialAD()
@@ -122,13 +116,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        guard let touch = touches.first?.location(in: self) else { return }
         switch status {
         case .intro:
             status = .playing
         case .playing:
             spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: dTime)
         case .gameOver:
-            status = .intro
+            gameOverNode.didTouch(touch: touch)
         }
         magicTouch.touchesBegan(touches: touches)
     }
@@ -177,6 +172,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func getReward(){
         
     }
+    
 }
 
 enum GameStatus {

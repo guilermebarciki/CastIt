@@ -54,6 +54,13 @@ class SparkTouch {
     func touchesBegan( touches: Set<UITouch>) {
         for t in touches { self.touchDown(atPoint: t.location(in: parent)) }
     }
+    
+    func removeSparkBug() {
+        if let currentEmiter = currentEmiter {
+            currentEmiter.targetNode = nil
+            currentEmiter.removeFromParent()
+        }
+    }
 //    func touchesEnded( touches: Set<UITouch>) {
 //        for t in touches { self.touchUp(atPoint: t.location(in: parent)) }
 //    }

@@ -11,11 +11,14 @@ import SpriteKit
 class EnemySpawner {
     var projetile = SKSpriteNode(imageNamed: "gem1")
     let enemiesSprites:[SKSpriteNode] = [
-        SKSpriteNode(imageNamed: "monster-lvl1"),
-        SKSpriteNode(imageNamed: "elite.png"),
+        SKSpriteNode(imageNamed: "normal1"),
+        SKSpriteNode(imageNamed: "elite1.png"),
         SKSpriteNode(imageNamed: "4boss1.png")
     ]
     var bossTextures: [SKTexture] = []
+    var eliteTextures: [SKTexture] = []
+    var normalTextures: [SKTexture] = []
+    
    
     private var parent: SKNode
     
@@ -55,11 +58,17 @@ class EnemySpawner {
     var enemySpawned:[Enemy] = []
     
     init (parent: SKNode) {
-        // setting boss textures
+        // setting monsters textures
         for i in 1...8 {
             bossTextures.append(SKTexture(imageNamed: "4boss\(i).png"))
         }
-        
+        for i in 1...8 {
+            eliteTextures.append(SKTexture(imageNamed: "elite\(i).png"))
+        }
+        for i in 1...8 {
+            normalTextures.append(SKTexture(imageNamed: "normal\(i).png"))
+        }
+        //
         self.parent = parent
         for i in 0..<lanes{
             let yPos = (parent.frame.height/CGFloat(lanes+3) * CGFloat(i)) + 150
@@ -224,7 +233,17 @@ class EnemySpawner {
     
     func setBoosAnimation(sprite: SKSpriteNode, level: Int) {
         var animation = SKAction()
-       
+       //TODO SWITCH CASE
+        if level == 0{
+            animation = SKAction.animate(with: normalTextures, timePerFrame: 0.3)
+            
+            sprite.run(SKAction.repeatForever(animation))
+        }
+        if level == 1{
+            animation = SKAction.animate(with: eliteTextures, timePerFrame: 0.3)
+            
+            sprite.run(SKAction.repeatForever(animation))
+        }
         if level == 2{
             animation = SKAction.animate(with: bossTextures, timePerFrame: 0.3)
             

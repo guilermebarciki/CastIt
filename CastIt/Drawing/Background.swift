@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class Background: CustomScene {
-    let sprite = SKSpriteNode(imageNamed: "background1")
+    let sprite = SKSpriteNode(imageNamed: "moon-background")
     
     override init(parent: SKScene) {
         super.init(parent: parent)
