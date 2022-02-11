@@ -24,29 +24,45 @@ class MenuSceneViewController: UIViewController {
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    private lazy var background: UIImageView = {
+        var image = UIImageView(frame: .zero)
+        image.image = UIImage(named: "moon-background")!
+        image.contentMode = .scaleAspectFill
+        image.translatesAutoresizingMaskIntoConstraints = false
+        return image
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.insertSubview(background, at: 0)
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
-        addButtons()
+        addSubviews()
     }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
     }
-    func addButtons() {
+    func addSubviews() {
         view.addSubview(leaderboardsButton)
         view.addSubview(playButton)
-        butonConstraints()
+        setConstraints()
         playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         leaderboardsButton.addTarget(self, action: #selector(leaderBoardPressed), for: .touchUpInside)
     }
     
-    func butonConstraints() {
+    func setConstraints() {
         NSLayoutConstraint.activate([
             playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
 //            playButton.widthAnchor.constraint(equalToConstant: 200),
             leaderboardsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             leaderboardsButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 50)
+        ])
+        NSLayoutConstraint.activate([
+            background.topAnchor.constraint(equalTo: view.topAnchor),
+            background.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            background.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     

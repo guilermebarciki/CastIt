@@ -75,7 +75,7 @@ class GameOver: CustomScene {
         }
         if continueButton.contains(touch) {
             if canTryAgain {
-            parent.status = .playing
+            parent.gameVC.showRewardedAD()
             }
             canTryAgain = false
         }

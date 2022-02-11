@@ -47,6 +47,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.view?.isMultipleTouchEnabled = false
         
         //Vamos criar um padrão, essas classes que precisam dessa classe como referencia, precisam ser declaradas só uma vez
+        
         magicTouch = SparkTouch(parent: self)
         spellManager = SpellManager(parent: self)
         scoreControler = ScoreController(parent: self)
@@ -55,17 +56,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //As classes visuais
         gameOverNode = GameOver(parent: self)
         introNode = Intro(parent: self)
-        introNode.show()
+//        introNode.show()
         backgroundNode = Background(parent: self)
         lineNode = Line(parent: self)
         magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2)))
+        status = .intro
     }
     
     func changeStatus() {
         switch status{
         case .intro:
             clearScreen()
+            backgroundNode.show()
+            magicGems.show()
             introNode.show()
+            
         case .playing:
             clearScreen()
             AnalyticsManager.shared.log(event: .levelStart)
@@ -167,10 +172,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         score = scoreControler.showScore() //TODO
         lastUpdate = currentTime
+        
     }
     
     func getReward(){
-        
+        if status == .gameOver {
+            status = .playing
+        }
     }
     
 }
