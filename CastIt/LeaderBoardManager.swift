@@ -64,6 +64,7 @@ class LeaderboardManager: NSObject, GKGameCenterControllerDelegate {
     }
     
     func gameCenterViewControllerDidFinish(_ gameCenterViewController: GKGameCenterViewController) {
+        
         gameCenterViewController.dismiss(animated:true)
     }
 }

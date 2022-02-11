@@ -87,7 +87,8 @@ class GameOver: CustomScene {
         }
         
         if leaderBoardButton.contains(touch) {
-            parent.magicTouch.removeSparkBug() // nao funciona
+            parent.magicTouch.clear()// nao funciona
+            
             LeaderboardManager.shared.navigateToLeaderboard(presentingVC: parent.gameVC)
         }
         

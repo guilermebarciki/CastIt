@@ -125,12 +125,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         switch status {
         case .intro:
             status = .playing
+            magicTouch.touchesBegan(touches: touches)
         case .playing:
             spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: dTime)
+            magicTouch.touchesBegan(touches: touches)
         case .gameOver:
+            magicTouch.touchesBegan(touches: touches)
             gameOverNode.didTouch(touch: touch)
         }
-        magicTouch.touchesBegan(touches: touches)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
