@@ -16,8 +16,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var dTime = TimeInterval(0)
     weak var gameVC: GameViewController!
     var playTimeForAD = TimeInterval(0)
-    let timeForAD = TimeInterval(60)
+    let timeForAD = TimeInterval(0)
     var score: Double = 0.0
+    var canContinue = true
     var status: GameStatus = .intro {
         didSet {
             changeStatus()
@@ -60,12 +61,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundNode = Background(parent: self)
         lineNode = Line(parent: self)
         magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2)))
-        status = .intro
+        status = .gameOver
     }
     
     func changeStatus() {
         switch status{
         case .intro:
+            
             clearScreen()
             backgroundNode.show()
             magicGems.show()
@@ -79,7 +81,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backgroundNode.show()
             magicGems.show()
 //            gameVC.showRewardedAD()
+        case .wantContinue:
+            if playTimeForAD >= timeForAD {
+                gameVC.showInterstitialAD()
+                playTimeForAD = 0
+            }
+            gameVC.addContinueScroll()
         case .gameOver:
+            gameVC.addGameOverScroll()
             //clearScreen()
             AnalyticsManager.shared.log(event: .levelEnd)
             AnalyticsManager.shared.log(event: .levelScore(score))
@@ -99,6 +108,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func reset(){
         scoreControler.resetScore()
         enemy.reset()
+        canContinue = true
         currentPlayTime = 0
         castMisses = 0
     }
@@ -117,7 +127,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     // Colisão com inimigo com final do jogo
     func didBegin(_ contact: SKPhysicsContact) {
         
-        status = .gameOver
+        if status == .playing && canContinue {
+            status = .wantContinue
+        }
+        if status == .playing && !canContinue {
+            gameVC.removeContinueScroll()
+            status = .gameOver
+        }
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -129,6 +145,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .playing:
             spellManager.checkSpell(touches: touches, magicGems: magicGems, dTime: dTime)
             magicTouch.touchesBegan(touches: touches)
+        case .wantContinue:
+            break
         case .gameOver:
             magicTouch.touchesBegan(touches: touches)
             gameOverNode.didTouch(touch: touch)
@@ -178,9 +196,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     func getReward(){
-        if status == .gameOver {
+        print(" teste ** reward")
+        if status == .gameOver
+            && gameOverNode.continueButtonClicked {
+            print("teste - continue foi clicado")
+            print("teste - canTryAgrin = \(gameOverNode.canTryAgain)")
+            gameOverNode.canTryAgain = false
+            print("teste - canTryAgrin = \(gameOverNode.canTryAgain)")
             status = .playing
+            print("teste game status- \(status) ")
+            
         }
+        if status == .wantContinue && canContinue {
+            gameVC.removeContinueScroll()
+            canContinue = false
+            status = .playing
+        } 
     }
     
 }
@@ -188,6 +219,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 enum GameStatus {
     case intro
     case playing
+    case wantContinue
     case gameOver
 }
 

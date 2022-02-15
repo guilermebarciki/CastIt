@@ -36,6 +36,7 @@ class GameOver: CustomScene {
     private var scoreLabel: SKLabelNode
     let formatter = NumberFormatter()
     var canTryAgain: Bool = true
+    var continueButtonClicked = false
     
     override init(parent: SKScene) {
         scoreLabel = SKLabelNode()
@@ -74,14 +75,16 @@ class GameOver: CustomScene {
             return
         }
         if continueButton.contains(touch) {
+            
             if canTryAgain {
+             print(" teste - pode jogar de novo \(canTryAgain)")
+            continueButtonClicked = true
             parent.gameVC.showRewardedAD()
             }
-            canTryAgain = false
+            
         }
         
         if menuButton.contains(touch) {
-            canTryAgain = true
             parent.reset()
             parent.gameVC.dismiss(animated: true, completion: nil)
         }

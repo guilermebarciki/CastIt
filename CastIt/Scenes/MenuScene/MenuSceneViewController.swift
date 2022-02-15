@@ -69,7 +69,7 @@ class MenuSceneViewController: UIViewController {
     @objc func playPressed(sender: UIButton!) {
         let gameViewController: GameViewController? = storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController
         let myNavigationController = UINavigationController(rootViewController: gameViewController!)
-        
+        myNavigationController.modalPresentationStyle = .fullScreen
         self.present(myNavigationController, animated: true, completion: nil)
     }
     @objc func leaderBoardPressed(sender: UIButton!) {

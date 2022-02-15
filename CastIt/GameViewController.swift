@@ -15,17 +15,30 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     private var interstitial: GADInterstitialAd?
     private var rewarded: GADRewardedAd?
     
+  
+    lazy var continueScroll: ContinueScrollView = {
+        let scroll = ContinueScrollView(gameVC: self)
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+//        scroll.contentMode = .scaleAspectFit
+        return scroll
+    }()
+    lazy var gameOverScroll: GameOverScrollView = {
+        let scroll = GameOverScrollView(gameVC: self)
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+//        scroll.contentMode = .scaleAspectFit
+        return scroll
+    }()
     var scene:GameScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let view = self.view as! SKView? {
-            // Load the SKScene from 'GameScene.sks'
+            // Load the SKScene from 'GameScsuper.init(frame: .zero)ene.sks'
             scene = SKScene(fileNamed: "GameScene") as? GameScene
             scene.gameVC = self
             // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFill
+            scene.scaleMode = .aspectFit
                 
             // Present the scene
             view.presentScene(scene)
@@ -37,9 +50,43 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             view.showsNodeCount = true
         }
         
+        
         requestInterstitial()
         requestRewarded()
     }
+    
+    func addContinueScroll() {
+        let viewHeight = view.bounds.height
+        view.addSubview(continueScroll)
+        
+        NSLayoutConstraint.activate([
+            continueScroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            continueScroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            continueScroll.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.5),
+            continueScroll.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.5)
+        ])
+    }
+    
+    func removeContinueScroll() {
+        continueScroll.removeFromSuperview()
+    }
+    
+    func addGameOverScroll() {
+        let viewHeight = view.bounds.height
+        view.addSubview(gameOverScroll)
+        
+        NSLayoutConstraint.activate([
+            gameOverScroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            gameOverScroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            gameOverScroll.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.5),
+            gameOverScroll.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.5)
+        ])
+    }
+    
+    func removeGameOverScrollScroll() {
+        gameOverScroll.removeFromSuperview()
+    }
+    
     
     func requestRewarded() {
         let request = GADRequest()
@@ -56,9 +103,11 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func showRewardedAD(){
+        print("teste - reward showed")
         if let rewarded = rewarded {
             rewarded.present(fromRootViewController: self, userDidEarnRewardHandler: {
                 //let reward = rewarded.adReward
+                print("teste - rewarded1")
                 self.scene.getReward()
             })
         }
@@ -85,6 +134,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func showInterstitialAD() {
         if let interstitial = interstitial {
+            print("teste - show interstitialAD")
           interstitial.present(fromRootViewController: self)
         } else {
           print("Ad wasn't ready")

@@ -23,8 +23,10 @@
 		B218213227B3F5B800938B61 /* MagicGems.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218212F27B3F5B800938B61 /* MagicGems.swift */; };
 		B218213427B3F5C900938B61 /* SpellManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218213327B3F5C900938B61 /* SpellManager.swift */; };
 		B218213627B40CDD00938B61 /* LeaderBoardManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218213527B40CDD00938B61 /* LeaderBoardManager.swift */; };
+		B218215127B991FD00938B61 /* ContinueScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B218215027B991FC00938B61 /* ContinueScrollView.swift */; };
 		B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A6FD027AC109000CD9F26 /* SparkTouch.swift */; };
 		B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */; };
+		B23E593527BB156900A7D73E /* GameOverScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B23E593427BB156900A7D73E /* GameOverScrollView.swift */; };
 		B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C027A888B500E21C5B /* AppDelegate.swift */; };
 		B27981C327A888B500E21C5B /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = B27981C227A888B500E21C5B /* GameScene.sks */; };
 		B27981C727A888B500E21C5B /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = B27981C627A888B500E21C5B /* GameScene.swift */; };
@@ -53,9 +55,11 @@
 		B218212F27B3F5B800938B61 /* MagicGems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MagicGems.swift; sourceTree = "<group>"; };
 		B218213327B3F5C900938B61 /* SpellManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpellManager.swift; sourceTree = "<group>"; };
 		B218213527B40CDD00938B61 /* LeaderBoardManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderBoardManager.swift; sourceTree = "<group>"; };
+		B218215027B991FC00938B61 /* ContinueScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContinueScrollView.swift; sourceTree = "<group>"; };
 		B23A6FD027AC109000CD9F26 /* SparkTouch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SparkTouch.swift; sourceTree = "<group>"; };
 		B23A700627B29D2500CD9F26 /* MenuSceneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuSceneViewController.swift; sourceTree = "<group>"; };
 		B23A701E27B3521700CD9F26 /* CastIt.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CastIt.entitlements; sourceTree = "<group>"; };
+		B23E593427BB156900A7D73E /* GameOverScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameOverScrollView.swift; sourceTree = "<group>"; };
 		B27981BD27A888B500E21C5B /* CastIt.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CastIt.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B27981C027A888B500E21C5B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B27981C227A888B500E21C5B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -117,6 +121,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B218214F27B991C900938B61 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B218215027B991FC00938B61 /* ContinueScrollView.swift */,
+				B23E593427BB156900A7D73E /* GameOverScrollView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B23A700427B29CFD00CD9F26 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +167,7 @@
 		B27981BF27A888B500E21C5B /* CastIt */ = {
 			isa = PBXGroup;
 			children = (
+				B218214F27B991C900938B61 /* Components */,
 				3200BC4827B4609700BAEFD1 /* Info.plist */,
 				3224A56927B2AA7500861243 /* Analytics.swift */,
 				B23A701E27B3521700CD9F26 /* CastIt.entitlements */,
@@ -339,6 +353,8 @@
 				324CF4F427B32AC1001B38E3 /* Line.swift in Sources */,
 				B27981C127A888B500E21C5B /* AppDelegate.swift in Sources */,
 				324CF4F227B32762001B38E3 /* Background.swift in Sources */,
+				B218215127B991FD00938B61 /* ContinueScrollView.swift in Sources */,
+				B23E593527BB156900A7D73E /* GameOverScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
