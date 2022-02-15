@@ -96,15 +96,16 @@ class GameOverScrollView: UIView {
     @objc func tryAgainPressed(sender: UIButton!) {
         print("buttonpressed")
         gameVC.scene.reset()
-        gameVC.scene.clearScreen()
         gameVC.removeGameOverScrollScroll()
+        gameVC.scene.clearScreen()
         gameVC.scene.status = .intro
     }
     
     @objc func menuPressed(sender: UIButton!) {
         print("buttonpressed")
+        gameVC.scene.reset()
         gameVC.removeGameOverScrollScroll()
-        gameVC.scene.status = .intro
+        gameVC.dismiss(animated: true, completion: nil)
     }
     func addGameOverScroll() {
         

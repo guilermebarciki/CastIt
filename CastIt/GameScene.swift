@@ -46,7 +46,6 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = false
-        
         //Vamos criar um padrão, essas classes que precisam dessa classe como referencia, precisam ser declaradas só uma vez
         
         magicTouch = SparkTouch(parent: self)
@@ -61,19 +60,19 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         backgroundNode = Background(parent: self)
         lineNode = Line(parent: self)
         magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2)))
-        status = .gameOver
+        status = .intro
     }
     
     func changeStatus() {
         switch status{
         case .intro:
-            
             clearScreen()
             backgroundNode.show()
             magicGems.show()
             introNode.show()
             
         case .playing:
+            lineNode.clear() // IMPEDE DE CRASHAR
             clearScreen()
             AnalyticsManager.shared.log(event: .levelStart)
             lineNode.show()
@@ -81,12 +80,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backgroundNode.show()
             magicGems.show()
 //            gameVC.showRewardedAD()
+        
         case .wantContinue:
             if playTimeForAD >= timeForAD {
                 gameVC.showInterstitialAD()
                 playTimeForAD = 0
             }
             gameVC.addContinueScroll()
+        
         case .gameOver:
             gameVC.addGameOverScroll()
             //clearScreen()
@@ -177,6 +178,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     }
     
     override func update(_ currentTime: TimeInterval) {
+        
+        if scene?.view?.isPaused == true {
+            return
+        }
+        
         if lastUpdate == 0 {
             lastUpdate = currentTime
             return
@@ -197,21 +203,22 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func getReward(){
         print(" teste ** reward")
-        if status == .gameOver
-            && gameOverNode.continueButtonClicked {
-            print("teste - continue foi clicado")
-            print("teste - canTryAgrin = \(gameOverNode.canTryAgain)")
-            gameOverNode.canTryAgain = false
-            print("teste - canTryAgrin = \(gameOverNode.canTryAgain)")
-            status = .playing
-            print("teste game status- \(status) ")
-            
-        }
         if status == .wantContinue && canContinue {
             gameVC.removeContinueScroll()
             canContinue = false
             status = .playing
+            pauseGame()
         } 
+    }
+    
+    func pauseGame() {
+        print("game paused")
+        view?.scene?.isPaused = true
+    }
+    
+    func unpauseGame() {
+        print("game unpaused")
+        view?.scene?.isPaused = false
     }
     
 }

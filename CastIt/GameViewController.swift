@@ -28,28 +28,35 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
 //        scroll.contentMode = .scaleAspectFit
         return scroll
     }()
+    
     var scene:GameScene!
+    var showingRewardAd: Bool = false
+    var showingInterstitialAd: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScsuper.init(frame: .zero)ene.sks'
             scene = SKScene(fileNamed: "GameScene") as? GameScene
             scene.gameVC = self
             // Set the scale mode to scale to fit the window
-            scene.scaleMode = .aspectFit
-                
+            
+            if UIDevice.current.userInterfaceIdiom == .phone {
+                scene.scaleMode = .aspectFill
+            }
+            
+            if UIDevice.current.userInterfaceIdiom == .pad {
+                scene.scaleMode = .resizeFill
+            }
+            
+            
             // Present the scene
             view.presentScene(scene)
-            
-            
             view.ignoresSiblingOrder = true
-            
             view.showsFPS = true
             view.showsNodeCount = true
         }
-        
+
         
         requestInterstitial()
         requestRewarded()
@@ -103,6 +110,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func showRewardedAD(){
+        showingRewardAd = true
         print("teste - reward showed")
         if let rewarded = rewarded {
             rewarded.present(fromRootViewController: self, userDidEarnRewardHandler: {
@@ -118,6 +126,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func requestInterstitial() {
         // Load Interstitial AD
+        showingInterstitialAd = true
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
                                     request: request,
@@ -155,8 +164,18 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     /// Tells the delegate that the ad dismissed full screen content.
     func adDidDismissFullScreenContent(_ ad: GADFullScreenPresentingAd) {
         print("Ad did dismiss full screen content.")
-        requestRewarded()
-        requestInterstitial()
+        if showingRewardAd {
+            requestRewarded()
+            showingRewardAd = false
+        }
+        if showingInterstitialAd {
+            requestInterstitial()
+            showingInterstitialAd = false
+        }
+        
+        if scene.status == .playing {
+            scene.unpauseGame()
+        }
         //VOLTAR MÚSICA E JOGO
     }
     
@@ -175,4 +194,18 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     override var prefersStatusBarHidden: Bool {
         return true
     }
+}
+public enum UIUserInterfaceIdiom : Int {
+
+    case unspecified
+
+    case phone // iPhone and iPod touch style UI
+
+    case pad // iPad style UI
+
+    @available(iOS 9.0, *)
+    case tv // Apple TV style UI
+
+    @available(iOS 9.0, *)
+    case carPlay // CarPlay style UI
 }
