@@ -39,7 +39,7 @@ class MagicGems:CustomScene {
             }
         }
         
-        let body = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: (parent.view?.bounds.height)!))
+        let body = SKPhysicsBody(rectangleOf: CGSize(width: 90, height: 5000))
         gemsSprites[1].physicsBody = body
         gemsSprites[1].physicsBody?.affectedByGravity = false
         gemsSprites[1].physicsBody?.contactTestBitMask = 1

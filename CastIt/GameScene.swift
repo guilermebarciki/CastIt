@@ -179,9 +179,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func update(_ currentTime: TimeInterval) {
         
-        if scene?.view?.isPaused == true {
-            return
-        }
+      
         
         if lastUpdate == 0 {
             lastUpdate = currentTime
@@ -189,7 +187,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         dTime = currentTime - lastUpdate
         
-        if status == .playing {
+        if status == .playing && scene?.view?.isPaused == false {
             currentPlayTime += dTime
             scoreControler.update(dTime: dTime)
             enemy.update(dTime: dTime)
