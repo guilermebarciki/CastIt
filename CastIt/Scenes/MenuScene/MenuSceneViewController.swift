@@ -9,21 +9,34 @@ import UIKit
 
 class MenuSceneViewController: UIViewController {
 
+    
+    lazy var scroll: UIImageView = {
+        let scroll = UIImageView()
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.image = UIImage(named: "scroll")
+//        scroll.contentMode = .scaleAspectFit
+        return scroll
+    }()
+    
+    
     lazy var playButton: UIButton = {
         let button = UIButton()
-        button.setTitle(" PLAY ", for: .normal)
-        button.backgroundColor = .green
-        button.setTitleColor(.black, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "startGame"), for: .normal)
+
+        
         return button
     }()
-    lazy var leaderboardsButton: UIButton = {
+    
+    lazy var leaderBoardButton: UIButton = {
         let button = UIButton()
-        button.setTitle(" LEADER BOARDS ", for: .normal)
-        button.backgroundColor = .purple
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "LeaderBoard"), for: .normal)
+        
         return button
     }()
+    
+   
     
     private lazy var background: UIImageView = {
         var image = UIImageView(frame: .zero)
@@ -36,28 +49,46 @@ class MenuSceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.insertSubview(background, at: 0)
+        
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
+        
         addSubviews()
+        playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
+        leaderBoardButton.addTarget(self, action: #selector(leaderBoardPressed), for: .touchUpInside)
     }
+    
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .landscape
     }
+    
     func addSubviews() {
-        view.addSubview(leaderboardsButton)
+        view.addSubview(scroll)
+        
+        
         view.addSubview(playButton)
+        view.addSubview(leaderBoardButton)
         setConstraints()
-        playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
-        leaderboardsButton.addTarget(self, action: #selector(leaderBoardPressed), for: .touchUpInside)
     }
     
     func setConstraints() {
         NSLayoutConstraint.activate([
-            playButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            playButton.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-//            playButton.widthAnchor.constraint(equalToConstant: 200),
-            leaderboardsButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            leaderboardsButton.topAnchor.constraint(equalTo: playButton.bottomAnchor, constant: 50)
+            scroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            scroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            scroll.heightAnchor.constraint(equalToConstant: 408 * 0.8),
+            scroll.widthAnchor.constraint(equalToConstant: 537 * 0.8),
+            
+            
+            playButton.bottomAnchor.constraint(equalTo: view.centerYAnchor, constant:  -30),
+            playButton.heightAnchor.constraint(equalToConstant: 45 * 0.9),
+            playButton.widthAnchor.constraint(equalToConstant: 310 * 0.9),
+            
+            leaderBoardButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            leaderBoardButton.topAnchor.constraint(equalTo: view.centerYAnchor),
+            playButton.leadingAnchor.constraint(equalTo: leaderBoardButton.leadingAnchor),
+            leaderBoardButton.heightAnchor.constraint(equalToConstant: 45 * 0.9),
+            leaderBoardButton.widthAnchor.constraint(equalToConstant: 334 * 0.9),
         ])
+
         NSLayoutConstraint.activate([
             background.topAnchor.constraint(equalTo: view.topAnchor),
             background.leadingAnchor.constraint(equalTo: view.leadingAnchor),
@@ -65,14 +96,17 @@ class MenuSceneViewController: UIViewController {
             background.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
+  
     @objc func playPressed(sender: UIButton!) {
-        let gameViewController: GameViewController? = storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController
+        
+        let gameViewController: GameViewController? = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController
         let myNavigationController = UINavigationController(rootViewController: gameViewController!)
         myNavigationController.modalPresentationStyle = .fullScreen
         self.present(myNavigationController, animated: true, completion: nil)
     }
+    
     @objc func leaderBoardPressed(sender: UIButton!) {
+        print("buttonpressed")
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
     

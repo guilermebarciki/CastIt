@@ -19,9 +19,10 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     lazy var continueScroll: ContinueScrollView = {
         let scroll = ContinueScrollView(gameVC: self)
         scroll.translatesAutoresizingMaskIntoConstraints = false
-//        scroll.contentMode = .scaleAspectFit
+        scroll.contentMode = .scaleAspectFit
         return scroll
     }()
+    
     lazy var gameOverScroll: GameOverScrollView = {
         let scroll = GameOverScrollView(gameVC: self)
         scroll.translatesAutoresizingMaskIntoConstraints = false
@@ -65,12 +66,15 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     func addContinueScroll() {
         let viewHeight = view.bounds.height
         view.addSubview(continueScroll)
-        
         NSLayoutConstraint.activate([
             continueScroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             continueScroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            continueScroll.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.5),
-            continueScroll.widthAnchor.constraint(equalToConstant: view.bounds.width * 0.5)
+//            continueScroll.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+//            continueScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+//            continueScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+//            continueScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+            continueScroll.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.2),
+            continueScroll.widthAnchor.constraint(equalToConstant: view.bounds.height * 0.2 )
         ])
     }
     

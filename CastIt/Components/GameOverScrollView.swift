@@ -34,19 +34,34 @@ class GameOverScrollView: UIView {
         return scroll
     }()
     
-    lazy var continueText: UIImageView = {
-        let scroll = UIImageView()
-        scroll.translatesAutoresizingMaskIntoConstraints = false
-        scroll.image = UIImage(named: "wantContinue")
+    lazy var gameOverText: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Game over"
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.font = UIFont(name: "PressStart2P", size: 22)
+        label.textColor = UIColor(named: "gameOverColor")
 //        scroll.contentMode = .scaleAspectFit
-        return scroll
+        return label
+    }()
+    lazy var youGotText: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "You got \(Int(gameVC.scene.scoreControler.showScore())) points"
+        label.numberOfLines = 1
+        label.textAlignment = .center
+        label.font = UIFont(name: "PressStart2P", size: 14)
+        label.textColor = UIColor(named: "gameOverColor")
+//        scroll.contentMode = .scaleAspectFit
+        return label
     }()
     
     lazy var tryAgainButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "tryAgain"), for: .normal)
-        button.backgroundColor = .purple
+        
         return button
     }()
     
@@ -54,13 +69,15 @@ class GameOverScrollView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "menu"), for: .normal)
-        button.backgroundColor = .green
+        
         return button
     }()
     
     func addContinueScroll() {
+        
         addSubview(scroll)
-        addSubview(continueText)
+        addSubview(gameOverText)
+        addSubview(youGotText)
         
         addSubview(tryAgainButton)
         addSubview(menuButton)
@@ -77,17 +94,23 @@ class GameOverScrollView: UIView {
         NSLayoutConstraint.activate([
             scroll.centerXAnchor.constraint(equalTo: centerXAnchor),
             scroll.centerYAnchor.constraint(equalTo: centerYAnchor),
+            scroll.heightAnchor.constraint(equalToConstant: 408 * 0.8),
+            scroll.widthAnchor.constraint(equalToConstant: 537 * 0.8),
             
-            continueText.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 100),
-            continueText.centerXAnchor.constraint(equalTo: scroll.centerXAnchor),
+            gameOverText.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 70),
+            gameOverText.centerXAnchor.constraint(equalTo: scroll.centerXAnchor),
+            youGotText.centerXAnchor.constraint(equalTo: scroll.centerXAnchor),
+            youGotText.topAnchor.constraint(equalTo: gameOverText.bottomAnchor, constant: 12),
             
             tryAgainButton.centerXAnchor.constraint(equalTo: centerXAnchor),
             tryAgainButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            tryAgainButton.heightAnchor.constraint(equalToConstant: 100),
-//            tryAgainButton.widthAnchor.constraint(equalToConstant: 500),
+            tryAgainButton.heightAnchor.constraint(equalToConstant: 45 * 0.8),
+            tryAgainButton.widthAnchor.constraint(equalToConstant: 286 * 0.8),
             
-            menuButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            menuButton.topAnchor.constraint(equalTo: tryAgainButton.bottomAnchor)
+            menuButton.leadingAnchor.constraint(equalTo: tryAgainButton.leadingAnchor),
+            menuButton.topAnchor.constraint(equalTo: tryAgainButton.bottomAnchor, constant: 10),
+            menuButton.heightAnchor.constraint(equalToConstant: 45 * 0.8),
+            menuButton.widthAnchor.constraint(equalToConstant: 166 * 0.8),
         ])
 
         

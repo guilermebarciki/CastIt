@@ -28,7 +28,7 @@ class ContinueScrollView: UIView {
         let scroll = UIImageView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.image = UIImage(named: "scroll")
-//        scroll.contentMode = .scaleAspectFit
+        scroll.contentMode = .scaleAspectFit
         return scroll
     }()
     
@@ -36,7 +36,7 @@ class ContinueScrollView: UIView {
         let scroll = UIImageView()
         scroll.translatesAutoresizingMaskIntoConstraints = false
         scroll.image = UIImage(named: "wantContinue")
-//        scroll.contentMode = .scaleAspectFit
+        scroll.contentMode = .scaleAspectFit
         return scroll
     }()
     
@@ -44,7 +44,8 @@ class ContinueScrollView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "adButton"), for: .normal)
-        button.backgroundColor = .purple
+        button.contentMode = .scaleAspectFit
+        
         return button
     }()
     
@@ -66,14 +67,20 @@ class ContinueScrollView: UIView {
         NSLayoutConstraint.activate([
             scroll.centerXAnchor.constraint(equalTo: centerXAnchor),
             scroll.centerYAnchor.constraint(equalTo: centerYAnchor),
+            scroll.heightAnchor.constraint(equalToConstant: 408 * 0.8),
+            scroll.widthAnchor.constraint(equalToConstant: 537 * 0.8),
+
             
-            continueText.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 100),
+            
             continueText.centerXAnchor.constraint(equalTo: scroll.centerXAnchor),
+            continueText.heightAnchor.constraint(equalToConstant: 48 * 0.8),
+            continueText.widthAnchor.constraint(equalToConstant: 336 * 0.8),
+            continueText.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -40),
             
             adButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            adButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-//            adButton.heightAnchor.constraint(equalToConstant: 100),
-//            adButton.widthAnchor.constraint(equalToConstant: 500)
+            adButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 30),
+            adButton.heightAnchor.constraint(equalToConstant: 24 * 0.8),
+            adButton.widthAnchor.constraint(equalToConstant: 240 * 0.8)
         ])
 
         
@@ -93,3 +100,4 @@ class ContinueScrollView: UIView {
     }
     
 }
+
