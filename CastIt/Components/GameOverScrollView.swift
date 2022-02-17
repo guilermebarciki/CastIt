@@ -17,6 +17,7 @@ class GameOverScrollView: UIView {
         self.gameVC = gameVC
 //        isUserInteractionEnabled = true
         super.init(frame: .zero)
+        gameVC.scene.scoreControler.updateScore()
         addContinueScroll()
         tryAgainButton.addTarget(self, action: #selector(tryAgainPressed), for: .touchUpInside)
         menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)

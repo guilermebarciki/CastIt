@@ -33,7 +33,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundNode: Background!
     var magicGems: MagicGems!
     var introNode: Intro!
-    var gameOverNode: GameOver!
+    
     var magicTouch: SparkTouch!
     var lineNode: Line!
 //    var startPoint: CGPoint?
@@ -54,7 +54,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         enemy = EnemySpawner(parent: self)
         
         //As classes visuais
-        gameOverNode = GameOver(parent: self)
+        
         introNode = Intro(parent: self)
 //        introNode.show()
         backgroundNode = Background(parent: self)
@@ -66,6 +66,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func changeStatus() {
         switch status{
         case .intro:
+            gameVC.scene.unpauseGame()
             clearScreen()
             backgroundNode.show()
             magicGems.show()
@@ -74,6 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case .playing:
             lineNode.clear() // IMPEDE DE CRASHAR
             clearScreen()
+            gameVC.showPauseButton()
             AnalyticsManager.shared.log(event: .levelStart)
             lineNode.show()
             scoreControler.show()
@@ -82,6 +84,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            gameVC.showRewardedAD()
         
         case .wantContinue:
+            gameVC.removePauseButton()
             if playTimeForAD >= timeForAD {
                 gameVC.showInterstitialAD()
                 playTimeForAD = 0
@@ -97,7 +100,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AnalyticsManager.shared.log(event: .levelScorePerSecond(score/currentPlayTime))
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
             //reset()
-            gameOverNode.show(score: score)
+            
             if playTimeForAD >= timeForAD {
                 gameVC.showInterstitialAD()
                 playTimeForAD = 0
@@ -150,7 +153,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             break
         case .gameOver:
             magicTouch.touchesBegan(touches: touches)
-            gameOverNode.didTouch(touch: touch)
+            
         }
     }
     
@@ -186,7 +189,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         dTime = currentTime - lastUpdate
-        
+        print("game is paused? \(scene?.view?.isPaused)")
         if status == .playing && scene?.view?.isPaused == false {
             currentPlayTime += dTime
             scoreControler.update(dTime: dTime)
@@ -205,17 +208,18 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameVC.removeContinueScroll()
             canContinue = false
             status = .playing
+            print("** playing game")
             pauseGame()
         } 
     }
     
     func pauseGame() {
-        print("game paused")
+        print("** game paused")
         view?.scene?.isPaused = true
     }
     
     func unpauseGame() {
-        print("game unpaused")
+        print("** game unpaused")
         view?.scene?.isPaused = false
     }
     

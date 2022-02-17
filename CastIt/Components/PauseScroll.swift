@@ -1,14 +1,16 @@
 //
-//  ContinueScrollView.swift
+//  PauseScroll.swift
 //  CastIt
 //
-//  Created by Guilerme Barciki on 13/02/22.
+//  Created by Guilerme Barciki on 17/02/22.
 //
+
+
 
 import Foundation
 import UIKit
 
-class ContinueScrollView: UIView {
+class PauseScrollView: UIView {
     
     var gameVC: GameViewController
     
@@ -22,9 +24,23 @@ class ContinueScrollView: UIView {
         closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
     }
     
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    lazy var background: UIView = {
+        background = UIView()
+        background.frame = CGRect(x: -gameVC.scene.frame.midX,
+                                  y: -gameVC.scene.frame.midY,
+                                  width: gameVC.scene.frame.width,
+                                  height: gameVC.scene.frame.height)
+        background.alpha = 0
+        background.translatesAutoresizingMaskIntoConstraints = false
+        background.backgroundColor = .purple
+        
+        return background
+    }()
     
     lazy var scroll: UIImageView = {
         let scroll = UIImageView()
@@ -56,12 +72,13 @@ class ContinueScrollView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "X"), for: .normal)
         button.contentMode = .scaleAspectFit
-        button.backgroundColor = .red
+        
         
         return button
     }()
     
     func addContinueScroll() {
+        addSubview(background)
         addSubview(scroll)
         addSubview(continueText)
         addSubview(adButton)
@@ -77,6 +94,10 @@ class ContinueScrollView: UIView {
        
         
         NSLayoutConstraint.activate([
+//            background.centerXAnchor.constraint(equalTo: centerXAnchor),
+//            background.centerYAnchor.constraint(equalTo: centerYAnchor),
+            
+            
             scroll.centerXAnchor.constraint(equalTo: centerXAnchor),
             scroll.centerYAnchor.constraint(equalTo: centerYAnchor),
             scroll.heightAnchor.constraint(equalToConstant: 408 * 0.8),
@@ -84,8 +105,6 @@ class ContinueScrollView: UIView {
             
             closeButton.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 50),
             closeButton.trailingAnchor.constraint(equalTo: scroll.trailingAnchor, constant: -40),
-//            closeButton.heightAnchor.constraint(equalToConstant: 100),
-//            closeButton.widthAnchor.constraint(equalToConstant: 100),
 
             
             

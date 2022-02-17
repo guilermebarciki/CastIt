@@ -23,11 +23,25 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         return scroll
     }()
     
+    lazy var pauseScroll: PauseScrollView = {
+        let scroll = PauseScrollView(gameVC: self)
+        scroll.translatesAutoresizingMaskIntoConstraints = false
+        scroll.contentMode = .scaleAspectFit
+        return scroll
+    }()
+    
     lazy var gameOverScroll: GameOverScrollView = {
         let scroll = GameOverScrollView(gameVC: self)
         scroll.translatesAutoresizingMaskIntoConstraints = false
 //        scroll.contentMode = .scaleAspectFit
         return scroll
+    }()
+    
+    lazy var pauseButton: UIButton = {
+        let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(UIImage(named: "pauseButton"), for: .normal)
+        return button
     }()
     
     var scene:GameScene!
@@ -36,6 +50,15 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        view.addSubview(pauseButton)
+        NSLayoutConstraint.activate([
+            pauseButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
+            pauseButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+            pauseButton.heightAnchor.constraint(equalToConstant: 50),
+            pauseButton.widthAnchor.constraint(equalToConstant: 50)
+        ])
+        
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScsuper.init(frame: .zero)ene.sks'
             scene = SKScene(fileNamed: "GameScene") as? GameScene
@@ -69,12 +92,12 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         NSLayoutConstraint.activate([
             continueScroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             continueScroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            continueScroll.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
-//            continueScroll.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -150),
+            continueScroll.heightAnchor.constraint(equalToConstant: 408 * 0.8),
+            continueScroll.widthAnchor.constraint(equalToConstant: 537 * 0.8),
 //            continueScroll.leadingAnchor.constraint(equalTo: view.leadingAnchor),
 //            continueScroll.trailingAnchor.constraint(equalTo: view.trailingAnchor)
-            continueScroll.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.2),
-            continueScroll.widthAnchor.constraint(equalToConstant: view.bounds.height * 0.2 )
+//            continueScroll.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.2),
+//            continueScroll.widthAnchor.constraint(equalToConstant: view.bounds.height * 0.2 )
         ])
     }
     
@@ -98,6 +121,28 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         gameOverScroll.removeFromSuperview()
     }
     
+    func addPauseScroll() {
+        view.addSubview(pauseScroll)
+        
+        NSLayoutConstraint.activate([
+            pauseScroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            pauseScroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pauseScroll.heightAnchor.constraint(equalToConstant: view.bounds.height),
+            pauseScroll.widthAnchor.constraint(equalToConstant: view.bounds.width)
+        ])
+    }
+    
+    func removePauseScroll() {
+        pauseScroll.removeFromSuperview()
+    }
+    
+    func showPauseButton() {
+        pauseButton.isHidden = false
+    }
+    
+    func removePauseButton() {
+        pauseButton.isHidden = true
+    }
     
     func requestRewarded() {
         let request = GADRequest()

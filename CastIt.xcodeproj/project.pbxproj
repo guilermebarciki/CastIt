@@ -36,6 +36,7 @@
 		B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */; };
 		B2BFC77427BD3730003CF1FF /* MenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */; };
 		B2BFC78E27BDD699003CF1FF /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2BFC78D27BDD699003CF1FF /* PressStart2P.ttf */; };
+		B2BFC79027BEB510003CF1FF /* PauseScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */; };
 		B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */ = {isa = PBXBuildFile; fileRef = B2F8DF1827A8B2280014E52C /* sparkTouch.sks */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +73,7 @@
 		B27981D027A888B800E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
 		B2BFC78D27BDD699003CF1FF /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
+		B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScroll.swift; sourceTree = "<group>"; };
 		B2F8DF1827A8B2280014E52C /* sparkTouch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparkTouch.sks; sourceTree = "<group>"; };
 		F5BD59CE718C20FEE9EF0078 /* Pods-CastIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CastIt.debug.xcconfig"; path = "Target Support Files/Pods-CastIt/Pods-CastIt.debug.xcconfig"; sourceTree = "<group>"; };
 		F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CastIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				B218215027B991FC00938B61 /* ContinueScrollView.swift */,
 				B23E593427BB156900A7D73E /* GameOverScrollView.swift */,
 				B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */,
+				B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -349,6 +352,7 @@
 				B27981C727A888B500E21C5B /* GameScene.swift in Sources */,
 				323CEFF827A95B7F0081793A /* ScoreController.swift in Sources */,
 				32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */,
+				B2BFC79027BEB510003CF1FF /* PauseScroll.swift in Sources */,
 				B218213127B3F5B800938B61 /* Intro.swift in Sources */,
 				32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */,
 				B218213427B3F5C900938B61 /* SpellManager.swift in Sources */,

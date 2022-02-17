@@ -9,7 +9,7 @@ import Foundation
 import SpriteKit
 
 class EnemySpawner {
-    var projetile = SKSpriteNode(imageNamed: "gem1")
+    var projetile = SKSpriteNode(imageNamed: "1_0")
     let enemiesSprites:[SKSpriteNode] = [
         SKSpriteNode(imageNamed: "normal1"),
         SKSpriteNode(imageNamed: "elite1.png"),
@@ -188,12 +188,13 @@ class EnemySpawner {
                     }
                 }
                 else {
-                    projetile.size = CGSize(width: 50, height: 50)
+                    projetile.size = CGSize(width: 200, height: 200)
+                    projetile.zRotation = .pi
                     var tempProjetile = projetile.copy() as? SKSpriteNode
                     tempProjetile?.zPosition = 0
                     tempProjetile?.position = CGPoint(x: (parent.scene?.view?.bounds.maxX)!, y: (parent.scene?.view?.bounds.midY)!)
                     parent.addChild(tempProjetile as! SKNode)
-                    let moveAction = SKAction.move(to: CGPoint(x: enemy.sprite.position.x, y: enemy.sprite.position.y), duration: 0.1)
+                    let moveAction = SKAction.move(to: CGPoint(x: enemy.sprite.position.x, y: enemy.sprite.position.y), duration: 0.2)
                     tempProjetile?.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
                     
                     deadGuy = enemy
@@ -225,7 +226,7 @@ class EnemySpawner {
     
     func kill(enemyInxex: Int){
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             let e = self.enemySpawned.remove(at: enemyInxex)
             e.sprite.run(SKAction.sequence([SKAction.wait(forDuration: 0), SKAction.removeFromParent()]))
         }
