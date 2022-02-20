@@ -23,6 +23,8 @@ class PauseScrollView: UIView {
 //        adButton.addTarget(self, action: #selector(adPressed), for: .touchUpInside)
 //        closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
         continueButton.addTarget(self, action: #selector(continuePressed), for: .touchUpInside)
+        retryButton.addTarget(self, action: #selector(retryPressed), for: .touchUpInside)
+        menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
     }
     
     
@@ -46,7 +48,7 @@ class PauseScrollView: UIView {
     lazy var stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.translatesAutoresizingMaskIntoConstraints = false
-        stackView.backgroundColor = .green
+//        stackView.backgroundColor = .green
         stackView.axis = .vertical
         stackView.alignment = .leading
         stackView.spacing = 16
@@ -134,27 +136,7 @@ class PauseScrollView: UIView {
             scroll.widthAnchor.constraint(equalToConstant: 537 * 0.8),
             
             stackView.centerXAnchor.constraint(equalTo: scroll.centerXAnchor),
-            stackView.centerYAnchor.constraint(equalTo: scroll.centerYAnchor)
-//            stackView.topAnchor.constraint(equalTo: scroll.topAnchor),
-//            stackView.bottomAnchor.constraint(equalTo: scroll.bottomAnchor),
-//            stackView.trailingAnchor.constraint(equalTo: scroll.trailingAnchor),
-//            stackView.leadingAnchor.constraint(equalTo: scroll.leadingAnchor)
-            
-            
-//            closeButton.topAnchor.constraint(equalTo: scroll.topAnchor, constant: 50),
-//            closeButton.trailingAnchor.constraint(equalTo: scroll.trailingAnchor, constant: -40),
-//
-//
-//
-//            continueText.centerXAnchor.constraint(equalTo: scroll.centerXAnchor),
-//            continueText.heightAnchor.constraint(equalToConstant: 48 * 0.8),
-//            continueText.widthAnchor.constraint(equalToConstant: 336 * 0.8),
-//            continueText.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -40),
-//
-//            adButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-//            adButton.centerYAnchor.constraint(equalTo: centerYAnchor, constant: 30),
-//            adButton.heightAnchor.constraint(equalToConstant: 24 * 0.8),
-//            adButton.widthAnchor.constraint(equalToConstant: 240 * 0.8)
+            stackView.centerYAnchor.constraint(equalTo: scroll.centerYAnchor, constant:  -10)
         ])
 
         
@@ -171,10 +153,16 @@ class PauseScrollView: UIView {
     
     @objc func retryPressed(sender: UIButton!) {
         gameVC.pauseButton.isHidden = false
+        gameVC.scene.reset()
+        gameVC.removePauseScroll()
+        gameVC.scene.status = .intro
+
     }
     
     @objc func menuPressed(sender: UIButton!) {
-        
+        gameVC.scene.reset()
+        gameVC.removePauseScroll()
+        gameVC.dismiss(animated: true, completion: nil)
     }
     
    
