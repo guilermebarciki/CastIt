@@ -19,6 +19,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let timeForAD = TimeInterval(0)
     var score: Double = 0.0
     var canContinue = true
+    var isGamePaused = false
     var status: GameStatus = .intro {
         didSet {
             changeStatus()
@@ -66,7 +67,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func changeStatus() {
         switch status{
         case .intro:
-            gameVC.scene.unpauseGame()
+            unpauseGame()
             clearScreen()
             backgroundNode.show()
             magicGems.show()
@@ -92,6 +93,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameVC.addContinueScroll()
         
         case .gameOver:
+            scoreControler.updateScore()
             gameVC.addGameOverScroll()
             //clearScreen()
             AnalyticsManager.shared.log(event: .levelEnd)
@@ -189,8 +191,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             return
         }
         dTime = currentTime - lastUpdate
-        print("game is paused? \(scene?.view?.isPaused)")
-        if status == .playing && scene?.view?.isPaused == false {
+        lastUpdate = currentTime
+        print("game is paused? \(currentTime) \(self.isPaused)")
+        if (status == .playing && isGamePaused == false) {
+            print("rolando \(lastUpdate)")
             currentPlayTime += dTime
             scoreControler.update(dTime: dTime)
             enemy.update(dTime: dTime)
@@ -198,7 +202,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print(playTimeForAD)
         }
         score = scoreControler.showScore() //TODO
-        lastUpdate = currentTime
+        
+        print("current time \(currentTime)")
         
     }
     
@@ -215,12 +220,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func pauseGame() {
         print("** game paused")
-        view?.scene?.isPaused = true
+        isGamePaused = true
     }
     
     func unpauseGame() {
         print("** game unpaused")
-        view?.scene?.isPaused = false
+        isGamePaused = false
     }
     
 }

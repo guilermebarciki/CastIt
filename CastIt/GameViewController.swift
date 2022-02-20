@@ -58,6 +58,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             pauseButton.heightAnchor.constraint(equalToConstant: 50),
             pauseButton.widthAnchor.constraint(equalToConstant: 50)
         ])
+        pauseButton.addTarget(self, action: #selector(pauseButtonPressed), for: .touchUpInside)
         
         if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScsuper.init(frame: .zero)ene.sks'
@@ -85,7 +86,20 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         requestInterstitial()
         requestRewarded()
     }
-    
+    @objc func pauseButtonPressed(sender: UIButton!) {
+        print("buttonpressed")
+        self.scene.pauseGame()
+        
+        view.addSubview(pauseScroll)
+        NSLayoutConstraint.activate([
+            pauseScroll.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pauseScroll.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+           pauseScroll.heightAnchor.constraint(equalToConstant: 408 * 0.8),
+            pauseScroll.widthAnchor.constraint(equalToConstant: 537 * 0.8),
+        ])
+        pauseButton.isHidden = true
+        
+    }
     func addContinueScroll() {
         let viewHeight = view.bounds.height
         view.addSubview(continueScroll)
@@ -118,6 +132,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func removeGameOverScrollScroll() {
+        
         gameOverScroll.removeFromSuperview()
     }
     
@@ -133,6 +148,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func removePauseScroll() {
+        print("removing pause scroll")
         pauseScroll.removeFromSuperview()
     }
     
