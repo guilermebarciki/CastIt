@@ -29,6 +29,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var enemy: EnemySpawner!
     var spellManager: SpellManager!
     var scoreControler: ScoreController!
+    public var audioManager: AudioManager!
     
     //Drawing Nodes
     var backgroundNode: Background!
@@ -48,11 +49,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
         self.view?.isMultipleTouchEnabled = false
         //Vamos criar um padrão, essas classes que precisam dessa classe como referencia, precisam ser declaradas só uma vez
-        
+        audioManager = AudioManager(parent: self)
         magicTouch = SparkTouch(parent: self)
         spellManager = SpellManager(parent: self)
         scoreControler = ScoreController(parent: self)
-        enemy = EnemySpawner(parent: self)
+        enemy = EnemySpawner(parent: self, gameScene: self)
         
         //As classes visuais
         
@@ -144,6 +145,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first?.location(in: self) else { return }
+        
         switch status {
         case .intro:
             status = .playing

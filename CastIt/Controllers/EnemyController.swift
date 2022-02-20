@@ -21,6 +21,7 @@ class EnemySpawner {
     
    
     private var parent: SKNode
+    private var gameScene: GameScene
     
     var nextEnemy:TimeInterval     = 0
     
@@ -57,7 +58,7 @@ class EnemySpawner {
     
     var enemySpawned:[Enemy] = []
     
-    init (parent: SKNode) {
+    init (parent: SKNode, gameScene: GameScene) {
         // setting monsters textures
         for i in 1...8 {
             bossTextures.append(SKTexture(imageNamed: "4boss\(i).png"))
@@ -70,6 +71,7 @@ class EnemySpawner {
         }
         //
         self.parent = parent
+        self.gameScene = gameScene
         for i in 0..<lanes{
             let yPos = (parent.frame.height/CGFloat(lanes+3) * CGFloat(i)) + 150
             
@@ -181,6 +183,9 @@ class EnemySpawner {
         for (index, enemy) in enemySpawned.enumerated() {
             if enemy.deathArray == magic || enemy.deathArray == magic.reversed()
             {
+                gameScene.audioManager.playProjetileSound()
+                gameScene.audioManager.playImpactSound()
+                
                 if let dGuy = deadGuy {
                     if dGuy.sprite.position.x < enemy.sprite.position.x {
                         deadGuy = enemy
@@ -228,6 +233,7 @@ class EnemySpawner {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             let e = self.enemySpawned.remove(at: enemyInxex)
+            self.gameScene.audioManager.playDyingSound()
             e.sprite.run(SKAction.sequence([SKAction.wait(forDuration: 0), SKAction.removeFromParent()]))
         }
     }
