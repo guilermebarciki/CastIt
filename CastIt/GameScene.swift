@@ -25,7 +25,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             changeStatus()
         }
     }
-    
+
     //Controller Nodes
     var enemy: EnemySpawner!
     var spellManager: SpellManager!
