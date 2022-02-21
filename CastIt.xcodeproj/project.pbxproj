@@ -40,6 +40,8 @@
 		B2F830BE27C3B37C00826E79 /* dying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BB27C3B37C00826E79 /* dying.mp3 */; };
 		B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BC27C3B37C00826E79 /* impact.mp3 */; };
 		B2F830C027C3B37C00826E79 /* projetile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BD27C3B37C00826E79 /* projetile.mp3 */; };
+		B2F830C427C3C51F00826E79 /* cast it - tema.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C327C3C51F00826E79 /* cast it - tema.mp3 */; };
+		B2F830C627C3D2B800826E79 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C527C3D2B800826E79 /* PressStart2P.ttf */; };
 		B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */ = {isa = PBXBuildFile; fileRef = B2F8DF1827A8B2280014E52C /* sparkTouch.sks */; };
 /* End PBXBuildFile section */
 
@@ -80,7 +82,8 @@
 		B2F830BB27C3B37C00826E79 /* dying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dying.mp3; sourceTree = "<group>"; };
 		B2F830BC27C3B37C00826E79 /* impact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impact.mp3; sourceTree = "<group>"; };
 		B2F830BD27C3B37C00826E79 /* projetile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = projetile.mp3; sourceTree = "<group>"; };
-		B2F830C127C3B39300826E79 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
+		B2F830C327C3C51F00826E79 /* cast it - tema.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cast it - tema.mp3"; sourceTree = "<group>"; };
+		B2F830C527C3D2B800826E79 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
 		B2F8DF1827A8B2280014E52C /* sparkTouch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparkTouch.sks; sourceTree = "<group>"; };
 		F5BD59CE718C20FEE9EF0078 /* Pods-CastIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CastIt.debug.xcconfig"; path = "Target Support Files/Pods-CastIt/Pods-CastIt.debug.xcconfig"; sourceTree = "<group>"; };
 		F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CastIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -115,7 +118,7 @@
 		32505B0627B2FE11002E92FB /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				B2F830C127C3B39300826E79 /* PressStart2P.ttf */,
+				B2F830C527C3D2B800826E79 /* PressStart2P.ttf */,
 				B218212D27B3F5B800938B61 /* GameOver.swift */,
 				B218212E27B3F5B800938B61 /* Intro.swift */,
 				B218212F27B3F5B800938B61 /* MagicGems.swift */,
@@ -209,6 +212,7 @@
 		B2F830AF27C2C7EE00826E79 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				B2F830C227C3C4F600826E79 /* Soundtrack */,
 				B2F830B027C2C7F500826E79 /* SoundFx */,
 			);
 			path = Sounds;
@@ -222,6 +226,14 @@
 				B2F830BD27C3B37C00826E79 /* projetile.mp3 */,
 			);
 			path = SoundFx;
+			sourceTree = "<group>";
+		};
+		B2F830C227C3C4F600826E79 /* Soundtrack */ = {
+			isa = PBXGroup;
+			children = (
+				B2F830C327C3C51F00826E79 /* cast it - tema.mp3 */,
+			);
+			path = Soundtrack;
 			sourceTree = "<group>";
 		};
 		C9AFCC817CA7E0E9A122F2AA /* Pods */ = {
@@ -295,9 +307,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */,
+				B2F830C627C3D2B800826E79 /* PressStart2P.ttf in Resources */,
 				B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */,
 				B2F830BE27C3B37C00826E79 /* dying.mp3 in Resources */,
 				B27981CC27A888B500E21C5B /* Main.storyboard in Resources */,
+				B2F830C427C3C51F00826E79 /* cast it - tema.mp3 in Resources */,
 				B2F830C027C3B37C00826E79 /* projetile.mp3 in Resources */,
 				B27981C327A888B500E21C5B /* GameScene.sks in Resources */,
 				B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */,

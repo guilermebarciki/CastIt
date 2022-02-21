@@ -20,6 +20,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var score: Double = 0.0
     var canContinue = true
     var isGamePaused = false
+    var deviceType: DeviceType = .iPad
     var status: GameStatus = .intro {
         didSet {
             changeStatus()
@@ -238,5 +239,10 @@ enum GameStatus {
     case playing
     case wantContinue
     case gameOver
+}
+
+enum DeviceType {
+    case iPad
+    case Iphone
 }
 

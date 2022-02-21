@@ -160,7 +160,11 @@ class PauseScrollView: UIView {
     }
     
     @objc func menuPressed(sender: UIButton!) {
-        gameVC.scene.reset()
+        print("menu pressed")
+         if let controller = gameVC.menuController as? MenuSceneViewController {
+            print("tentnado toa musica")
+            controller.startBackgroundMusic()
+        }
         gameVC.removePauseScroll()
         gameVC.dismiss(animated: true, completion: nil)
     }

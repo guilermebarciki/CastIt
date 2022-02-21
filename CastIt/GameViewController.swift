@@ -14,7 +14,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
 
     private var interstitial: GADInterstitialAd?
     private var rewarded: GADRewardedAd?
-    
+    var menuController: MenuSceneViewController?
   
     lazy var continueScroll: ContinueScrollView = {
         let scroll = ContinueScrollView(gameVC: self)
@@ -50,7 +50,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.addSubview(pauseButton)
         NSLayoutConstraint.activate([
             pauseButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 20),
@@ -68,6 +67,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             
             if UIDevice.current.userInterfaceIdiom == .phone {
                 scene.scaleMode = .aspectFill
+                scene.deviceType = .Iphone
             }
             
             if UIDevice.current.userInterfaceIdiom == .pad {

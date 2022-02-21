@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import AVFoundation
 
 class MenuSceneViewController: UIViewController {
-
+    
+    var audioPlayer: AVAudioPlayer?
     
     lazy var scroll: UIImageView = {
         let scroll = UIImageView()
@@ -48,6 +50,7 @@ class MenuSceneViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        startBackgroundMusic()
         view.insertSubview(background, at: 0)
         
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
@@ -98,8 +101,9 @@ class MenuSceneViewController: UIViewController {
     }
   
     @objc func playPressed(sender: UIButton!) {
-        
+        stopMusic()
         let gameViewController: GameViewController? = self.storyboard?.instantiateViewController(withIdentifier: "GameViewController") as? GameViewController
+        gameViewController?.menuController = self
         let myNavigationController = UINavigationController(rootViewController: gameViewController!)
         myNavigationController.modalPresentationStyle = .fullScreen
         self.present(myNavigationController, animated: true, completion: nil)
@@ -109,7 +113,24 @@ class MenuSceneViewController: UIViewController {
         print("buttonpressed")
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
+    func startBackgroundMusic() {
+            if let bundle = Bundle.main.path(forResource: "cast it - tema", ofType: "mp3") {
+                let backgroundMusic = NSURL(fileURLWithPath: bundle)
+                do {
+                    audioPlayer = try AVAudioPlayer(contentsOf:backgroundMusic as URL)
+                    guard let audioPlayer = audioPlayer else { return }
+                    audioPlayer.numberOfLoops = -1 // for infinite times
+                    audioPlayer.prepareToPlay()
+                    audioPlayer.play()
+                } catch {
+                    print(error)
+                }
+            }
+        }
     
+    func stopMusic() {
+        audioPlayer?.stop()
+    }
 
 
 }
