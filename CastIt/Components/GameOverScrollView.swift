@@ -70,7 +70,8 @@ class GameOverScrollView: UIView {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "menu"), for: .normal)
-        
+        gameVC.scene.audioManager.stopMusic()
+        gameVC.menuController?.startBackgroundMusic()
         return button
     }()
     

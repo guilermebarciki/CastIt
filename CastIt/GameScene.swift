@@ -70,15 +70,21 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func changeStatus() {
         switch status{
         case .intro:
+//            audioManager.stopMusic()
             unpauseGame()
             clearScreen()
             backgroundNode.show()
             magicGems.show()
             introNode.show()
+            audioManager.introStatusMusic()
+            
             
         case .playing:
+//            audioManager.stopMusic()
             lineNode.clear() // IMPEDE DE CRASHAR
             clearScreen()
+            scoreControler.updateScore()
+            audioManager.playingStatusMusic()
             gameVC.showPauseButton()
             AnalyticsManager.shared.log(event: .levelStart)
             lineNode.show()
@@ -96,6 +102,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameVC.addContinueScroll()
         
         case .gameOver:
+            audioManager.gameoverStatusMusic()
             scoreControler.updateScore()
             gameVC.addGameOverScroll()
             //clearScreen()
@@ -230,6 +237,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func unpauseGame() {
         print("** game unpaused")
         isGamePaused = false
+    }
+    
+    func setUpAudio() {
+        
     }
     
 }
