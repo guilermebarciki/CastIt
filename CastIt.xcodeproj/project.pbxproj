@@ -35,12 +35,11 @@
 		B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B27981CD27A888B800E21C5B /* Assets.xcassets */; };
 		B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */; };
 		B2BFC77427BD3730003CF1FF /* MenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */; };
-		B2BFC78E27BDD699003CF1FF /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2BFC78D27BDD699003CF1FF /* PressStart2P.ttf */; };
 		B2BFC79027BEB510003CF1FF /* PauseScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */; };
 		B2F830AC27C2C08A00826E79 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F830AB27C2C08A00826E79 /* AudioManager.swift */; };
-		B2F830B627C2CBB500826E79 /* impact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830B527C2CBB500826E79 /* impact.mp3 */; };
-		B2F830B827C2CBDA00826E79 /* projetile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830B727C2CBDA00826E79 /* projetile.mp3 */; };
-		B2F830BA27C2CF2400826E79 /* dying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830B927C2CF2400826E79 /* dying.mp3 */; };
+		B2F830BE27C3B37C00826E79 /* dying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BB27C3B37C00826E79 /* dying.mp3 */; };
+		B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BC27C3B37C00826E79 /* impact.mp3 */; };
+		B2F830C027C3B37C00826E79 /* projetile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BD27C3B37C00826E79 /* projetile.mp3 */; };
 		B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */ = {isa = PBXBuildFile; fileRef = B2F8DF1827A8B2280014E52C /* sparkTouch.sks */; };
 /* End PBXBuildFile section */
 
@@ -76,12 +75,12 @@
 		B27981CD27A888B800E21C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B27981D027A888B800E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
-		B2BFC78D27BDD699003CF1FF /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
 		B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScroll.swift; sourceTree = "<group>"; };
 		B2F830AB27C2C08A00826E79 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
-		B2F830B527C2CBB500826E79 /* impact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = impact.mp3; path = "../../../../../Desktop/CastIt Sprites/soundFX/impact.mp3"; sourceTree = "<group>"; };
-		B2F830B727C2CBDA00826E79 /* projetile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = projetile.mp3; path = "../../../../../Desktop/CastIt Sprites/soundFX/projetile.mp3"; sourceTree = "<group>"; };
-		B2F830B927C2CF2400826E79 /* dying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = dying.mp3; path = "../../../../../Desktop/CastIt Sprites/soundFX/dying.mp3"; sourceTree = "<group>"; };
+		B2F830BB27C3B37C00826E79 /* dying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dying.mp3; sourceTree = "<group>"; };
+		B2F830BC27C3B37C00826E79 /* impact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impact.mp3; sourceTree = "<group>"; };
+		B2F830BD27C3B37C00826E79 /* projetile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = projetile.mp3; sourceTree = "<group>"; };
+		B2F830C127C3B39300826E79 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = PressStart2P.ttf; sourceTree = "<group>"; };
 		B2F8DF1827A8B2280014E52C /* sparkTouch.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = sparkTouch.sks; sourceTree = "<group>"; };
 		F5BD59CE718C20FEE9EF0078 /* Pods-CastIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CastIt.debug.xcconfig"; path = "Target Support Files/Pods-CastIt/Pods-CastIt.debug.xcconfig"; sourceTree = "<group>"; };
 		F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CastIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,7 +115,7 @@
 		32505B0627B2FE11002E92FB /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				B2BFC78D27BDD699003CF1FF /* PressStart2P.ttf */,
+				B2F830C127C3B39300826E79 /* PressStart2P.ttf */,
 				B218212D27B3F5B800938B61 /* GameOver.swift */,
 				B218212E27B3F5B800938B61 /* Intro.swift */,
 				B218212F27B3F5B800938B61 /* MagicGems.swift */,
@@ -218,9 +217,9 @@
 		B2F830B027C2C7F500826E79 /* SoundFx */ = {
 			isa = PBXGroup;
 			children = (
-				B2F830B727C2CBDA00826E79 /* projetile.mp3 */,
-				B2F830B527C2CBB500826E79 /* impact.mp3 */,
-				B2F830B927C2CF2400826E79 /* dying.mp3 */,
+				B2F830BB27C3B37C00826E79 /* dying.mp3 */,
+				B2F830BC27C3B37C00826E79 /* impact.mp3 */,
+				B2F830BD27C3B37C00826E79 /* projetile.mp3 */,
 			);
 			path = SoundFx;
 			sourceTree = "<group>";
@@ -295,13 +294,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2F830B627C2CBB500826E79 /* impact.mp3 in Resources */,
-				B2F830B827C2CBDA00826E79 /* projetile.mp3 in Resources */,
 				B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */,
-				B2BFC78E27BDD699003CF1FF /* PressStart2P.ttf in Resources */,
+				B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */,
+				B2F830BE27C3B37C00826E79 /* dying.mp3 in Resources */,
 				B27981CC27A888B500E21C5B /* Main.storyboard in Resources */,
+				B2F830C027C3B37C00826E79 /* projetile.mp3 in Resources */,
 				B27981C327A888B500E21C5B /* GameScene.sks in Resources */,
-				B2F830BA27C2CF2400826E79 /* dying.mp3 in Resources */,
 				B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */,
 				B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */,
 				3224A56727B2996500861243 /* GoogleService-Info.plist in Resources */,
