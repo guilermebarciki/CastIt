@@ -13,6 +13,7 @@
 		324CF4F227B32762001B38E3 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CF4F127B32762001B38E3 /* Background.swift */; };
 		324CF4F427B32AC1001B38E3 /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324CF4F327B32AC1001B38E3 /* Line.swift */; };
 		32505B0827B300C9002E92FB /* CustomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32505B0727B300C9002E92FB /* CustomScene.swift */; };
+		32C8884627C3D7B50034E078 /* MagicParticles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 32C8884527C3D7B50034E078 /* MagicParticles.sks */; };
 		32FD9FEB27A88AA500ECF64A /* Pentagon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE827A88AA500ECF64A /* Pentagon.swift */; };
 		32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FE927A88AA500ECF64A /* EnemyController.swift */; };
 		32FD9FED27A88AA500ECF64A /* Balancer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32FD9FEA27A88AA500ECF64A /* Balancer.swift */; };
@@ -51,6 +52,7 @@
 		324CF4F127B32762001B38E3 /* Background.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 		324CF4F327B32AC1001B38E3 /* Line.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
 		32505B0727B300C9002E92FB /* CustomScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomScene.swift; sourceTree = "<group>"; };
+		32C8884527C3D7B50034E078 /* MagicParticles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MagicParticles.sks; sourceTree = "<group>"; };
 		32FD9FE827A88AA500ECF64A /* Pentagon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pentagon.swift; sourceTree = "<group>"; };
 		32FD9FE927A88AA500ECF64A /* EnemyController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnemyController.swift; sourceTree = "<group>"; };
 		32FD9FEA27A88AA500ECF64A /* Balancer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Balancer.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 		32505B0627B2FE11002E92FB /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				32C8884527C3D7B50034E078 /* MagicParticles.sks */,
 				B2F830C127C3B39300826E79 /* PressStart2P.ttf */,
 				B218212D27B3F5B800938B61 /* GameOver.swift */,
 				B218212E27B3F5B800938B61 /* Intro.swift */,
@@ -303,6 +306,7 @@
 				B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */,
 				B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */,
 				3224A56727B2996500861243 /* GoogleService-Info.plist in Resources */,
+				32C8884627C3D7B50034E078 /* MagicParticles.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

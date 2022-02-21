@@ -10,6 +10,7 @@ import SpriteKit
 
 class Background: CustomScene {
     let sprite = SKSpriteNode(imageNamed: "moon-background")
+    var particles: SKEmitterNode = SKEmitterNode(fileNamed: "MagicParticles")!
     
     override init(parent: SKScene) {
         super.init(parent: parent)
@@ -17,6 +18,10 @@ class Background: CustomScene {
         sprite.zPosition = -3
         let sizeCoef = sprite.size.height / sprite.size.width
         sprite.size = CGSize(width: parent.size.width, height: parent.size.width * sizeCoef)
+        particles.zPosition = -2
+        particles.position = sprite.position
+        particles.position.y -= 250
+        node.addChild(particles)
         node.addChild(sprite)
     }
     
