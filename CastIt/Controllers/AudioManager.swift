@@ -33,6 +33,7 @@ class AudioManager {
             self.parent.run(self.impact)
         }
     }
+    
     func playDyingSound() {
         print("running fx")
         parent.run(dying)
