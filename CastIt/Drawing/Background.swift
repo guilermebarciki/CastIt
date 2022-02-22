@@ -37,6 +37,4 @@ class Background: CustomScene {
         node.addChild(particles)
         
     }
-    
-    
 }

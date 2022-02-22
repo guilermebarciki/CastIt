@@ -207,6 +207,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func showInterstitialAD() {
         if let interstitial = interstitial {
+            showingInterstitialAd = true
             print("teste - show interstitialAD")
             showingInterstitialAd = true
           interstitial.present(fromRootViewController: self)

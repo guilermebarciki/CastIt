@@ -73,7 +73,7 @@ class EnemySpawner {
         self.parent = parent
         self.gameScene = gameScene
         for i in 0..<lanes{
-            let yPos = (parent.frame.height/CGFloat(lanes+3) * CGFloat(i)) + 150
+            let yPos = ((parent.frame.height - 400)/CGFloat(lanes) * CGFloat(i)) + 150
             
             lanePos.append(CGPoint(x: -33, y: yPos))// x=-33
         }
@@ -215,6 +215,19 @@ class EnemySpawner {
                 if enemySpawned[dGuyIndex].level>0{
                     enemySpawned[dGuyIndex].newDeathArray()
                     enemySpawned[dGuyIndex].level -= 1
+                    
+                    let sprite = enemySpawned[dGuyIndex].sprite as! SKSpriteNode
+//                    sprite.blendMode = .add
+                    sprite.color = .red
+                    sprite.run(SKAction.sequence([
+                        SKAction.wait(forDuration: 0.2),
+                        SKAction.colorize(withColorBlendFactor: 0.5, duration: 0.1),
+                        SKAction.colorize(withColorBlendFactor: 0, duration: 0.1),
+                        SKAction.colorize(withColorBlendFactor: 0.5, duration: 0.1),
+                        SKAction.colorize(withColorBlendFactor: 0, duration: 0.1)
+                    ]))
+                    
+                    
                     return nil
                 }
                 else{
@@ -236,8 +249,21 @@ class EnemySpawner {
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             let e = self.enemySpawned.remove(at: enemyInxex)
+            let sprite = e.sprite as! SKSpriteNode
+            
             self.gameScene.audioManager.playDyingSound()
-            e.sprite.run(SKAction.sequence([SKAction.wait(forDuration: 0), SKAction.removeFromParent()]))
+            
+            sprite.color = .red
+            sprite.blendMode = .add
+            sprite.colorBlendFactor = 0.5
+            
+            sprite.run(SKAction.sequence([
+                SKAction.group([
+                    SKAction.rotate(byAngle: 1, duration: 0.2),
+                    SKAction.fadeOut(withDuration: 0.2)
+                ]),
+                SKAction.wait(forDuration: 0),
+                SKAction.removeFromParent()]))
         }
     }
     
@@ -286,6 +312,15 @@ class Enemy {
         sprite.physicsBody?.categoryBitMask = 1
         sprite.physicsBody?.contactTestBitMask = 2
         sprite.physicsBody?.affectedByGravity = false
+        if level == 0 {
+            pentagonNode.position.y += 100
+        }
+        else if level == 1 {
+            pentagonNode.position.y += 150
+        }
+        else if level == 2 {
+            pentagonNode.position.y += 175
+        }
         setupDeathArray()
         drawPentagon()
         newDeathArray()
@@ -359,7 +394,7 @@ class Enemy {
     
     
     private func drawPentagon(){
-        pentagonArray = Pentagon.draw(size: size, center: CGPoint(x: 0, y: 100))
+        pentagonArray = Pentagon.draw(size: size, center: CGPoint(x: 0, y: 0))
         
         for point in pentagonArray{
             let child = SKShapeNode(circleOfRadius: size/5)
@@ -369,17 +404,14 @@ class Enemy {
             child.zPosition = sprite.zPosition + 2
             pentagonNode.addChild(child)
         }
+        
         let bg = SKShapeNode(circleOfRadius: size * 1.5)
-        bg.position = pentagonNode.position
-        bg.position.y += 100
     
         bg.fillColor = .black
         bg.strokeColor = .black
         bg.alpha = 0.5
         bg.zPosition = sprite.zPosition + 1
         pentagonNode.addChild(bg)
-        
     }
-    
 }
 
