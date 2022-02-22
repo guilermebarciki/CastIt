@@ -191,7 +191,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func requestInterstitial() {
         // Load Interstitial AD
-        showingInterstitialAd = true
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
                                     request: request,
@@ -208,6 +207,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     
     func showInterstitialAD() {
         if let interstitial = interstitial {
+            showingInterstitialAd = true
             print("teste - show interstitialAD")
           interstitial.present(fromRootViewController: self)
         } else {
