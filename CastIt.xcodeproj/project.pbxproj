@@ -42,7 +42,6 @@
 		B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BC27C3B37C00826E79 /* impact.mp3 */; };
 		B2F830C027C3B37C00826E79 /* projetile.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BD27C3B37C00826E79 /* projetile.mp3 */; };
 		B2F830C427C3C51F00826E79 /* cast it - tema.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C327C3C51F00826E79 /* cast it - tema.mp3 */; };
-		B2F830C627C3D2B800826E79 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C527C3D2B800826E79 /* PressStart2P.ttf */; };
 		B2F830CA27C3DF3C00826E79 /* cast it - game over.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C727C3DF3B00826E79 /* cast it - game over.mp3 */; };
 		B2F830CB27C3DF3C00826E79 /* cast it - intro.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C827C3DF3B00826E79 /* cast it - intro.mp3 */; };
 		B2F830CC27C3DF3C00826E79 /* cast it - playing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830C927C3DF3B00826E79 /* cast it - playing.mp3 */; };
@@ -81,6 +80,7 @@
 		B27981CB27A888B500E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B27981CD27A888B800E21C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B27981D027A888B800E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B2B165C527C503C3004E90D4 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
 		B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScroll.swift; sourceTree = "<group>"; };
 		B2F830AB27C2C08A00826E79 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		B2F830BC27C3B37C00826E79 /* impact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impact.mp3; sourceTree = "<group>"; };
 		B2F830BD27C3B37C00826E79 /* projetile.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = projetile.mp3; sourceTree = "<group>"; };
 		B2F830C327C3C51F00826E79 /* cast it - tema.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cast it - tema.mp3"; sourceTree = "<group>"; };
-		B2F830C527C3D2B800826E79 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
+		B2F830C527C3D2B800826E79 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "/Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<absolute>"; };
 		B2F830C727C3DF3B00826E79 /* cast it - game over.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cast it - game over.mp3"; sourceTree = "<group>"; };
 		B2F830C827C3DF3B00826E79 /* cast it - intro.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cast it - intro.mp3"; sourceTree = "<group>"; };
 		B2F830C927C3DF3B00826E79 /* cast it - playing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "cast it - playing.mp3"; sourceTree = "<group>"; };
@@ -126,8 +126,8 @@
 		32505B0627B2FE11002E92FB /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				B2B165C527C503C3004E90D4 /* PressStart2P.ttf */,
 				32C8884527C3D7B50034E078 /* MagicParticles.sks */,
-				B2F830C127C3B39300826E79 /* PressStart2P.ttf */,
 				B218212D27B3F5B800938B61 /* GameOver.swift */,
 				B218212E27B3F5B800938B61 /* Intro.swift */,
 				B218212F27B3F5B800938B61 /* MagicGems.swift */,
@@ -182,6 +182,7 @@
 				B27981BE27A888B500E21C5B /* Products */,
 				C9AFCC817CA7E0E9A122F2AA /* Pods */,
 				621B947E2DC0A93F7F16CA2C /* Frameworks */,
+				B2B165C127C5026C004E90D4 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -216,6 +217,14 @@
 				B218213527B40CDD00938B61 /* LeaderBoardManager.swift */,
 			);
 			path = CastIt;
+			sourceTree = "<group>";
+		};
+		B2B165C127C5026C004E90D4 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				B2F830C527C3D2B800826E79 /* PressStart2P.ttf */,
+			);
+			name = "Recovered References";
 			sourceTree = "<group>";
 		};
 		B2F830AF27C2C7EE00826E79 /* Sounds */ = {
@@ -319,7 +328,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */,
-				B2F830C627C3D2B800826E79 /* PressStart2P.ttf in Resources */,
 				B2F830CB27C3DF3C00826E79 /* cast it - intro.mp3 in Resources */,
 				B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */,
 				B2F830BE27C3B37C00826E79 /* dying.mp3 in Resources */,
@@ -579,7 +587,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = QCP5R7WWX9;
+				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CastIt/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -596,7 +604,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = br.com.guilermebarciki.CastIt;
+				PRODUCT_BUNDLE_IDENTIFIER = "br.com.guilermebarciki.Cast-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
