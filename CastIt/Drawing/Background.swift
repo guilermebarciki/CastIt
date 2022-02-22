@@ -35,7 +35,7 @@ class Background: CustomScene {
         particles.position = sprite.position
         particles.position.y -= 250
         node.addChild(particles)
-        node.addChild(sprite)
+        
     }
     
     
