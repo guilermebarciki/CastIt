@@ -24,6 +24,4 @@ class Background: CustomScene {
         node.addChild(particles)
         node.addChild(sprite)
     }
-    
-    
 }
