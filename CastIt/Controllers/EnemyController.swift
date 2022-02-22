@@ -197,9 +197,12 @@ class EnemySpawner {
                     projetile.zRotation = .pi
                     var tempProjetile = projetile.copy() as? SKSpriteNode
                     tempProjetile?.zPosition = 0
-                    tempProjetile?.position = CGPoint(x: (parent.scene?.view?.bounds.maxX)!, y: (parent.scene?.view?.bounds.midY)!)
+                    tempProjetile?.position = CGPoint(x: (parent.scene!.frame.width * 4)/5, y: parent.scene!.frame.height / 2)
+                    tempProjetile?.anchorPoint = CGPoint(x: 0, y: 0.5)
+                    
+                    
                     parent.addChild(tempProjetile as! SKNode)
-                    let moveAction = SKAction.move(to: CGPoint(x: enemy.sprite.position.x, y: enemy.sprite.position.y), duration: 0.2)
+                    let moveAction = SKAction.move(to: CGPoint(x: enemy.sprite.position.x, y: enemy.sprite.position.y), duration: 0.3)
                     tempProjetile?.run(SKAction.sequence([moveAction, SKAction.removeFromParent()]))
                     
                     deadGuy = enemy

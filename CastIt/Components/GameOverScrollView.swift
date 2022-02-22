@@ -71,7 +71,6 @@ class GameOverScrollView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "menu"), for: .normal)
         gameVC.scene.audioManager.stopMusic()
-        gameVC.menuController?.startBackgroundMusic()
         return button
     }()
     
@@ -130,6 +129,8 @@ class GameOverScrollView: UIView {
         print("buttonpressed")
         gameVC.scene.reset()
         gameVC.removeGameOverScrollScroll()
+        gameVC.scene.audioManager.stopMusic()
+        gameVC.menuController?.startBackgroundMusic()
         gameVC.dismiss(animated: true, completion: nil)
     }
     func addGameOverScroll() {

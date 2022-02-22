@@ -57,6 +57,7 @@ class AudioManager {
     
     func gameoverStatusMusic() {
         stopMusic()
+        print("**** game over music")
         if let bundle = Bundle.main.path(forResource: "cast it - game over", ofType: "mp3") {
             let backgroundMusic = NSURL(fileURLWithPath: bundle)
             do {

@@ -51,6 +51,7 @@ class MenuSceneViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         startBackgroundMusic()
+        print("**** menuscene did load")
         view.insertSubview(background, at: 0)
         
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
@@ -114,6 +115,7 @@ class MenuSceneViewController: UIViewController {
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
     func startBackgroundMusic() {
+        print("**** backgroundmusic on menuSceneController")
             if let bundle = Bundle.main.path(forResource: "cast it - tema", ofType: "mp3") {
                 let backgroundMusic = NSURL(fileURLWithPath: bundle)
                 do {

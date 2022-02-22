@@ -37,6 +37,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     var backgroundNode: Background!
     var magicGems: MagicGems!
     var introNode: Intro!
+    var wizardNode: Wizard!
     
     var magicTouch: SparkTouch!
     var lineNode: Line!
@@ -60,7 +61,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         //As classes visuais
         
         introNode = Intro(parent: self)
-//        introNode.show()
+        wizardNode = Wizard(parent: self, position: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2))
         backgroundNode = Background(parent: self)
         lineNode = Line(parent: self)
         magicGems = MagicGems(parent: self, gemPosition: Pentagon.draw(size: 155, center: CGPoint(x: (frame.width * 4)/5, y: frame.height / 2)))
@@ -76,6 +77,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             backgroundNode.show()
             magicGems.show()
             introNode.show()
+            audioManager.stopMusic()
             audioManager.introStatusMusic()
             
             
@@ -83,7 +85,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
 //            audioManager.stopMusic()
             lineNode.clear() // IMPEDE DE CRASHAR
             clearScreen()
+            wizardNode.show()
             scoreControler.updateScore()
+            audioManager.stopMusic()
             audioManager.playingStatusMusic()
             gameVC.showPauseButton()
             AnalyticsManager.shared.log(event: .levelStart)
@@ -102,7 +106,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             gameVC.addContinueScroll()
         
         case .gameOver:
-            audioManager.gameoverStatusMusic()
+            audioManager.stopMusic()
             scoreControler.updateScore()
             gameVC.addGameOverScroll()
             //clearScreen()
@@ -111,6 +115,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             AnalyticsManager.shared.log(event: .levelCastMisses(castMisses))
             AnalyticsManager.shared.log(event: .levelScorePerSecond(score/currentPlayTime))
             AnalyticsManager.shared.log(event: .levelTime(currentPlayTime))
+            audioManager.gameoverStatusMusic()
             //reset()
             
             if playTimeForAD >= timeForAD {

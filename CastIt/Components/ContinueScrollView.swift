@@ -112,9 +112,10 @@ class ContinueScrollView: UIView {
     @objc func closePressed(sender: UIButton!) {
         print("closed pressed")
         gameVC.scene.scoreControler.updateScore()
+        
         gameVC.scene.status = .gameOver
         gameVC.removeContinueScroll()
-        gameVC.scene.audioManager.stopMusic()
+        
     }
     
 }

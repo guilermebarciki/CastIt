@@ -35,6 +35,8 @@
 		B27981CC27A888B500E21C5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CA27A888B500E21C5B /* Main.storyboard */; };
 		B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B27981CD27A888B800E21C5B /* Assets.xcassets */; };
 		B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */; };
+		B2B165C827C50895004E90D4 /* Wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B165C727C50895004E90D4 /* Wizard.swift */; };
+		B2B165CA27C512D2004E90D4 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2B165C927C512D2004E90D4 /* PressStart2P.ttf */; };
 		B2BFC77427BD3730003CF1FF /* MenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */; };
 		B2BFC79027BEB510003CF1FF /* PauseScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */; };
 		B2F830AC27C2C08A00826E79 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F830AB27C2C08A00826E79 /* AudioManager.swift */; };
@@ -80,7 +82,8 @@
 		B27981CB27A888B500E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B27981CD27A888B800E21C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B27981D027A888B800E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B2B165C527C503C3004E90D4 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
+		B2B165C727C50895004E90D4 /* Wizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wizard.swift; sourceTree = "<group>"; };
+		B2B165C927C512D2004E90D4 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
 		B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScroll.swift; sourceTree = "<group>"; };
 		B2F830AB27C2C08A00826E79 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
@@ -126,7 +129,7 @@
 		32505B0627B2FE11002E92FB /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				B2B165C527C503C3004E90D4 /* PressStart2P.ttf */,
+				B2B165C927C512D2004E90D4 /* PressStart2P.ttf */,
 				32C8884527C3D7B50034E078 /* MagicParticles.sks */,
 				B218212D27B3F5B800938B61 /* GameOver.swift */,
 				B218212E27B3F5B800938B61 /* Intro.swift */,
@@ -135,6 +138,7 @@
 				32FD9FE827A88AA500ECF64A /* Pentagon.swift */,
 				32505B0727B300C9002E92FB /* CustomScene.swift */,
 				324CF4F327B32AC1001B38E3 /* Line.swift */,
+				B2B165C727C50895004E90D4 /* Wizard.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -327,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2B165CA27C512D2004E90D4 /* PressStart2P.ttf in Resources */,
 				B2F8DF1927A8B2280014E52C /* sparkTouch.sks in Resources */,
 				B2F830CB27C3DF3C00826E79 /* cast it - intro.mp3 in Resources */,
 				B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */,
@@ -428,6 +433,7 @@
 				B23A6FD127AC109000CD9F26 /* SparkTouch.swift in Sources */,
 				32FD9FEC27A88AA500ECF64A /* EnemyController.swift in Sources */,
 				32505B0827B300C9002E92FB /* CustomScene.swift in Sources */,
+				B2B165C827C50895004E90D4 /* Wizard.swift in Sources */,
 				B218213027B3F5B800938B61 /* GameOver.swift in Sources */,
 				B27981C927A888B500E21C5B /* GameViewController.swift in Sources */,
 				324CF4F427B32AC1001B38E3 /* Line.swift in Sources */,
