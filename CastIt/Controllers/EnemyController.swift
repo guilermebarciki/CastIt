@@ -121,7 +121,7 @@ class EnemySpawner {
                 }
             }
             new.position = lanePos[randomLane]
-            new.zPosition = zPos
+//            new.zPosition = zPos
             speed += Double.random(in: -5...5)
             print("Speed: \(speed)")
             enemySpawned.append(Enemy(sprite: new, lane: randomLane, level: level, speed: speed, controller: self))
@@ -276,6 +276,8 @@ class Enemy {
         self.level = level
         self.speed = speed
         self.controller = controller
+        
+        self.sprite.zPosition = controller.zPos + CGFloat(abs(lane - 3) * 1000)
         sprite.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: 50, height: 50))
         sprite.physicsBody?.collisionBitMask = 0
         sprite.physicsBody?.categoryBitMask = 1
@@ -348,7 +350,7 @@ class Enemy {
         line.lineJoin = .round
         line.lineCap = .round
         line.name = "trace"
-        line.zPosition = sprite.zPosition + 2
+        line.zPosition = sprite.zPosition + 3
         pentagonNode.addChild(line)
     }
     
@@ -361,7 +363,7 @@ class Enemy {
             child.position = point
             child.fillColor = .red
             child.strokeColor = .red
-            child.zPosition = sprite.zPosition + 1
+            child.zPosition = sprite.zPosition + 2
             pentagonNode.addChild(child)
         }
         let bg = SKShapeNode(circleOfRadius: size * 1.5)
@@ -371,7 +373,7 @@ class Enemy {
         bg.fillColor = .black
         bg.strokeColor = .black
         bg.alpha = 0.5
-        bg.zPosition = sprite.zPosition - 1
+        bg.zPosition = sprite.zPosition + 1
         pentagonNode.addChild(bg)
         
     }
