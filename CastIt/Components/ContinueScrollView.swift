@@ -56,7 +56,6 @@ class ContinueScrollView: UIView {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "X"), for: .normal)
         button.contentMode = .scaleAspectFit
-        button.backgroundColor = .red
         
         return button
     }()

@@ -39,6 +39,8 @@
 		B2B165CA27C512D2004E90D4 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2B165C927C512D2004E90D4 /* PressStart2P.ttf */; };
 		B2BFC77427BD3730003CF1FF /* MenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */; };
 		B2BFC79027BEB510003CF1FF /* PauseScroll.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */; };
+		B2D0AC7527C67CFC00FBC5A3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D0AC7427C67CFB00FBC5A3 /* AdSupport.framework */; };
+		B2D0AC7727C67D0700FBC5A3 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2D0AC7627C67D0700FBC5A3 /* AppTrackingTransparency.framework */; };
 		B2F830AC27C2C08A00826E79 /* AudioManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F830AB27C2C08A00826E79 /* AudioManager.swift */; };
 		B2F830BE27C3B37C00826E79 /* dying.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BB27C3B37C00826E79 /* dying.mp3 */; };
 		B2F830BF27C3B37C00826E79 /* impact.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B2F830BC27C3B37C00826E79 /* impact.mp3 */; };
@@ -86,6 +88,8 @@
 		B2B165C927C512D2004E90D4 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
 		B2BFC78F27BEB50F003CF1FF /* PauseScroll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScroll.swift; sourceTree = "<group>"; };
+		B2D0AC7427C67CFB00FBC5A3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		B2D0AC7627C67D0700FBC5A3 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		B2F830AB27C2C08A00826E79 /* AudioManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioManager.swift; sourceTree = "<group>"; };
 		B2F830BB27C3B37C00826E79 /* dying.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dying.mp3; sourceTree = "<group>"; };
 		B2F830BC27C3B37C00826E79 /* impact.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = impact.mp3; sourceTree = "<group>"; };
@@ -106,7 +110,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E84F27D0FD784038CE586C7 /* Pods_CastIt.framework in Frameworks */,
+				B2D0AC7727C67D0700FBC5A3 /* AppTrackingTransparency.framework in Frameworks */,
 				B218212B27B3E93400938B61 /* GameKit.framework in Frameworks */,
+				B2D0AC7527C67CFC00FBC5A3 /* AdSupport.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +152,8 @@
 		621B947E2DC0A93F7F16CA2C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B2D0AC7627C67D0700FBC5A3 /* AppTrackingTransparency.framework */,
+				B2D0AC7427C67CFB00FBC5A3 /* AdSupport.framework */,
 				B218212A27B3E93400938B61 /* GameKit.framework */,
 				F8FB7A9BAC2B70F7C7B81A19 /* Pods_CastIt.framework */,
 			);
@@ -604,7 +612,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -640,7 +648,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

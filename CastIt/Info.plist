@@ -159,5 +159,26 @@
 	<array>
 		<string>PressStart2P.ttf</string>
 	</array>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb957280508254108</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>957280508254108</string>
+	<key>FacebookDisplayName</key>
+	<string>CastIt</string>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<string>FALSE</string>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<false/>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>Need tracking for analytics and to deliver custom ads</string>
 </dict>
 </plist>
