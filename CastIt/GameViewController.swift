@@ -163,7 +163,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     func requestRewarded() {
         let request = GADRequest()
         GADRewardedAd.load(
-            withAdUnitID: "ca-app-pub-3940256099942544/1712485313",
+            withAdUnitID: "ca-app-pub-4847648071121480/6672633254",
             request: request, completionHandler: { [self] ad, error in
                 if let error = error {
                     print("Failed to load rewarded ad with error: \(error.localizedDescription)")
@@ -192,7 +192,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     func requestInterstitial() {
         // Load Interstitial AD
         let request = GADRequest()
-        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-3940256099942544/4411468910",
+        GADInterstitialAd.load(withAdUnitID:"ca-app-pub-4847648071121480/3965567108",
                                     request: request,
                           completionHandler: { [self] ad, error in
                             if let error = error {
