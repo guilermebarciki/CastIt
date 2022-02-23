@@ -119,7 +119,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             //reset()
             
             if playTimeForAD >= timeForAD {
-                gameVC.showInterstitialAD()
+//                gameVC.showInterstitialAD()
                 playTimeForAD = 0
             }
             LeaderboardManager.shared.updateScore(with: Int(score * 10)) //TODO fix * 10

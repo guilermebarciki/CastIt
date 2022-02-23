@@ -7,6 +7,7 @@ target 'CastIt' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'FBSDKCoreKit'
   # Pods for CastIt
 
 end
