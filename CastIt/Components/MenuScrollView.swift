@@ -88,14 +88,14 @@ class MenuScrollView: UIView {
         ])
 
         
-        print("scrol height \(scroll.heightAnchor)")
+        
     }
     @objc func playPressed(sender: UIButton!) {
-        print("action")
+        
     }
     
     @objc func leaderBoardPressed(sender: UIButton!) {
-        print("buttonpressed")
+        
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: menuVC)
     }
     func addGameOverScroll() {

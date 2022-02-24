@@ -33,11 +33,25 @@ class ScoreController: CustomScene {
     
     override init(parent: SKScene){
         scoreLabel = SKLabelNode()
+        scoreLabel.fontName = "PressStart2P"
+        scoreLabel.fontSize = CGFloat(30)
+        scoreLabel.horizontalAlignmentMode = .left
+        scoreLabel.fontColor = .systemGray6//UIColor(named: "gameOverColor")
         super.init(parent: parent)
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 1
         formatter.numberStyle = .decimal
-        scoreLabel.position = CGPoint(x: parent.frame.width * 3 / 4, y: parent.frame.height * 4 / 5)
+        let gameScene = parent as? GameScene
+        if gameScene?.deviceType == .Iphone {
+            scoreLabel.position = CGPoint(x: parent.frame.width * 0.65, y: parent.frame.height * 0.8)
+            print("*** iphone")
+            }
+        if gameScene?.deviceType == .iPad {
+            print("*** ipad")
+            scoreLabel.position = CGPoint(x: parent.frame.width * 0.65, y: parent.frame.height * 0.9 )
+            }
+        
+        
         scoreLabel.zPosition = CGFloat.infinity
         node.addChild(scoreLabel)
     }
@@ -86,7 +100,7 @@ class ScoreController: CustomScene {
         updateScore()
     }
     func updateScore(){
-        scoreLabel.text = formatter.string(from: scoreNumber as NSNumber)
+        scoreLabel.text = "Score: \(Int(scoreNumber))"//formatter.string(from: Int(scoreNumber) as NSNumber)
     }
     func showScore() -> Double {
         return scoreNumber

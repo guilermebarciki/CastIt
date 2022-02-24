@@ -20,8 +20,6 @@ class PauseScrollView: UIView {
         super.init(frame: .zero)
 //        gameVC.scene.pauseGame()
         addContinueScroll()
-//        adButton.addTarget(self, action: #selector(adPressed), for: .touchUpInside)
-//        closeButton.addTarget(self, action: #selector(closePressed), for: .touchUpInside)
         continueButton.addTarget(self, action: #selector(continuePressed), for: .touchUpInside)
         retryButton.addTarget(self, action: #selector(retryPressed), for: .touchUpInside)
         menuButton.addTarget(self, action: #selector(menuPressed), for: .touchUpInside)
@@ -140,11 +138,11 @@ class PauseScrollView: UIView {
         ])
 
         
-        print("scrol height \(scroll.heightAnchor)")
+        
     }
     
     @objc func continuePressed(sender: UIButton!) {
-        print("continue pressed")
+        
         gameVC.pauseButton.isHidden = false
         gameVC.scene.unpauseGame()
         
@@ -160,9 +158,9 @@ class PauseScrollView: UIView {
     }
     
     @objc func menuPressed(sender: UIButton!) {
-        print("menu pressed")
+        
         if let controller = gameVC.menuController {
-            print("tentnado toa musica")
+            
             gameVC.scene.audioManager.stopMusic()
             controller.startBackgroundMusic()
         }

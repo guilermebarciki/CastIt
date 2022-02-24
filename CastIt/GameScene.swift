@@ -71,11 +71,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func changeStatus() {
         switch status{
         case .intro:
-//            audioManager.stopMusic()
+
             unpauseGame()
             clearScreen()
             backgroundNode.show()
-            magicGems.show()
+//            magicGems.show()
             introNode.show()
             audioManager.stopMusic()
             audioManager.introStatusMusic()
@@ -208,7 +208,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         dTime = currentTime - lastUpdate
         lastUpdate = currentTime
-        print("game is paused? \(currentTime) \(self.isPaused)")
+        
         if (status == .playing && isGamePaused == false) {
             print("rolando \(lastUpdate)")
             currentPlayTime += dTime
@@ -219,12 +219,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         score = scoreControler.showScore() //TODO
         
-        print("current time \(currentTime)")
+        
         
     }
     
     func getReward(){
-        print(" teste ** reward")
+        
         if status == .wantContinue && canContinue {
             gameVC.removeContinueScroll()
             canContinue = false

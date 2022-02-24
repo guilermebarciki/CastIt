@@ -100,16 +100,16 @@ class ContinueScrollView: UIView {
         ])
 
         
-        print("scrol height \(scroll.heightAnchor)")
+        
     }
     @objc func adPressed(sender: UIButton!) {
-        print("buttonpressed")
+        
         gameVC.scene.pauseGame()
         gameVC.showRewardedAD()
         gameVC.scene.audioManager.stopMusic()
     }
     @objc func closePressed(sender: UIButton!) {
-        print("closed pressed")
+        
         gameVC.scene.scoreControler.updateScore()
         
         gameVC.scene.status = .gameOver

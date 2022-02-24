@@ -115,10 +115,10 @@ class GameOverScrollView: UIView {
         ])
 
         
-        print("scrol height \(scroll.heightAnchor)")
+        
     }
     @objc func tryAgainPressed(sender: UIButton!) {
-        print("buttonpressed")
+        
         gameVC.scene.reset()
         gameVC.removeGameOverScrollScroll()
         gameVC.scene.clearScreen()
@@ -126,7 +126,7 @@ class GameOverScrollView: UIView {
     }
     
     @objc func menuPressed(sender: UIButton!) {
-        print("buttonpressed")
+        
         gameVC.scene.reset()
         gameVC.removeGameOverScrollScroll()
         gameVC.scene.audioManager.stopMusic()
