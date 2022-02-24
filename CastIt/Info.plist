@@ -2,8 +2,27 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>fb957280508254108</string>
+			</array>
+		</dict>
+	</array>
+	<key>FacebookAdvertiserIDCollectionEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookAppID</key>
+	<string>957280508254108</string>
+	<key>FacebookAutoLogAppEventsEnabled</key>
+	<string>FALSE</string>
+	<key>FacebookDisplayName</key>
+	<string>CastIt</string>
 	<key>GADApplicationIdentifier</key>
 	<string>ca-app-pub-4847648071121480~2920078741</string>
+	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
+	<false/>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
@@ -159,26 +178,7 @@
 	<array>
 		<string>PressStart2P.ttf</string>
 	</array>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>fb957280508254108</string>
-			</array>
-		</dict>
-	</array>
-	<key>FacebookAppID</key>
-	<string>957280508254108</string>
-	<key>FacebookDisplayName</key>
-	<string>CastIt</string>
-	<key>FacebookAdvertiserIDCollectionEnabled</key>
-	<string>FALSE</string>
-	<key>FacebookAutoLogAppEventsEnabled</key>
-	<string>FALSE</string>
-	<key>GOOGLE_ANALYTICS_IDFV_COLLECTION_ENABLED</key>
-	<false/>
 	<key>NSUserTrackingUsageDescription</key>
-	<string>Need tracking for analytics and to deliver custom ads</string>
+	<string>&gt;Need tracking for analytics and to deliver custom ads</string>
 </dict>
 </plist>
