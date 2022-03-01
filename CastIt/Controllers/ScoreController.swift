@@ -36,7 +36,7 @@ class ScoreController: CustomScene {
         scoreLabel.fontName = "PressStart2P"
         scoreLabel.fontSize = CGFloat(30)
         scoreLabel.horizontalAlignmentMode = .left
-        scoreLabel.fontColor = .systemGray6//UIColor(named: "gameOverColor")
+        scoreLabel.fontColor = .white
         super.init(parent: parent)
         formatter.minimumFractionDigits = 0
         formatter.maximumFractionDigits = 1

@@ -178,7 +178,5 @@
 	<array>
 		<string>PressStart2P.ttf</string>
 	</array>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>&gt;Need tracking for analytics and to deliver custom ads</string>
 </dict>
 </plist>

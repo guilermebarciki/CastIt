@@ -12,6 +12,7 @@ import GoogleMobileAds
 
 class GameViewController: UIViewController, GADFullScreenContentDelegate {
 
+    
     private var interstitial: GADInterstitialAd?
     private var rewarded: GADRewardedAd?
     var menuController: MenuSceneViewController?
@@ -86,6 +87,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         requestInterstitial()
         requestRewarded()
     }
+    
     @objc func pauseButtonPressed(sender: UIButton!) {
         print("buttonpressed")
         self.scene.pauseGame()
