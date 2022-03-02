@@ -25,7 +25,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }()
     private let banner: GADBannerView = {
         let banner = GADBannerView()
-        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"//"ca-app-pub-4847648071121480/2504562618"
+        banner.adUnitID = "ca-app-pub-4847648071121480/2504562618"
         banner.load(GADRequest())
         return banner
     }()
@@ -48,7 +48,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "pauseButton"), for: .normal)
-        button.alpha = 0.5
+        button.alpha = 0.8
         return button
     }()
     
