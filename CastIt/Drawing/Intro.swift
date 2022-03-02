@@ -27,8 +27,8 @@ class Intro: CustomScene {
         
 
         let sizeCoef =  9.0/16.0
-        sprite.size = CGSize(width: parent.frame.width ?? CGFloat(0),
-                                height: (parent.frame.width ?? CGFloat(0)) * CGFloat(sizeCoef))
+        sprite.size = CGSize(width: parent.frame.width * 0.8 ?? CGFloat(0) ,
+                             height: (parent.frame.width ?? CGFloat(0)) * CGFloat(sizeCoef) * 0.8)
 //        videoNode.inputView?.contentMode = .scaleAspectFit
 //        node.addChild(videoNode)
 ////        videoNode.play()

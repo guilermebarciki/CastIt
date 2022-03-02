@@ -73,7 +73,7 @@ class EnemySpawner {
         self.parent = parent
         self.gameScene = gameScene
         for i in 0..<lanes{
-            let yPos = ((parent.frame.height - 400)/CGFloat(lanes) * CGFloat(i)) + 150
+            let yPos = ((parent.frame.height - 400)/CGFloat(Double(lanes) * 1.2) * CGFloat(i)) + 250
             
             lanePos.append(CGPoint(x: -33, y: yPos))// x=-33
         }
@@ -183,7 +183,9 @@ class EnemySpawner {
         for (index, enemy) in enemySpawned.enumerated() {
             if enemy.deathArray == magic || enemy.deathArray == magic.reversed()
             {
-                HapticManager.shared.vibrate(for: .heavy) //call vibration
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                                    HapticManager.shared.vibrate(for: .heavy) //call vibration
+                                }
                 gameScene.audioManager.playProjetileSound()
                 gameScene.audioManager.playImpactSound()
                 

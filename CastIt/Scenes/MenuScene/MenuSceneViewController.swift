@@ -7,10 +7,18 @@
 
 import UIKit
 import AVFoundation
+import GoogleMobileAds
 
 class MenuSceneViewController: UIViewController {
     
     var audioPlayer: AVAudioPlayer?
+    
+    private let banner: GADBannerView = {
+        let banner = GADBannerView()
+        banner.adUnitID = "ca-app-pub-3940256099942544/2934735716"//"ca-app-pub-4847648071121480/2504562618"
+        banner.load(GADRequest())
+        return banner
+    }()
     
     lazy var scroll: UIImageView = {
         let scroll = UIImageView()
@@ -25,8 +33,6 @@ class MenuSceneViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "startGame"), for: .normal)
-
-        
         return button
     }()
     
@@ -34,7 +40,6 @@ class MenuSceneViewController: UIViewController {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(UIImage(named: "LeaderBoard"), for: .normal)
-        
         return button
     }()
     
@@ -55,10 +60,22 @@ class MenuSceneViewController: UIViewController {
         view.insertSubview(background, at: 0)
         
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
-        
+        banner.rootViewController = self
         addSubviews()
         playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         leaderBoardButton.addTarget(self, action: #selector(leaderBoardPressed), for: .touchUpInside)
+        
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        banner.frame = CGRect(x: 0,
+                              y: view.frame.height - 50,//* 0.9,
+                              width: view.frame.size.width / 2,
+                              height: 50//view.frame.size.height * 0.9
+        )
     }
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -70,10 +87,9 @@ class MenuSceneViewController: UIViewController {
     
     func addSubviews() {
         view.addSubview(scroll)
-        
-        
         view.addSubview(playButton)
         view.addSubview(leaderBoardButton)
+        view.addSubview(banner)
         setConstraints()
     }
     
@@ -102,6 +118,7 @@ class MenuSceneViewController: UIViewController {
             background.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             background.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
+       
     }
   
     @objc func playPressed(sender: UIButton!) {
@@ -110,11 +127,12 @@ class MenuSceneViewController: UIViewController {
         gameViewController?.menuController = self
         let myNavigationController = UINavigationController(rootViewController: gameViewController!)
         myNavigationController.modalPresentationStyle = .fullScreen
+        banner.removeFromSuperview()
         self.present(myNavigationController, animated: true, completion: nil)
     }
     
     @objc func leaderBoardPressed(sender: UIButton!) {
-        
+        banner.removeFromSuperview()
         LeaderboardManager.shared.navigateToLeaderboard(presentingVC: self)
     }
     func startBackgroundMusic() {

@@ -8,6 +8,7 @@
 import Foundation
 import Foundation
 import UIKit
+import GoogleMobileAds
 
 class MenuScrollView: UIView {
     
