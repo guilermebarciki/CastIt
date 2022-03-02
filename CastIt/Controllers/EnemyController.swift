@@ -183,6 +183,7 @@ class EnemySpawner {
         for (index, enemy) in enemySpawned.enumerated() {
             if enemy.deathArray == magic || enemy.deathArray == magic.reversed()
             {
+                HapticManager.shared.vibrate(for: .heavy) //call vibration
                 gameScene.audioManager.playProjetileSound()
                 gameScene.audioManager.playImpactSound()
                 

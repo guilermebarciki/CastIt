@@ -37,6 +37,7 @@ class SpellManager {
             if gem.contains(touch.location(in: parent)) {
                 castingTime += dTime
                 if !(gemArray.contains(i) ) {
+                    HapticManager.shared.vibrate(for: .light)
                     arrayCGPoint.append(gem.position)
                     gemArray.append(i)
                 }

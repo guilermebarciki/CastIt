@@ -36,6 +36,7 @@
 		B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B27981CD27A888B800E21C5B /* Assets.xcassets */; };
 		B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */; };
 		B2AFDC2527C7B42200BFD2D5 /* tutorial video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B2AFDC2427C7B42200BFD2D5 /* tutorial video.mp4 */; };
+		B2AFDC2727CEF08000BFD2D5 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AFDC2627CEF07F00BFD2D5 /* HapticManager.swift */; };
 		B2B165C827C50895004E90D4 /* Wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B165C727C50895004E90D4 /* Wizard.swift */; };
 		B2B165CA27C512D2004E90D4 /* PressStart2P.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B2B165C927C512D2004E90D4 /* PressStart2P.ttf */; };
 		B2BFC77427BD3730003CF1FF /* MenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */; };
@@ -86,6 +87,7 @@
 		B27981CD27A888B800E21C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B27981D027A888B800E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2AFDC2427C7B42200BFD2D5 /* tutorial video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tutorial video.mp4"; path = "../../../Downloads/tutorial video.mp4"; sourceTree = "<group>"; };
+		B2AFDC2627CEF07F00BFD2D5 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		B2B165C727C50895004E90D4 /* Wizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wizard.swift; sourceTree = "<group>"; };
 		B2B165C927C512D2004E90D4 /* PressStart2P.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = PressStart2P.ttf; path = "../../../../Downloads/press_start_2p-3/PressStart2P.ttf"; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
@@ -130,6 +132,7 @@
 				323CEFF727A95B7F0081793A /* ScoreController.swift */,
 				B23A6FD027AC109000CD9F26 /* SparkTouch.swift */,
 				B2F830AB27C2C08A00826E79 /* AudioManager.swift */,
+				B2AFDC2627CEF07F00BFD2D5 /* HapticManager.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B23A700727B29D2500CD9F26 /* MenuSceneViewController.swift in Sources */,
+				B2AFDC2727CEF08000BFD2D5 /* HapticManager.swift in Sources */,
 				B218213627B40CDD00938B61 /* LeaderBoardManager.swift in Sources */,
 				3224A56A27B2AA7500861243 /* Analytics.swift in Sources */,
 				B2F830AC27C2C08A00826E79 /* AudioManager.swift in Sources */,
@@ -603,7 +607,7 @@
 				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -613,6 +617,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -622,7 +627,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.guilermebarciki.Cast-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -641,7 +646,7 @@
 				CODE_SIGN_ENTITLEMENTS = CastIt/CastIt.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = AZA2LHKU7Z;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CastIt/Info.plist;
@@ -650,6 +655,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIRequiredDeviceCapabilities = gamekit;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeRight UIInterfaceOrientationLandscapeLeft";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -659,7 +665,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "br.com.guilermebarciki.Cast-It";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

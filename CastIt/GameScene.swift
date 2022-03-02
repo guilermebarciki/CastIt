@@ -159,7 +159,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let touch = touches.first?.location(in: self) else { return }
-        
+//        HapticManager.shared.vibrate(for: .light)
         switch status {
         case .intro:
             status = .playing
