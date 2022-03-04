@@ -79,7 +79,7 @@ class EnemySpawner {
         }
     }
     
-    func update(dTime: TimeInterval){
+    func update(dTime: TimeInterval, currentPlayTime: TimeInterval ){
         nextEnemy -= dTime
         nextDificulty -= dTime
         if nextDificulty <= 0 {
@@ -93,17 +93,22 @@ class EnemySpawner {
             var new:SKSpriteNode
             var level:Int
             var speed:Double
+           
+            new = enemiesSprites[0].copy() as! SKSpriteNode
+            level = 0
+            speed = 100
+            
             if randomEnemy < normalPercentage {
                 new = enemiesSprites[0].copy() as! SKSpriteNode
                 level = 0
                 speed = 100
             }
-            else if randomEnemy < elitePercentage+normalPercentage {
+            else if randomEnemy < elitePercentage+normalPercentage && currentPlayTime > 30 {
                 new = enemiesSprites[1].copy() as! SKSpriteNode
                 level = 1
                 speed = 50
             }
-            else {
+            else if randomEnemy > elitePercentage+normalPercentage && currentPlayTime > 60 {
                 new = enemiesSprites[2].copy() as! SKSpriteNode
                 level = 2
                 speed = 30

@@ -213,7 +213,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("rolando \(lastUpdate)")
             currentPlayTime += dTime
             scoreControler.update(dTime: dTime)
-            enemy.update(dTime: dTime)
+            enemy.update(dTime: dTime, currentPlayTime: currentPlayTime)
             playTimeForAD += dTime
             print(playTimeForAD)
         }
