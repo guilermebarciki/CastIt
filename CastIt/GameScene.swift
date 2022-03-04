@@ -88,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             wizardNode.show()
             scoreControler.updateScore()
             audioManager.stopMusic()
-            audioManager.playingStatusMusic()
+            audioManager.playingStatusMusic() 
             gameVC.showPauseButton()
             AnalyticsManager.shared.log(event: .levelStart)
             lineNode.show()

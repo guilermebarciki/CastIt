@@ -35,7 +35,6 @@
 		B27981CC27A888B500E21C5B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CA27A888B500E21C5B /* Main.storyboard */; };
 		B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B27981CD27A888B800E21C5B /* Assets.xcassets */; };
 		B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */; };
-		B2AFDC2527C7B42200BFD2D5 /* tutorial video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = B2AFDC2427C7B42200BFD2D5 /* tutorial video.mp4 */; };
 		B2AFDC2727CEF08000BFD2D5 /* HapticManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AFDC2627CEF07F00BFD2D5 /* HapticManager.swift */; };
 		B2B165C827C50895004E90D4 /* Wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B165C727C50895004E90D4 /* Wizard.swift */; };
 		B2BFC77427BD3730003CF1FF /* MenuScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */; };
@@ -86,7 +85,6 @@
 		B27981CB27A888B500E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B27981CD27A888B800E21C5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B27981D027A888B800E21C5B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		B2AFDC2427C7B42200BFD2D5 /* tutorial video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "tutorial video.mp4"; path = "../../../Downloads/tutorial video.mp4"; sourceTree = "<group>"; };
 		B2AFDC2627CEF07F00BFD2D5 /* HapticManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticManager.swift; sourceTree = "<group>"; };
 		B2B165C727C50895004E90D4 /* Wizard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wizard.swift; sourceTree = "<group>"; };
 		B2BFC77327BD3730003CF1FF /* MenuScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuScrollView.swift; sourceTree = "<group>"; };
@@ -229,7 +227,6 @@
 				B2F8DF1827A8B2280014E52C /* sparkTouch.sks */,
 				B27981CA27A888B500E21C5B /* Main.storyboard */,
 				B27981CD27A888B800E21C5B /* Assets.xcassets */,
-				B2AFDC2427C7B42200BFD2D5 /* tutorial video.mp4 */,
 				B27981CF27A888B800E21C5B /* LaunchScreen.storyboard */,
 				3224A56627B2996500861243 /* GoogleService-Info.plist */,
 				B218213527B40CDD00938B61 /* LeaderBoardManager.swift */,
@@ -356,7 +353,6 @@
 				B2F830C027C3B37C00826E79 /* projetile.mp3 in Resources */,
 				B27981C327A888B500E21C5B /* GameScene.sks in Resources */,
 				B27981CE27A888B800E21C5B /* Assets.xcassets in Resources */,
-				B2AFDC2527C7B42200BFD2D5 /* tutorial video.mp4 in Resources */,
 				B27981D127A888B800E21C5B /* LaunchScreen.storyboard in Resources */,
 				3224A56727B2996500861243 /* GoogleService-Info.plist in Resources */,
 				32C8884627C3D7B50034E078 /* MagicParticles.sks in Resources */,

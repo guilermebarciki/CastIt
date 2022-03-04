@@ -86,8 +86,8 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             // Present the scene
             view.presentScene(scene)
             view.ignoresSiblingOrder = true
-            view.showsFPS = true
-            view.showsNodeCount = true
+//            view.showsFPS = true
+//            view.showsNodeCount = true
         }
 
         
@@ -102,7 +102,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         
         banner.frame = CGRect(x: 0,
                               y: view.frame.height - 50,//* 0.9,
-                              width: 350,
+                              width: 320,
                               height: 50//view.frame.size.height * 0.9
         )
     }
