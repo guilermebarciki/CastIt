@@ -230,6 +230,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
             showingInterstitialAd = true
             print("teste - show interstitialAD")
             showingInterstitialAd = true
+            scene.audioManager.stopMusic()
           interstitial.present(fromRootViewController: self)
         } else {
           print("Ad wasn't ready")
@@ -256,6 +257,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         }
         if showingInterstitialAd {
             requestInterstitial()
+            scene.audioManager.playingStatusMusic()
             showingInterstitialAd = false
         }
         
