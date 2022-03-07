@@ -103,12 +103,12 @@ class EnemySpawner {
                 level = 0
                 speed = 100
             }
-            else if randomEnemy < elitePercentage+normalPercentage && currentPlayTime > 30 {
+            else if randomEnemy < elitePercentage+normalPercentage && currentPlayTime > 10 {
                 new = enemiesSprites[1].copy() as! SKSpriteNode
                 level = 1
                 speed = 50
             }
-            else if randomEnemy > elitePercentage+normalPercentage && currentPlayTime > 60 {
+            else if randomEnemy > elitePercentage+normalPercentage && currentPlayTime > 20 {
                 new = enemiesSprites[2].copy() as! SKSpriteNode
                 level = 2
                 speed = 30
