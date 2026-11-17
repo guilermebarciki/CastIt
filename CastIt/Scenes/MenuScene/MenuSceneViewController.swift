@@ -59,7 +59,6 @@ class MenuSceneViewController: UIViewController {
         
         view.insertSubview(background, at: 0)
         
-        LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
         banner.rootViewController = self
         addSubviews()
         playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
@@ -68,6 +67,11 @@ class MenuSceneViewController: UIViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
+    }
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
