@@ -26,7 +26,6 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     private let banner: GADBannerView = {
         let banner = GADBannerView()
         banner.adUnitID = "ca-app-pub-4847648071121480/2504562618"
-        banner.load(GADRequest())
         return banner
     }()
     
@@ -94,6 +93,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
         requestInterstitial()
         requestRewarded()
         banner.rootViewController = self
+        ConsentManager.shared.whenAdsAllowed { [weak self] in self?.banner.load(GADRequest()) }
         view.addSubview(banner)
         
     }
@@ -181,6 +181,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func requestRewarded() {
+        guard ConsentManager.shared.canRequestAds else { return }
         let request = GADRequest()
         GADRewardedAd.load(
             withAdUnitID: "ca-app-pub-4847648071121480/6672633254",
@@ -210,6 +211,7 @@ class GameViewController: UIViewController, GADFullScreenContentDelegate {
     }
     
     func requestInterstitial() {
+        guard ConsentManager.shared.canRequestAds else { return }
         // Load Interstitial AD
         let request = GADRequest()
         GADInterstitialAd.load(withAdUnitID:"ca-app-pub-4847648071121480/3965567108",

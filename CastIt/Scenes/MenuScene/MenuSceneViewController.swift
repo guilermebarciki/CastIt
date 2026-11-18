@@ -16,7 +16,6 @@ class MenuSceneViewController: UIViewController {
     private let banner: GADBannerView = {
         let banner = GADBannerView()
         banner.adUnitID = "ca-app-pub-4847648071121480/2504562618"
-        banner.load(GADRequest())
         return banner
     }()
     
@@ -61,6 +60,7 @@ class MenuSceneViewController: UIViewController {
         
         LeaderboardManager.shared.authenticateLocalPlayer(presentingVC: self)
         banner.rootViewController = self
+        ConsentManager.shared.whenAdsAllowed { [weak self] in self?.banner.load(GADRequest()) }
         addSubviews()
         playButton.addTarget(self, action: #selector(playPressed), for: .touchUpInside)
         leaderBoardButton.addTarget(self, action: #selector(leaderBoardPressed), for: .touchUpInside)
